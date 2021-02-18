@@ -1,5 +1,5 @@
 # PC Setup
->In this course we are  utilizing a pre-configured virtual machine.  The second option is to install a native Ubuntu machine with the required software.  The virtual machine approach is by far the easiest option and ensures the fewest build errors during training but is limited in its ability to connect to certain hardware, particularly over USB.  F
+>In this course we are  utilizing a pre-configured virtual machine.  The second option is to install a native Ubuntu machine with the required software.  The virtual machine approach is by far the easiest option and ensures the fewest build errors during training but is limited in its ability to connect to certain hardware, particularly over USB. 
 
 ## Virtual Machine Configuration (**Recommended**)
 The VM method is the most convenient method of utilizing the training materials: Follow the links below and install Virtual box software and  ROS Melodic training VM 

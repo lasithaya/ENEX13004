@@ -64,9 +64,6 @@ A pathname can also be relative to your current working directory. Relative path
   personal/res``
 
 
-
-
-
 ### ls Command ###
  1. Go to the home directory  `$cd ~` and enter `ls` into the terminal.
     * You should see files like  `test.txt`.
@@ -143,46 +140,8 @@ _If you want a full list of options available for any of the commands given in t
 _You can use the  `-i` flag with `cp`, `mv`, and `rm` commands to prompt you when a file will be overwritten or removed._
 
 ## Job management ##
-### Stopping Jobs ###
- 1. Type `./sample_job`.
-    * The program will start running.
- 1. Press Control+C.
-    * The program should exit.
- 1. Type `./sample_job sigterm`.
-    * The program will start running.
- 1. Press Control+C.
-    * This time the program will not die.
 
-### Stopping "Out of Control" Jobs ###
- 1. Open a new terminal window.
- 1. Type `ps ax`.
- 1. Scroll up until you find `python ./sample_job sigterm`.
-    * This is the job that is running in the first window.
-    * The first field in the table is the ID of the process (use `man ps` to learn more about the other fields).
- 1. Type `ps ax | grep sample`.
-    * You will notice that only a few lines are returned.
-    * This is useful if you want to find a particular process
-    * _Note: this is an advanced technique called "piping", where the output of one program is passed into the input of the next.  This is beyond the scope of this class, but is useful to learn if you intend to use the terminal extensively._
- 1. Type `kill <id>`, where `<id>` is the job number you found with the `ps ax`.
- 1. In the first window, type `./sample_job sigterm sigkill`.
-    * The program will start running.
- 1. In the second window, type `ps ax | grep sample` to get the id of the process.
- 1. Type `kill <id>`.
-    * This time, the process will not die.
- 1. Type `kill -SIGKILL <id>`.
-    * This time the process will exit.
-
-### Showing Process and Memory usage ###
- 1. In a terminal, type `top`.
-    * A table will be shown, updated once per second, showing all of the processes on the system, as well as the overall CPU and memory usage.
- 1. Press the Shift+P key.
-    * This will sort processes by CPU utilization.<BR>
-    _This can be used to determine which processes are using too much CPU time._
- 1. Press the Shift+M key.
-    * This will sort processes by memory utilization<BR>
-    _This can be used to determine which processes are using too much memory._
- 1. Press q or Ctrl+C to exit the program.
-
+ 
 ### Editing Text (and Other GUI Commands) ###
  1. Type `gedit test.txt`.
     * You will notice that a new text editor window will open, and `test.txt` will be loaded.

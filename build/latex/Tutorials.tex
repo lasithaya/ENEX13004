@@ -58,7 +58,7 @@
 
 
 \title{Tutorials Documentation}
-\date{Feb 16, 2021}
+\date{Feb 17, 2021}
 \release{}
 \author{Lasi Piyathilaka}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -75,13 +75,13 @@
 
 
 
-\chapter{Week 1 - Software Installation}
-\label{\detokenize{index:week-1-software-installation}}
+\chapter{ENEX13004:Week 1 - Software Installation}
+\label{\detokenize{index:enex13004-week-1-software-installation}}
 
 \section{PC Setup}
 \label{\detokenize{_source/week_1/PC_setup:pc-setup}}\label{\detokenize{_source/week_1/PC_setup::doc}}\begin{quote}
 
-In this course we are  utilizing a pre-configured virtual machine.  The second option is to install a native Ubuntu machine with the required software.  The virtual machine approach is by far the easiest option and ensures the fewest build errors during training but is limited in its ability to connect to certain hardware, particularly over USB.  F
+In this course we are  utilizing a pre-configured virtual machine.  The second option is to install a native Ubuntu machine with the required software.  The virtual machine approach is by far the easiest option and ensures the fewest build errors during training but is limited in its ability to connect to certain hardware, particularly over USB.
 \end{quote}
 
 
@@ -118,19 +118,14 @@ Log into virtual machine, user: \sphinxcode{\sphinxupquote{ros-industrial}}, pas
 \end{enumerate}
 
 
-\chapter{Week 1 -Ubuntu GUI}
-\label{\detokenize{index:week-1-ubuntu-gui}}
+\chapter{ENEX13004:Week 1 -Ubuntu GUI}
+\label{\detokenize{index:enex13004-week-1-ubuntu-gui}}
 
 \section{Navigating the Ubuntu GUI}
 \label{\detokenize{_source/week_1/Ubuntu_gui:navigating-the-ubuntu-gui}}\label{\detokenize{_source/week_1/Ubuntu_gui::doc}}\begin{quote}
 
 In this exercise, we will familiarize ourselves with the graphical user interface (GUI) of the Ubuntu operating system.
 \end{quote}
-
-
-\subsection{Task 0: Presentation Slides}
-\label{\detokenize{_source/week_1/Ubuntu_gui:task-0-presentation-slides}}
-Don’t forget about the \sphinxhref{../../\_downloads/slides/ROS-I\%20Basic\%20Developers\%20Training\%20-\%20Session\%200.pdf}{presentation slides} that accompany this Lesson!
 
 
 \subsection{Task 1: Familiarize Yourself with the Ubuntu Desktop}
@@ -228,8 +223,8 @@ Click on the gedit launcher icon. You should see a new gedit window appear.
 \end{enumerate}
 
 
-\chapter{Week 1- Linux basics}
-\label{\detokenize{index:week-1-linux-basics}}
+\chapter{ENEX13004:Week 1- Linux basics}
+\label{\detokenize{index:enex13004-week-1-linux-basics}}
 
 \section{The Linux Terminal}
 \label{\detokenize{_source/week_1/linux_basics:the-linux-terminal}}\label{\detokenize{_source/week_1/linux_basics::doc}}\begin{quote}
@@ -607,152 +602,6 @@ This will create a new Document named \sphinxstylestrong{“Untitled Document”
 
 \subsection{Job management}
 \label{\detokenize{_source/week_1/linux_basics:job-management}}
-
-\subsubsection{Stopping Jobs}
-\label{\detokenize{_source/week_1/linux_basics:stopping-jobs}}\begin{enumerate}
-\def\theenumi{\arabic{enumi}}
-\def\labelenumi{\theenumi .}
-\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
-\item {} 
-Type \sphinxcode{\sphinxupquote{./sample\_job}}.
-\begin{itemize}
-\item {} 
-The program will start running.
-
-\end{itemize}
-
-\item {} 
-Press Control+C.
-\begin{itemize}
-\item {} 
-The program should exit.
-
-\end{itemize}
-
-\item {} 
-Type \sphinxcode{\sphinxupquote{./sample\_job sigterm}}.
-\begin{itemize}
-\item {} 
-The program will start running.
-
-\end{itemize}
-
-\item {} 
-Press Control+C.
-\begin{itemize}
-\item {} 
-This time the program will not die.
-
-\end{itemize}
-
-\end{enumerate}
-
-
-\subsubsection{Stopping “Out of Control” Jobs}
-\label{\detokenize{_source/week_1/linux_basics:stopping-out-of-control-jobs}}\begin{enumerate}
-\def\theenumi{\arabic{enumi}}
-\def\labelenumi{\theenumi .}
-\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
-\item {} 
-Open a new terminal window.
-
-\item {} 
-Type \sphinxcode{\sphinxupquote{ps ax}}.
-
-\item {} 
-Scroll up until you find \sphinxcode{\sphinxupquote{python ./sample\_job sigterm}}.
-\begin{itemize}
-\item {} 
-This is the job that is running in the first window.
-
-\item {} 
-The first field in the table is the ID of the process (use \sphinxcode{\sphinxupquote{man ps}} to learn more about the other fields).
-
-\end{itemize}
-
-\item {} 
-Type \sphinxcode{\sphinxupquote{ps ax \textbar{} grep sample}}.
-\begin{itemize}
-\item {} 
-You will notice that only a few lines are returned.
-
-\item {} 
-This is useful if you want to find a particular process
-
-\item {} 
-\sphinxstyleemphasis{Note: this is an advanced technique called “piping”, where the output of one program is passed into the input of the next.  This is beyond the scope of this class, but is useful to learn if you intend to use the terminal extensively.}
-
-\end{itemize}
-
-\item {} 
-Type \sphinxcode{\sphinxupquote{kill \textless{}id\textgreater{}}}, where \sphinxcode{\sphinxupquote{\textless{}id\textgreater{}}} is the job number you found with the \sphinxcode{\sphinxupquote{ps ax}}.
-
-\item {} 
-In the first window, type \sphinxcode{\sphinxupquote{./sample\_job sigterm sigkill}}.
-\begin{itemize}
-\item {} 
-The program will start running.
-
-\end{itemize}
-
-\item {} 
-In the second window, type \sphinxcode{\sphinxupquote{ps ax \textbar{} grep sample}} to get the id of the process.
-
-\item {} 
-Type \sphinxcode{\sphinxupquote{kill \textless{}id\textgreater{}}}.
-\begin{itemize}
-\item {} 
-This time, the process will not die.
-
-\end{itemize}
-
-\item {} 
-Type \sphinxcode{\sphinxupquote{kill -SIGKILL \textless{}id\textgreater{}}}.
-\begin{itemize}
-\item {} 
-This time the process will exit.
-
-\end{itemize}
-
-\end{enumerate}
-
-
-\subsubsection{Showing Process and Memory usage}
-\label{\detokenize{_source/week_1/linux_basics:showing-process-and-memory-usage}}\begin{enumerate}
-\def\theenumi{\arabic{enumi}}
-\def\labelenumi{\theenumi .}
-\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
-\item {} 
-In a terminal, type \sphinxcode{\sphinxupquote{top}}.
-\begin{itemize}
-\item {} 
-A table will be shown, updated once per second, showing all of the processes on the system, as well as the overall CPU and memory usage.
-
-\end{itemize}
-
-\item {} 
-Press the Shift+P key.
-\begin{itemize}
-\item {} 
-This will sort processes by CPU utilization.
-\sphinxstyleemphasis{This can be used to determine which processes are using too much CPU time.}
-
-\end{itemize}
-
-\item {} 
-Press the Shift+M key.
-\begin{itemize}
-\item {} 
-This will sort processes by memory utilization
-\sphinxstyleemphasis{This can be used to determine which processes are using too much memory.}
-
-\end{itemize}
-
-\item {} 
-Press q or Ctrl+C to exit the program.
-
-\end{enumerate}
-
 
 \subsubsection{Editing Text (and Other GUI Commands)}
 \label{\detokenize{_source/week_1/linux_basics:editing-text-and-other-gui-commands}}\begin{enumerate}

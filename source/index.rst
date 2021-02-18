@@ -6,7 +6,7 @@
 Welcome to Tutorials's documentation!
 =====================================
 
-Week 1 - Software Installation
+ENEX13004:Week 1 - Software Installation
 -------------------------------
 
 .. toctree::
@@ -16,7 +16,7 @@ Week 1 - Software Installation
    
    
 
-Week 1 -Ubuntu GUI
+ENEX13004:Week 1 -Ubuntu GUI
 ------------------
    
 .. toctree::
@@ -24,7 +24,8 @@ Week 1 -Ubuntu GUI
 
    Ubuntu GUI <_source/week_1/Ubuntu_gui.md>
 
-Week 1- Linux basics
+
+ENEX13004:Week 1- Linux basics
 --------------------
 
 .. toctree::
