@@ -58,7 +58,7 @@
 
 
 \title{Tutorials Documentation}
-\date{Feb 17, 2021}
+\date{Mar 04, 2021}
 \release{}
 \author{Lasi Piyathilaka}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -96,7 +96,7 @@ The VM method is the most convenient method of utilizing the training materials:
 \sphinxhref{https://www.virtualbox.org/wiki/Downloads}{Download virtual box}
 
 \item {} 
-\sphinxhref{https://rosi-images.datasys.swri.edu}{Download ROS Melodic training VM}
+\sphinxhref{https://cqu365-my.sharepoint.com/:u:/g/personal/l\_piyathilaka\_cqu\_edu\_au/EUAZLBD3DOdHtmZ\_PR-VGZQBm41cAQLCCct00mrjvJGlUQ?e=CjuRzi}{Download ROS Melodic training VM}
 
 \item {} 
 \sphinxhref{https://www.virtualbox.org/manual/ch01.html\#ovf}{Import image into virtual box}
@@ -344,7 +344,7 @@ Following are some examples of absolute filenames.
 
 \sphinxcode{\sphinxupquote{/etc/passwd /dev/rdsk/Os3}}
 
-A pathname can also be relative to your current working directory. Relative pathnames never begin with /. Relative to user amrood’s home directory, some pathnames might look like this −
+A pathname can also be relative to your current working directory. Relative pathnames never begin with /. Relative to user’s home directory, some pathnames might look like this −
 
 \sphinxcode{\sphinxupquote{chem/notes personal/res}}
 
@@ -401,7 +401,7 @@ If the file is a symbolic link, the link’s target file is listed after the lin
 Enter \sphinxcode{\sphinxupquote{ls -a}} in the terminal.
 \begin{itemize}
 \item {} 
-You will now see one additional file, which is hidden.
+You will now see  additional files, that starts with “.”. These are hidden files
 
 \end{itemize}
 
@@ -409,7 +409,7 @@ You will now see one additional file, which is hidden.
 Enter \sphinxcode{\sphinxupquote{ls -a -l}} (or \sphinxcode{\sphinxupquote{ls -al}}) in the command.
 \begin{itemize}
 \item {} 
-You’ll now see that the file \sphinxcode{\sphinxupquote{hidden\_link.txt}} points to \sphinxcode{\sphinxupquote{.hidden\_text\_file.txt}}.
+You’ll now see all  details of each file such as the creation date and etc.
 
 \end{itemize}
 
@@ -730,6 +730,331 @@ Once you enter the password, you should see the contents of the \sphinxcode{\sph
 \end{enumerate}
 
 \sphinxstyleemphasis{\sphinxstylestrong{Warning}: \sphinxcode{\sphinxupquote{sudo}} is a powerful tool which doesn’t provide any sanity checks on what you ask it to do, so be \sphinxstylestrong{VERY} careful in using it.}
+
+
+\chapter{ENEX13004:Week 1- ROS Node}
+\label{\detokenize{index:enex13004-week-1-ros-node}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Note}\PYG{p}{:} \PYG{n}{This} \PYG{n}{tutorial} \PYG{n}{assumes} \PYG{n}{that} \PYG{n}{you} \PYG{n}{have} \PYG{n}{completed} \PYG{n}{the} \PYG{n}{previous} \PYG{n}{tutorials}\PYG{p}{:} \PYG{n}{building} \PYG{n}{a}
+\PYG{n}{ROS} \PYG{n}{package} \PYG{p}{(}\PYG{o}{/}\PYG{n}{ROS}\PYG{o}{/}\PYG{n}{Tutorials}\PYG{o}{/}\PYG{n}{BuildingPackages}\PYG{p}{)}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Please} \PYG{n}{ask} \PYG{n}{about} \PYG{n}{problems} \PYG{o+ow}{and} \PYG{n}{questions} \PYG{n}{regarding} \PYG{n}{this} \PYG{n}{tutorial} \PYG{n}{on} \PYG{n}{answers}\PYG{o}{.}\PYG{n}{ros}\PYG{o}{.}\PYG{n}{org}
+\PYG{p}{(}\PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{answers}\PYG{o}{.}\PYG{n}{ros}\PYG{o}{.}\PYG{n}{org}\PYG{p}{)}\PYG{o}{.} \PYG{n}{Don}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{t forget to include in your question the link to this page, the}
+\PYG{n}{versions} \PYG{n}{of} \PYG{n}{your} \PYG{n}{OS} \PYG{o}{\PYGZam{}} \PYG{n}{ROS}\PYG{p}{,} \PYG{o+ow}{and} \PYG{n}{also} \PYG{n}{add} \PYG{n}{appropriate} \PYG{n}{tags}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+
+\section{Understanding ROS Nodes}
+\label{\detokenize{_source/week_1/ROS_node:understanding-ros-nodes}}\label{\detokenize{_source/week_1/ROS_node::doc}}
+\sphinxstylestrong{Description:} This tutorial introduces ROS graph concepts and discusses the use of roscore
+(/roscore), rosnode (/rosnode), and rosrun (/rosrun) commandline tools.
+
+\sphinxstylestrong{Tutorial Level:} BEGINNER
+
+\sphinxstylestrong{Next Tutorial:} Understanding ROS topics (/ROS/Tutorials/UnderstandingTopics)
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Contents}
+\PYG{l+m+mf}{1.} \PYG{n}{Prerequisites}
+\PYG{l+m+mf}{2.} \PYG{n}{Quick} \PYG{n}{Overview} \PYG{n}{of} \PYG{n}{Graph} \PYG{n}{Concepts}
+\PYG{l+m+mf}{3.} \PYG{n}{Nodes}
+\PYG{l+m+mf}{4.} \PYG{n}{Client} \PYG{n}{Libraries}
+\PYG{l+m+mf}{5.} \PYG{n}{roscore}
+\PYG{l+m+mf}{6.} \PYG{n}{Using} \PYG{n}{rosnode}
+\PYG{l+m+mf}{7.} \PYG{n}{Using} \PYG{n}{rosrun}
+\PYG{l+m+mf}{8.} \PYG{n}{Review}
+\end{sphinxVerbatim}
+
+
+\subsection{1. Prerequisites}
+\label{\detokenize{_source/week_1/ROS_node:prerequisites}}
+For this tutorial we’ll use a lighweight simulator, to install it run the following command:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{} sudo apt\PYGZhy{}get install ros\PYGZhy{}\PYGZlt{}distro\PYGZgt{}\PYGZhy{}ros\PYGZhy{}tutorials
+\end{sphinxVerbatim}
+
+Replace ‘’ with the name of your ROS distribution (e.g. indigo, jade, kinetic)
+
+
+\subsection{2. Quick Overview of Graph Concepts}
+\label{\detokenize{_source/week_1/ROS_node:quick-overview-of-graph-concepts}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Nodes} \PYG{p}{(}\PYG{o}{/}\PYG{n}{Nodes}\PYG{p}{)}\PYG{p}{:} \PYG{n}{A} \PYG{n}{node} \PYG{o+ow}{is} \PYG{n}{an} \PYG{n}{executable} \PYG{n}{that} \PYG{n}{uses} \PYG{n}{ROS} \PYG{n}{to} \PYG{n}{communicate} \PYG{k}{with} \PYG{n}{other}
+\PYG{n}{nodes}\PYG{o}{.}
+\PYG{n}{Messages} \PYG{p}{(}\PYG{o}{/}\PYG{n}{Messages}\PYG{p}{)}\PYG{p}{:} \PYG{n}{ROS} \PYG{n}{data} \PYG{n+nb}{type} \PYG{n}{used} \PYG{n}{when} \PYG{n}{subscribing} \PYG{o+ow}{or} \PYG{n}{publishing} \PYG{n}{to} \PYG{n}{a} \PYG{n}{topic}\PYG{o}{.}
+\PYG{n}{Topics} \PYG{p}{(}\PYG{o}{/}\PYG{n}{Topics}\PYG{p}{)}\PYG{p}{:} \PYG{n}{Nodes} \PYG{n}{can} \PYG{n}{publish} \PYG{n}{messages} \PYG{n}{to} \PYG{n}{a} \PYG{n}{topic} \PYG{k}{as} \PYG{n}{well} \PYG{k}{as} \PYG{n}{subscribe} \PYG{n}{to} \PYG{n}{a} \PYG{n}{topic} \PYG{n}{to}
+\PYG{n}{receive} \PYG{n}{messages}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Master} \PYG{p}{(}\PYG{o}{/}\PYG{n}{Master}\PYG{p}{)}\PYG{p}{:} \PYG{n}{Name} \PYG{n}{service} \PYG{k}{for} \PYG{n}{ROS} \PYG{p}{(}\PYG{n}{i}\PYG{o}{.}\PYG{n}{e}\PYG{o}{.} \PYG{n}{helps} \PYG{n}{nodes} \PYG{n}{find} \PYG{n}{each} \PYG{n}{other}\PYG{p}{)}
+\PYG{n}{rosout} \PYG{p}{(}\PYG{o}{/}\PYG{n}{rosout}\PYG{p}{)}\PYG{p}{:} \PYG{n}{ROS} \PYG{n}{equivalent} \PYG{n}{of} \PYG{n}{stdout}\PYG{o}{/}\PYG{n}{stderr}
+\PYG{n}{roscore} \PYG{p}{(}\PYG{o}{/}\PYG{n}{roscore}\PYG{p}{)}\PYG{p}{:} \PYG{n}{Master} \PYG{o}{+} \PYG{n}{rosout} \PYG{o}{+} \PYG{n}{parameter} \PYG{n}{server} \PYG{p}{(}\PYG{n}{parameter} \PYG{n}{server} \PYG{n}{will} \PYG{n}{be}
+\PYG{n}{introduced} \PYG{n}{later}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+
+\subsection{3. Nodes}
+\label{\detokenize{_source/week_1/ROS_node:nodes}}
+A node really isn’t much more than an executable file within a ROS package. ROS nodes use a
+ROS client library to communicate with other nodes. Nodes can publish or subscribe to a
+Topic. Nodes can also provide or use a Service.
+
+
+\subsection{4. Client Libraries}
+\label{\detokenize{_source/week_1/ROS_node:client-libraries}}
+ROS client libraries allow nodes written in different programming languages to communicate:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{rospy} \PYG{o}{=} \PYG{n}{python} \PYG{n}{client} \PYG{n}{library}
+\PYG{n}{roscpp} \PYG{o}{=} \PYG{n}{c}\PYG{o}{+}\PYG{o}{+} \PYG{n}{client} \PYG{n}{library}
+\end{sphinxVerbatim}
+
+
+\subsection{5. roscore}
+\label{\detokenize{_source/week_1/ROS_node:roscore}}
+roscore is the first thing you should run when using ROS.
+
+Please run:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{} roscore
+\end{sphinxVerbatim}
+
+You will see something similar to:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{.}\PYG{o}{.}\PYG{o}{.} \PYG{n}{logging} \PYG{n}{to} \PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{o}{.}\PYG{n}{ros}\PYG{o}{/}\PYG{n}{log}\PYG{o}{/}\PYG{l+m+mi}{9}\PYG{n}{cf88ce4}\PYG{o}{\PYGZhy{}}\PYG{n}{b14d}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{11}\PYG{n}{df}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8}\PYG{n}{a75}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{00251148e8}\PYG{n}{cf}\PYG{o}{/}\PYG{n}{roslaunch}\PYG{o}{\PYGZhy{}}\PYG{n}{mac}
+\PYG{n}{hine\PYGZus{}name}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{13039.}\PYG{n}{log}
+\PYG{n}{Checking} \PYG{n}{log} \PYG{n}{directory} \PYG{k}{for} \PYG{n}{disk} \PYG{n}{usage}\PYG{o}{.} \PYG{n}{This} \PYG{n}{may} \PYG{n}{take} \PYG{n}{awhile}\PYG{o}{.}
+\PYG{n}{Press} \PYG{n}{Ctrl}\PYG{o}{\PYGZhy{}}\PYG{n}{C} \PYG{n}{to} \PYG{n}{interrupt}
+\PYG{n}{Done} \PYG{n}{checking} \PYG{n}{log} \PYG{n}{file} \PYG{n}{disk} \PYG{n}{usage}\PYG{o}{.} \PYG{n}{Usage} \PYG{o+ow}{is} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{1}\PYG{n}{GB}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{started} \PYG{n}{roslaunch} \PYG{n}{server} \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{machine\PYGZus{}name}\PYG{p}{:}\PYG{l+m+mi}{33919}\PYG{o}{/}
+\PYG{n}{ros\PYGZus{}comm} \PYG{n}{version} \PYG{l+m+mf}{1.4}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{SUMMARY}
+\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{PARAMETERS}
+\PYG{o}{*} \PYG{o}{/}\PYG{n}{rosversion}
+\PYG{o}{*} \PYG{o}{/}\PYG{n}{rosdistro}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{NODES}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{auto}\PYG{o}{\PYGZhy{}}\PYG{n}{starting} \PYG{n}{new} \PYG{n}{master}
+\PYG{n}{process}\PYG{p}{[}\PYG{n}{master}\PYG{p}{]}\PYG{p}{:} \PYG{n}{started} \PYG{k}{with} \PYG{n}{pid} \PYG{p}{[}\PYG{l+m+mi}{13054}\PYG{p}{]}
+\PYG{n}{ROS\PYGZus{}MASTER\PYGZus{}URI}\PYG{o}{=}\PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{machine\PYGZus{}name}\PYG{p}{:}\PYG{l+m+mi}{11311}\PYG{o}{/}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{setting} \PYG{o}{/}\PYG{n}{run\PYGZus{}id} \PYG{n}{to} \PYG{l+m+mi}{9}\PYG{n}{cf88ce4}\PYG{o}{\PYGZhy{}}\PYG{n}{b14d}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{11}\PYG{n}{df}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8}\PYG{n}{a75}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{00251148e8}\PYG{n}{cf}
+\PYG{n}{process}\PYG{p}{[}\PYG{n}{rosout}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{:} \PYG{n}{started} \PYG{k}{with} \PYG{n}{pid} \PYG{p}{[}\PYG{l+m+mi}{13067}\PYG{p}{]}
+\PYG{n}{started} \PYG{n}{core} \PYG{n}{service} \PYG{p}{[}\PYG{o}{/}\PYG{n}{rosout}\PYG{p}{]}
+\end{sphinxVerbatim}
+
+If roscore does not initialize, you probably have a network configuration issue. See Network
+Setup - Single Machine Configuration
+(http://www.ros.org/wiki/ROS/NetworkSetup\#Single\_machine\_configuration)
+
+If roscore does not initialize and sends a message about lack of permissions, probably the
+\textasciitilde{}/.ros folder is owned by root, change recursively the ownership of that folder with:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{} sudo chown \PYGZhy{}R \PYGZlt{}your\PYGZus{}username\PYGZgt{} \PYGZti{}/.ros
+\end{sphinxVerbatim}
+
+
+\subsection{6. Using rosnode}
+\label{\detokenize{_source/week_1/ROS_node:using-rosnode}}
+Open up a \sphinxstylestrong{new terminal} , and let’s use \sphinxstylestrong{rosnode} to see what running roscore did… Bear in
+mind to keep the previous terminal open either by opening a new tab or simply minimizing it.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Note}\PYG{p}{:} \PYG{n}{When} \PYG{n}{opening} \PYG{n}{a} \PYG{n}{new} \PYG{n}{terminal} \PYG{n}{your} \PYG{n}{environment} \PYG{o+ow}{is} \PYG{n}{reset} \PYG{o+ow}{and} \PYG{n}{your} \PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{o}{.}\PYG{n}{bashrc} \PYG{n}{file} \PYG{o+ow}{is}
+\PYG{n}{sourced}\PYG{o}{.} \PYG{n}{If} \PYG{n}{you} \PYG{n}{have} \PYG{n}{trouble} \PYG{n}{running} \PYG{n}{commands} \PYG{n}{like} \PYG{n}{rosnode} \PYG{n}{then} \PYG{n}{you} \PYG{n}{might} \PYG{n}{need} \PYG{n}{to} \PYG{n}{add}
+\PYG{n}{some} \PYG{n}{environment} \PYG{n}{setup} \PYG{n}{files} \PYG{n}{to} \PYG{n}{your} \PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{o}{.}\PYG{n}{bashrc} \PYG{o+ow}{or} \PYG{n}{manually} \PYG{n}{re}\PYG{o}{\PYGZhy{}}\PYG{n}{source} \PYG{n}{them}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+rosnode displays information about the ROS nodes that are currently running. The
+rosnode list command lists these active nodes:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{} rosnode list
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{You} \PYG{n}{will} \PYG{n}{see}\PYG{p}{:}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{n}{rosout}
+\end{sphinxVerbatim}
+
+This showed us that there is only one node running: rosout (/rosout). This is always running as
+it collects and logs nodes’ debugging output.
+
+The rosnode info command returns information about a specific node.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{} rosnode info /rosout
+\end{sphinxVerbatim}
+
+This gave us some more information about rosout, such as the fact that it publishes
+/rosout\_agg.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}
+\PYG{n}{Node} \PYG{p}{[}\PYG{o}{/}\PYG{n}{rosout}\PYG{p}{]}
+\PYG{n}{Publications}\PYG{p}{:}
+\PYG{o}{*} \PYG{o}{/}\PYG{n}{rosout\PYGZus{}agg} \PYG{p}{[}\PYG{n}{rosgraph\PYGZus{}msgs}\PYG{o}{/}\PYG{n}{Log}\PYG{p}{]}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Subscriptions}\PYG{p}{:}
+\PYG{o}{*} \PYG{o}{/}\PYG{n}{rosout} \PYG{p}{[}\PYG{n}{unknown} \PYG{n+nb}{type}\PYG{p}{]}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Services}\PYG{p}{:}
+\PYG{o}{*} \PYG{o}{/}\PYG{n}{rosout}\PYG{o}{/}\PYG{n}{get\PYGZus{}loggers}
+\PYG{o}{*} \PYG{o}{/}\PYG{n}{rosout}\PYG{o}{/}\PYG{n}{set\PYGZus{}logger\PYGZus{}level}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{contacting} \PYG{n}{node} \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{machine\PYGZus{}name}\PYG{p}{:}\PYG{l+m+mi}{54614}\PYG{o}{/} \PYG{o}{.}\PYG{o}{.}\PYG{o}{.}
+\PYG{n}{Pid}\PYG{p}{:} \PYG{l+m+mi}{5092}
+\end{sphinxVerbatim}
+
+Now, let’s see some more nodes. For this, we’re going to use rosrun to bring up another node.
+
+
+\subsection{7. Using rosrun}
+\label{\detokenize{_source/week_1/ROS_node:using-rosrun}}
+rosrun allows you to use the package name to directly run a node within a package (without
+having to know the package path).
+
+Usage:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{} rosrun [package\PYGZus{}name] [node\PYGZus{}name]
+\end{sphinxVerbatim}
+
+So now we can run the turtlesim\_node in the turtlesim package.
+
+Then, in a \sphinxstylestrong{new terminal} :
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{} rosrun turtlesim turtlesim\PYGZus{}node
+\end{sphinxVerbatim}
+
+You will see the turtlesim window:
+
+\sphinxstylestrong{NOTE:} The turtle may look different in your turtlesim window. Don’t worry about it - there are
+many types of turtle (/Distributions\#Current\_Distribution\_Releases) and yours is a surprise!
+
+In a \sphinxstylestrong{new terminal} :
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{} rosnode list
+\end{sphinxVerbatim}
+
+You will see something similar to:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{n}{rosout}
+\PYG{o}{/}\PYG{n}{turtlesim}
+\end{sphinxVerbatim}
+
+One powerful feature of ROS is that you can reassign Names from the command-line.
+
+Close the turtlesim window to stop the node (or go back to the rosrun turtlesim terminal and
+use ctrl-C). Now let’s re-run it, but this time use a Remapping Argument
+(/Remapping\%20Arguments) to change the node’s name:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{} rosrun turtlesim turtlesim\PYGZus{}node \PYGZus{}\PYGZus{}name:=my\PYGZus{}turtle
+\end{sphinxVerbatim}
+
+Now, if we go back and use rosnode list:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{} rosnode list
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{You} \PYG{n}{will} \PYG{n}{see} \PYG{n}{something} \PYG{n}{similar} \PYG{n}{to}\PYG{p}{:}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{n}{my\PYGZus{}turtle}
+\PYG{o}{/}\PYG{n}{rosout}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+Note: If you still see /turtlesim in the list, it might mean that you stopped the node in the
+terminal using ctrl\PYGZhy{}C instead of closing the window, or that you don\PYGZsq{}t have the
+\PYGZdl{}ROS\PYGZus{}HOSTNAME environment variable defined as described in Network Setup \PYGZhy{} Single
+Machine Configuration
+(http://www.ros.org/wiki/ROS/NetworkSetup\PYGZsh{}Single\PYGZus{}machine\PYGZus{}configuration). You can try
+cleaning the rosnode list with: \PYGZdl{} rosnode cleanup
+\end{sphinxVerbatim}
+
+We see our new /my\_turtle node. Let’s use another rosnode command, ping, to test that it’s
+up:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{} rosnode ping my\PYGZus{}turtle
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{rosnode}\PYG{p}{:} \PYG{n}{node} \PYG{o+ow}{is} \PYG{p}{[}\PYG{o}{/}\PYG{n}{my\PYGZus{}turtle}\PYG{p}{]}
+\PYG{n}{pinging} \PYG{o}{/}\PYG{n}{my\PYGZus{}turtle} \PYG{k}{with} \PYG{n}{a} \PYG{n}{timeout} \PYG{n}{of} \PYG{l+m+mf}{3.0}\PYG{n}{s}
+\PYG{n}{xmlrpc} \PYG{n}{reply} \PYG{k+kn}{from} \PYG{n+nn}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{aqy}\PYG{p}{:}\PYG{l+m+mi}{42235}\PYG{o}{/} \PYG{n}{time}\PYG{o}{=}\PYG{l+m+mf}{1.152992}\PYG{n}{ms}
+\PYG{n}{xmlrpc} \PYG{n}{reply} \PYG{k+kn}{from} \PYG{n+nn}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{aqy}\PYG{p}{:}\PYG{l+m+mi}{42235}\PYG{o}{/} \PYG{n}{time}\PYG{o}{=}\PYG{l+m+mf}{1.120090}\PYG{n}{ms}
+\PYG{n}{xmlrpc} \PYG{n}{reply} \PYG{k+kn}{from} \PYG{n+nn}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{aqy}\PYG{p}{:}\PYG{l+m+mi}{42235}\PYG{o}{/} \PYG{n}{time}\PYG{o}{=}\PYG{l+m+mf}{1.700878}\PYG{n}{ms}
+\PYG{n}{xmlrpc} \PYG{n}{reply} \PYG{k+kn}{from} \PYG{n+nn}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{aqy}\PYG{p}{:}\PYG{l+m+mi}{42235}\PYG{o}{/} \PYG{n}{time}\PYG{o}{=}\PYG{l+m+mf}{1.127958}\PYG{n}{ms}
+\end{sphinxVerbatim}
+
+
+\subsection{8. Review}
+\label{\detokenize{_source/week_1/ROS_node:review}}
+What was covered:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roscore} \PYG{o}{=} \PYG{n}{ros}\PYG{o}{+}\PYG{n}{core} \PYG{p}{:} \PYG{n}{master} \PYG{p}{(}\PYG{n}{provides} \PYG{n}{name} \PYG{n}{service} \PYG{k}{for} \PYG{n}{ROS}\PYG{p}{)} \PYG{o}{+} \PYG{n}{rosout} \PYG{p}{(}\PYG{n}{stdout}\PYG{o}{/}\PYG{n}{stderr}\PYG{p}{)} \PYG{o}{+}
+\PYG{n}{parameter} \PYG{n}{server} \PYG{p}{(}\PYG{n}{parameter} \PYG{n}{server} \PYG{n}{will} \PYG{n}{be} \PYG{n}{introduced} \PYG{n}{later}\PYG{p}{)}
+\PYG{n}{rosnode} \PYG{o}{=} \PYG{n}{ros}\PYG{o}{+}\PYG{n}{node} \PYG{p}{:} \PYG{n}{ROS} \PYG{n}{tool} \PYG{n}{to} \PYG{n}{get} \PYG{n}{information} \PYG{n}{about} \PYG{n}{a} \PYG{n}{node}\PYG{o}{.}
+\PYG{n}{rosrun} \PYG{o}{=} \PYG{n}{ros}\PYG{o}{+}\PYG{n}{run} \PYG{p}{:} \PYG{n}{runs} \PYG{n}{a} \PYG{n}{node} \PYG{k+kn}{from} \PYG{n+nn}{a} \PYG{n}{given} \PYG{n}{package}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+Now that you understand how ROS nodes work, let’s look at how ROS topics work
+(/ROS/Tutorials/UnderstandingTopics). Also, feel free to press Ctrl-C to stop turtlesim\_node.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Wiki}\PYG{p}{:} \PYG{n}{ROS}\PYG{o}{/}\PYG{n}{Tutorials}\PYG{o}{/}\PYG{n}{UnderstandingNodes} \PYG{p}{(}\PYG{n}{last} \PYG{n}{edited} \PYG{l+m+mi}{2019}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{06}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{05} \PYG{l+m+mi}{23}\PYG{p}{:}\PYG{l+m+mi}{41}\PYG{p}{:}\PYG{l+m+mi}{12} \PYG{n}{by} \PYG{n}{LukeMeier} \PYG{p}{(}\PYG{o}{/}\PYG{n}{LukeMeier}\PYG{p}{)}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+Except where
+otherwise noted, the
+ROS wiki is licensed
+under the
+Creative Commons Attribution 3.0 (http://creativecommons.org/licenses/by/3.0/)
+
+(https://www.openrobotics.org/)
 
 
 \chapter{Indices and tables}

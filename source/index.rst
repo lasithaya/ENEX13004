@@ -34,6 +34,16 @@ ENEX13004:Week 1- Linux basics
    Linux Basic <_source/week_1/linux_basics.md>
 
 
+ENEX13004:Week 1- ROS Node
+--------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   ROS Node <_source/week_1/ROS_node.md>
+
+
+
 
 
 Indices and tables
