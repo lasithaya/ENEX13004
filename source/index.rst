@@ -43,7 +43,52 @@ ENEX13004:Week 1- ROS Node
    ROS Node <_source/week_1/ROS_node.md>
 
 
+ENEX13004:Week 2- Python TurtleSim Example
+--------------------
 
+.. toctree::
+   :maxdepth: 1
+
+   Python  Turtlesim <_source/week_2/python_tutrle_sim_example.md>
+
+ENEX13004:Week 2- ROS Workspace Setup
+--------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   Python  Turtlesim <_source/week_2/work_space.md>
+
+serial_manipulator.md
+
+ENEX13004:Week 3- Robotic arm simulation with Rviz and URDF
+--------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   Robotic Arm Simulation <_source/week_3/serial_manipulator.md>
+
+
+
+
+ENEX13004:Week 3- Robotic arm simulation with codes
+--------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   Joint state publisher <_source/week_3/joint_publisher.md>
+
+
+
+ENEX13004:Week 3- Robotic arm coordinate transformation
+--------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   Coorinate Transformation <_source/week_3/joint_transformation.md>
 
 
 Indices and tables
