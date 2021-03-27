@@ -34,4 +34,30 @@
 \contentsline {subsection}{\numberline {4.1.6}6. Using rosnode}{19}{subsection.4.1.6}
 \contentsline {subsection}{\numberline {4.1.7}7. Using rosrun}{20}{subsection.4.1.7}
 \contentsline {subsection}{\numberline {4.1.8}8. Review}{21}{subsection.4.1.8}
-\contentsline {chapter}{\numberline {5}Indices and tables}{23}{chapter.5}
+\contentsline {chapter}{\numberline {5}ENEX13004:Week 2- Python TurtleSim Example}{23}{chapter.5}
+\contentsline {chapter}{\numberline {6}ENEX13004:Week 2- ROS Workspace Setup}{27}{chapter.6}
+\contentsline {section}{\numberline {6.1}Create Catkin Workspace}{27}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Create a Catkin Workspace}{27}{subsection.6.1.1}
+\contentsline {chapter}{\numberline {7}ENEX13004:Week 3- Robotic arm simulation with Rviz and URDF}{29}{chapter.7}
+\contentsline {section}{\numberline {7.1}Creating a 3 Link Robotic Arm Using URDF}{29}{section.7.1}
+\contentsline {chapter}{\numberline {8}ENEX13004:Week 3- Robotic arm simulation with codes}{35}{chapter.8}
+\contentsline {section}{\numberline {8.1}Simulating the Robotic Arm Using software codes in RVIZ}{35}{section.8.1}
+\contentsline {chapter}{\numberline {9}ENEX13004:Week 3- Robotic arm coordinate transformation}{39}{chapter.9}
+\contentsline {section}{\numberline {9.1}Transforming End effector position to the base\_link}{39}{section.9.1}
+\contentsline {chapter}{\numberline {10}ENEX13004:Week 4- Move It - Robotic arm simulation}{41}{chapter.10}
+\contentsline {section}{\numberline {10.1}Using MoveIt Package for Robotic Arm Path Planning}{41}{section.10.1}
+\contentsline {section}{\numberline {10.2}Creating a Moveit package for a robotic arm}{41}{section.10.2}
+\contentsline {subsection}{\numberline {10.2.1}MoveIt Setup Assistant}{41}{subsection.10.2.1}
+\contentsline {subsubsection}{Step 1: Start}{41}{subsubsection*.14}
+\contentsline {subsubsection}{Step 2: Generate Self-Collision Matrix}{42}{subsubsection*.15}
+\contentsline {subsubsection}{Srep 3 : Virtual Joints}{42}{subsubsection*.16}
+\contentsline {subsubsection}{Step 4: Add Planning Groups}{42}{subsubsection*.17}
+\contentsline {paragraph}{Adding the gripper}{43}{paragraph*.18}
+\contentsline {subsubsection}{Step 5: Add Robot Poses}{43}{subsubsection*.19}
+\contentsline {subsubsection}{Step 6: Label End Effectors}{43}{subsubsection*.20}
+\contentsline {subsubsection}{Step 7: Add Passive Joints}{44}{subsubsection*.21}
+\contentsline {subsubsection}{Step 8: ROS Control}{44}{subsubsection*.22}
+\contentsline {subsubsection}{Step 9 - Simulation}{44}{subsubsection*.23}
+\contentsline {subsubsection}{Step 10 - 3D perception}{44}{subsubsection*.24}
+\contentsline {subsubsection}{Step 11: Generate Configuration Files}{44}{subsubsection*.25}
+\contentsline {chapter}{\numberline {11}Indices and tables}{47}{chapter.11}

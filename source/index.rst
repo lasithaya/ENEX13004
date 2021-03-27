@@ -91,6 +91,15 @@ ENEX13004:Week 3- Robotic arm coordinate transformation
    Coorinate Transformation <_source/week_3/joint_transformation.md>
 
 
+
+ENEX13004:Week 4- Move It - Robotic arm simulation
+--------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   MoveIt Configuration <_source/week_4/Move_it_with_custom_arm.md>
+
 Indices and tables
 ==================
 

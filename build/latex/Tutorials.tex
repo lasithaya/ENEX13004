@@ -58,7 +58,7 @@
 
 
 \title{Tutorials Documentation}
-\date{Mar 04, 2021}
+\date{Mar 27, 2021}
 \release{}
 \author{Lasi Piyathilaka}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -1055,6 +1055,1003 @@ under the
 Creative Commons Attribution 3.0 (http://creativecommons.org/licenses/by/3.0/)
 
 (https://www.openrobotics.org/)
+
+
+\chapter{ENEX13004:Week 2- Python TurtleSim Example}
+\label{\detokenize{index:enex13004-week-2-python-turtlesim-example}}
+See the following python script.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+
+\PYG{c+c1}{\PYGZsh{}!/usr/bin/env python}
+\PYG{k+kn}{import} \PYG{n+nn}{math}
+\PYG{k+kn}{import} \PYG{n+nn}{rospy}
+\PYG{k+kn}{import} \PYG{n+nn}{turtlesim}\PYG{n+nn}{.}\PYG{n+nn}{srv}
+\PYG{k+kn}{from} \PYG{n+nn}{geometry\PYGZus{}msgs}\PYG{n+nn}{.}\PYG{n+nn}{msg} \PYG{k+kn}{import} \PYG{n}{Twist}
+
+\PYG{n}{rospy}\PYG{o}{.}\PYG{n}{init\PYGZus{}node}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{robot\PYGZus{}letter}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{anonymous}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+\PYG{n}{velocity\PYGZus{}publisher} \PYG{o}{=} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Publisher}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/turtle1/cmd\PYGZus{}vel}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{Twist}\PYG{p}{,} \PYG{n}{queue\PYGZus{}size}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{)}
+\PYG{n}{vel\PYGZus{}msg} \PYG{o}{=} \PYG{n}{Twist}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{speed} \PYG{o}{=} \PYG{l+m+mi}{1}
+\PYG{n}{angular\PYGZus{}velocity}\PYG{o}{=} \PYG{l+m+mi}{1}
+
+
+\PYG{c+c1}{\PYGZsh{} Initial velocity values for the publisher}
+\PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{linear}\PYG{o}{.}\PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{linear}\PYG{o}{.}\PYG{n}{y} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{linear}\PYG{o}{.}\PYG{n}{z} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{angular}\PYG{o}{.}\PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{angular}\PYG{o}{.}\PYG{n}{y} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{angular}\PYG{o}{.}\PYG{n}{z} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+\PYG{k}{def} \PYG{n+nf}{move}\PYG{p}{(}\PYG{p}{)}\PYG{p}{:}
+      
+    
+        
+    \PYG{c+c1}{\PYGZsh{}Setting the current time for distance calculus}
+    \PYG{n}{t0} \PYG{o}{=} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Time}\PYG{o}{.}\PYG{n}{now}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{to\PYGZus{}sec}\PYG{p}{(}\PYG{p}{)}
+    \PYG{n}{move\PYGZus{}straight}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{t0}\PYG{p}{)}
+
+
+    \PYG{n}{t0} \PYG{o}{=} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Time}\PYG{o}{.}\PYG{n}{now}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{to\PYGZus{}sec}\PYG{p}{(}\PYG{p}{)}
+    \PYG{n}{rotate\PYGZus{}angle}\PYG{p}{(}\PYG{n}{math}\PYG{o}{.}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{t0}\PYG{p}{)}
+
+    \PYG{n}{t0} \PYG{o}{=} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Time}\PYG{o}{.}\PYG{n}{now}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{to\PYGZus{}sec}\PYG{p}{(}\PYG{p}{)}
+    \PYG{n}{move\PYGZus{}straight}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{n}{t0}\PYG{p}{)}
+
+   
+    \PYG{n}{t0} \PYG{o}{=} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Time}\PYG{o}{.}\PYG{n}{now}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{to\PYGZus{}sec}\PYG{p}{(}\PYG{p}{)}
+    \PYG{n}{move\PYGZus{}circle}\PYG{p}{(}\PYG{n}{math}\PYG{o}{.}\PYG{n}{pi}\PYG{p}{,}\PYG{n}{t0}\PYG{p}{)}
+    
+    
+    \PYG{c+c1}{\PYGZsh{}create a new robot}
+    \PYG{n}{create\PYGZus{}second\PYGZus{}robot}\PYG{p}{(}\PYG{p}{)}
+
+
+\PYG{c+c1}{\PYGZsh{} a function to move the robot forward}
+\PYG{k}{def} \PYG{n+nf}{move\PYGZus{}straight}\PYG{p}{(}\PYG{n}{move\PYGZus{}distance}\PYG{p}{,}\PYG{n}{start\PYGZus{}time}\PYG{p}{)}\PYG{p}{:}
+    \PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{linear}\PYG{o}{.}\PYG{n}{x} \PYG{o}{=} \PYG{n}{speed}
+    \PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{angular}\PYG{o}{.}\PYG{n}{z} \PYG{o}{=} \PYG{l+m+mi}{0} 
+    \PYG{n}{current\PYGZus{}distance} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{c+c1}{\PYGZsh{}Loop to move the turtle in an specified distance}
+    \PYG{k}{while}\PYG{p}{(}\PYG{n}{current\PYGZus{}distance} \PYG{o}{\PYGZlt{}} \PYG{n}{move\PYGZus{}distance}\PYG{p}{)}\PYG{p}{:}
+            \PYG{c+c1}{\PYGZsh{}Publish the velocity}
+            \PYG{n}{velocity\PYGZus{}publisher}\PYG{o}{.}\PYG{n}{publish}\PYG{p}{(}\PYG{n}{vel\PYGZus{}msg}\PYG{p}{)}
+            \PYG{c+c1}{\PYGZsh{}Takes actual time to velocity calculus}
+            \PYG{n}{current\PYGZus{}time}\PYG{o}{=}\PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Time}\PYG{o}{.}\PYG{n}{now}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{to\PYGZus{}sec}\PYG{p}{(}\PYG{p}{)}
+            \PYG{c+c1}{\PYGZsh{}Calculates distancePoseStamped}
+            \PYG{n}{current\PYGZus{}distance}\PYG{o}{=} \PYG{n}{speed}\PYG{o}{*}\PYG{p}{(}\PYG{n}{current\PYGZus{}time}\PYG{o}{\PYGZhy{}}\PYG{n}{start\PYGZus{}time}\PYG{p}{)} 
+            \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{curent distance }\PYG{l+s+si}{\PYGZpc{}d}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{current\PYGZus{}distance}\PYG{p}{)}
+    \PYG{n}{stop\PYGZus{}robot}\PYG{p}{(}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}a function to roate the robot  angle}
+\PYG{k}{def} \PYG{n+nf}{rotate\PYGZus{}angle}\PYG{p}{(}\PYG{n}{rotate\PYGZus{}angle}\PYG{p}{,}\PYG{n}{start\PYGZus{}time}\PYG{p}{)}\PYG{p}{:}
+    \PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{linear}\PYG{o}{.}\PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{angular}\PYG{o}{.}\PYG{n}{z} \PYG{o}{=} \PYG{n}{angular\PYGZus{}velocity}    
+    \PYG{n}{current\PYGZus{}angle} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{c+c1}{\PYGZsh{}Loop to move the turtle in an specified angle}
+    \PYG{k}{while}\PYG{p}{(}\PYG{n}{current\PYGZus{}angle} \PYG{o}{\PYGZlt{}} \PYG{n}{rotate\PYGZus{}angle}\PYG{p}{)}\PYG{p}{:}
+            \PYG{c+c1}{\PYGZsh{}Publish the velocity}
+            \PYG{n}{velocity\PYGZus{}publisher}\PYG{o}{.}\PYG{n}{publish}\PYG{p}{(}\PYG{n}{vel\PYGZus{}msg}\PYG{p}{)}
+            \PYG{c+c1}{\PYGZsh{}Takes actual time to velocity calculus}
+            \PYG{n}{current\PYGZus{}time}\PYG{o}{=}\PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Time}\PYG{o}{.}\PYG{n}{now}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{to\PYGZus{}sec}\PYG{p}{(}\PYG{p}{)}
+            \PYG{c+c1}{\PYGZsh{}Calculates angle PoseStamped}
+            \PYG{n}{current\PYGZus{}angle}\PYG{o}{=} \PYG{n}{angular\PYGZus{}velocity}\PYG{o}{*}\PYG{p}{(}\PYG{n}{current\PYGZus{}time}\PYG{o}{\PYGZhy{}}\PYG{n}{start\PYGZus{}time}\PYG{p}{)} 
+            \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{curent distance }\PYG{l+s+si}{\PYGZpc{}d}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{current\PYGZus{}angle}\PYG{p}{)}
+    \PYG{n}{stop\PYGZus{}robot}\PYG{p}{(}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} force the robot to stop}
+\PYG{k}{def} \PYG{n+nf}{stop\PYGZus{}robot}\PYG{p}{(}\PYG{p}{)}\PYG{p}{:}
+    \PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{linear}\PYG{o}{.}\PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{angular}\PYG{o}{.}\PYG{n}{z} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{n}{velocity\PYGZus{}publisher}\PYG{o}{.}\PYG{n}{publish}\PYG{p}{(}\PYG{n}{vel\PYGZus{}msg}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}move the robot in a curvey path}
+\PYG{k}{def} \PYG{n+nf}{move\PYGZus{}circle}\PYG{p}{(}\PYG{n}{rotate\PYGZus{}angle}\PYG{p}{,}\PYG{n}{start\PYGZus{}time}\PYG{p}{)}\PYG{p}{:}
+    \PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{linear}\PYG{o}{.}\PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{1}
+    \PYG{n}{vel\PYGZus{}msg}\PYG{o}{.}\PYG{n}{angular}\PYG{o}{.}\PYG{n}{z} \PYG{o}{=} \PYG{n}{angular\PYGZus{}velocity}    
+    \PYG{n}{current\PYGZus{}angle} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{c+c1}{\PYGZsh{}Loop to move the turtle in an specified angle}
+    \PYG{k}{while}\PYG{p}{(}\PYG{n}{current\PYGZus{}angle} \PYG{o}{\PYGZlt{}} \PYG{n}{rotate\PYGZus{}angle}\PYG{p}{)}\PYG{p}{:}
+            \PYG{c+c1}{\PYGZsh{}Publish the velocity}
+            \PYG{n}{velocity\PYGZus{}publisher}\PYG{o}{.}\PYG{n}{publish}\PYG{p}{(}\PYG{n}{vel\PYGZus{}msg}\PYG{p}{)}
+            \PYG{c+c1}{\PYGZsh{}Takes actual time to velocity calculus}
+            \PYG{n}{current\PYGZus{}time}\PYG{o}{=}\PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Time}\PYG{o}{.}\PYG{n}{now}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{to\PYGZus{}sec}\PYG{p}{(}\PYG{p}{)}
+            \PYG{c+c1}{\PYGZsh{}Calculates angle PoseStamped}
+            \PYG{n}{current\PYGZus{}angle}\PYG{o}{=} \PYG{n}{angular\PYGZus{}velocity}\PYG{o}{*}\PYG{p}{(}\PYG{n}{current\PYGZus{}time}\PYG{o}{\PYGZhy{}}\PYG{n}{start\PYGZus{}time}\PYG{p}{)} 
+            \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{curent distance }\PYG{l+s+si}{\PYGZpc{}d}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{current\PYGZus{}angle}\PYG{p}{)}
+    \PYG{n}{stop\PYGZus{}robot}\PYG{p}{(}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}create the second turtlebot}
+\PYG{k}{def} \PYG{n+nf}{create\PYGZus{}second\PYGZus{}robot}\PYG{p}{(}\PYG{p}{)}\PYG{p}{:}
+    \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{wait\PYGZus{}for\PYGZus{}service}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{spawn}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{spawner} \PYG{o}{=} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{ServiceProxy}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{spawn}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{turtlesim}\PYG{o}{.}\PYG{n}{srv}\PYG{o}{.}\PYG{n}{Spawn}\PYG{p}{)}
+    \PYG{n}{spawner}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{turtle2}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} 
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}
+    \PYG{k}{try}\PYG{p}{:}
+        \PYG{c+c1}{\PYGZsh{}Testing our function}
+        \PYG{n}{move}\PYG{p}{(}\PYG{p}{)}
+    \PYG{k}{except} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{ROSInterruptException}\PYG{p}{:} \PYG{k}{pass}
+\end{sphinxVerbatim}
+
+
+\chapter{ENEX13004:Week 2- ROS Workspace Setup}
+\label{\detokenize{index:enex13004-week-2-ros-workspace-setup}}
+
+\section{Create Catkin Workspace}
+\label{\detokenize{_source/week_2/work_space:create-catkin-workspace}}\label{\detokenize{_source/week_2/work_space::doc}}\begin{quote}
+
+In this exercise, we will create a ROS catkin workspace.
+\end{quote}
+
+
+\subsection{Create a Catkin Workspace}
+\label{\detokenize{_source/week_2/work_space:create-a-catkin-workspace}}\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+Create the root workspace directory (we’ll use \sphinxcode{\sphinxupquote{catkin\_ws}})
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{cd} \PYG{o}{\PYGZti{}}\PYG{o}{/}
+\PYG{n}{mkdir} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{parents} \PYG{n}{catkin\PYGZus{}ws}\PYG{o}{/}\PYG{n}{src}
+\PYG{n}{cd} \PYG{n}{catkin\PYGZus{}ws}
+\end{sphinxVerbatim}
+
+\item {} 
+Initialize the catkin workspace
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{catkin} \PYG{n}{init}
+\end{sphinxVerbatim}
+\begin{itemize}
+\item {} 
+\sphinxstyleemphasis{Look for the statement “Workspace configuration appears valid”, showing that your catkin workspace was created successfully.  If you forgot to create the \sphinxcode{\sphinxupquote{src}} directory, or did not run \sphinxcode{\sphinxupquote{catkin init}} from the workspace root (both common mistakes), you’ll get an error message like “WARNING: Source space does not yet exist”.}
+
+\end{itemize}
+
+\item {} 
+Build the workspace. This command may be issued anywhere under the workspace root-directory (i.e. \sphinxcode{\sphinxupquote{catkin\_ws}}).
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{catkin} \PYG{n}{make}
+\PYG{n}{ls}
+\end{sphinxVerbatim}
+\begin{itemize}
+\item {} 
+\sphinxstyleemphasis{See that the \sphinxcode{\sphinxupquote{catkin\_ws}} directory now contains additional directories (build, devel, logs).}
+
+\end{itemize}
+
+\item {} 
+These new directories can be safely deleted at any time (either manually, or using \sphinxcode{\sphinxupquote{catkin clean}}).  Note that catkin never changes any files in the \sphinxcode{\sphinxupquote{src}} directory.  Re-run \sphinxcode{\sphinxupquote{catkin build}} to re-create the build/devel/logs directories.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{catkin} \PYG{n}{clean}
+\PYG{n}{ls}
+\PYG{n}{catkin} \PYG{n}{make}
+\PYG{n}{ls}
+\end{sphinxVerbatim}
+
+\item {} 
+Make the workspace visible to ROS. Source the setup file in the devel directory.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{source} \PYG{n}{devel}\PYG{o}{/}\PYG{n}{setup}\PYG{o}{.}\PYG{n}{bash}
+\end{sphinxVerbatim}
+\begin{itemize}
+\item {} 
+\sphinxstyleemphasis{This file MUST be sourced for every new terminal.}
+
+\item {} 
+To save typing, add this to your \sphinxcode{\sphinxupquote{\textasciitilde{}/.bashrc}} file, so it is automatically sourced for each new terminal:
+\begin{enumerate}
+\def\theenumii{\arabic{enumii}}
+\def\labelenumii{\theenumii .}
+\makeatletter\def\p@enumiii{\p@enumii \theenumii .}\makeatother
+\item {} 
+\sphinxcode{\sphinxupquote{gedit \textasciitilde{}/.bashrc}}
+
+\item {} 
+add to the end: \sphinxcode{\sphinxupquote{source \textasciitilde{}/catkin\_ws/devel/setup.bash}}
+
+\item {} 
+save and close the editor
+
+\end{enumerate}
+
+\end{itemize}
+
+\end{enumerate}
+
+serial\_manipulator.md
+
+
+\chapter{ENEX13004:Week 3- Robotic arm simulation with Rviz and URDF}
+\label{\detokenize{index:enex13004-week-3-robotic-arm-simulation-with-rviz-and-urdf}}
+
+\section{Creating a 3 Link Robotic Arm Using URDF}
+\label{\detokenize{_source/week_3/serial_manipulator:creating-a-3-link-robotic-arm-using-urdf}}\label{\detokenize{_source/week_3/serial_manipulator::doc}}\begin{quote}
+
+In this exercise, we will build a 3 Link Robotic Manipulator using the Unified Robotic Description Format (URDF). It is an XML file format used in ROS to describe all elements of a robot and can be used to define a robot to its component level. We will then use RVIZ to simulate that robot.
+\end{quote}
+
+First Let’s create a ros package to define the URDF definitions.
+\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+Goto your \sphinxcode{\sphinxupquote{catkin\_ws}} and to the \sphinxcode{\sphinxupquote{src}} folder and create a package
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{catkin\PYGZus{}create\PYGZus{}pkg} \PYG{n}{serial\PYGZus{}link\PYGZus{}robot} \PYG{n}{tf2} \PYG{n}{tf2\PYGZus{}ros} \PYG{n}{roscpp} \PYG{n}{rospy} \PYG{n}{turtlesim}
+\end{sphinxVerbatim}
+
+then do  \sphinxcode{\sphinxupquote{catkin\_make}} to build the project. Now you have project folder to create URDF
+
+\item {} 
+Goto the project folder and build a urdf folder to include the urdf files
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{cd} \PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{n}{catkin\PYGZus{}ws}\PYG{o}{/}\PYG{n}{src}\PYG{o}{/}\PYG{n}{serial\PYGZus{}link\PYGZus{}robot}
+\PYG{n}{mkdir} \PYG{n}{urdf}
+\end{sphinxVerbatim}
+
+\item {} 
+Now lets create our first URDF file. Inside the urdf folder create a file  called’serial\_link\_robot.urdf’
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{gedit} \PYG{n}{serial\PYGZus{}link\PYGZus{}robot}\PYG{o}{.}\PYG{n}{urdf}
+\end{sphinxVerbatim}
+
+\item {} 
+Now let’s create our first link of the robot. Copy the following xml commands to the ‘serial\_link\_robot.urdf’ file..
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+ \PYGZlt{}?xml version=\PYGZsq{}1.0\PYGZsq{}?\PYGZgt{}
+\PYGZlt{}robot name=\PYGZdq{}serial\PYGZus{}Link\PYGZus{}robot\PYGZdq{}\PYGZgt{}
+  \PYGZlt{}!\PYGZhy{}\PYGZhy{} Base Link \PYGZhy{}\PYGZhy{}\PYGZgt{}
+  \PYGZlt{}link name=\PYGZdq{}base\PYGZus{}link\PYGZdq{}\PYGZgt{}
+    \PYGZlt{}visual\PYGZgt{}
+      \PYGZlt{}origin xyz=\PYGZdq{}0 0 0.1\PYGZdq{} rpy=\PYGZdq{}0 0 0\PYGZdq{} /\PYGZgt{}
+      \PYGZlt{}geometry\PYGZgt{}
+      \PYGZlt{}box size=\PYGZdq{}0.4 0.4 0.2\PYGZdq{}/\PYGZgt{}
+      \PYGZlt{}/geometry\PYGZgt{}
+      \PYGZlt{}material name=\PYGZdq{}gray\PYGZdq{}\PYGZgt{}
+      \PYGZlt{}color rgba=\PYGZdq{}0.5 0.5 0.5 0.5\PYGZdq{}/\PYGZgt{}
+      \PYGZlt{}/material\PYGZgt{}
+    \PYGZlt{}/visual\PYGZgt{}
+  \PYGZlt{}/link\PYGZgt{}
+\PYGZlt{}/robot\PYGZgt{}
+\end{sphinxVerbatim}
+
+This will create the base link with the dimension 40 cm x 40 cm x 20 cm.
+
+More information about URDF link elemenr can be found here
+\sphinxurl{http://wiki.ros.org/urdf/XML/link}. Try to understand what each of these xml components means.
+
+\item {} 
+Now let’s create a launch file to display the link in RVIZ. It is a 3D visulaisation software. Fist create a  launch   folder inside the package folder
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{cd} \PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{n}{catkin\PYGZus{}ws}\PYG{o}{/}\PYG{n}{src}\PYG{o}{/}\PYG{n}{serial\PYGZus{}link\PYGZus{}robot}
+\PYG{n}{mkdir} \PYG{n}{launch}
+\PYG{n}{cd} \PYG{n}{launch}
+\end{sphinxVerbatim}
+
+\item {} 
+Now let’s create the launch file. Inside the \sphinxcode{\sphinxupquote{launch}} folder create a file called ‘ serial\_link\_robot\_rviz.launch’.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{gedit} \PYG{n}{serial\PYGZus{}link\PYGZus{}robot\PYGZus{}rviz}\PYG{o}{.}\PYG{n}{launch}
+\end{sphinxVerbatim}
+
+\item {} 
+Now add the following launch commands to the \sphinxcode{\sphinxupquote{serial\_link\_robot\_rviz.launch}} file.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZlt{}launch\PYGZgt{}
+  \PYGZlt{}!\PYGZhy{}\PYGZhy{} values passed by command line input \PYGZhy{}\PYGZhy{}\PYGZgt{}
+  \PYGZlt{}arg name=\PYGZdq{}model\PYGZdq{} /\PYGZgt{}
+  \PYGZlt{}arg name=\PYGZdq{}gui\PYGZdq{} default=\PYGZdq{}False\PYGZdq{} /\PYGZgt{}
+
+\PYGZlt{}!\PYGZhy{}\PYGZhy{} set these parameters on Parameter Server \PYGZhy{}\PYGZhy{}\PYGZgt{}
+\PYGZlt{}param name=\PYGZdq{}robot\PYGZus{}description\PYGZdq{}
+textfile=\PYGZdq{}\PYGZdl{}(find serial\PYGZus{}link\PYGZus{}robot)/urdf/\PYGZdl{}(arg model)\PYGZdq{}
+/\PYGZgt{}
+
+\PYGZlt{}param name=\PYGZdq{}use\PYGZus{}gui\PYGZdq{} value=\PYGZdq{}\PYGZdl{}(arg gui)\PYGZdq{}/\PYGZgt{}
+\PYGZlt{}!\PYGZhy{}\PYGZhy{} Start 3 nodes: joint\PYGZus{}state\PYGZus{}publisher,
+  robot\PYGZus{}state\PYGZus{}publisher and rviz \PYGZhy{}\PYGZhy{}\PYGZgt{}
+
+\PYGZlt{}node name=\PYGZdq{}joint\PYGZus{}state\PYGZus{}publisher\PYGZdq{}
+  pkg=\PYGZdq{}joint\PYGZus{}state\PYGZus{}publisher\PYGZdq{}
+  type=\PYGZdq{}joint\PYGZus{}state\PYGZus{}publisher\PYGZdq{} /\PYGZgt{}
+
+\PYGZlt{}node name=\PYGZdq{}robot\PYGZus{}state\PYGZus{}publisher\PYGZdq{}
+  pkg=\PYGZdq{}robot\PYGZus{}state\PYGZus{}publisher\PYGZdq{}
+  type=\PYGZdq{}state\PYGZus{}publisher\PYGZdq{} /\PYGZgt{}
+
+
+\PYGZlt{}node name=\PYGZdq{}rviz\PYGZdq{} pkg=\PYGZdq{}rviz\PYGZdq{} type=\PYGZdq{}rviz\PYGZdq{}
+  args=\PYGZdq{}\PYGZhy{}d \PYGZdl{}(find serial\PYGZus{}link\PYGZus{}robot)/urdf.rviz\PYGZdq{}
+  required=\PYGZdq{}true\PYGZdq{} /\PYGZgt{}
+\PYGZlt{}/launch\PYGZgt{}
+
+\end{sphinxVerbatim}
+
+\item {} 
+This roslaunch file performs the following:
+\begin{itemize}
+\item {} 
+Loads the model specified in the command line into the Parameter Server.
+
+\item {} 
+Starts nodes that publish the JointState and transforms.
+
+\item {} 
+Starts rviz with a configuration file (urdf.rviz).
+
+\end{itemize}
+
+\item {} 
+Now you can run the launch file  by runing the roslaunch command in the terminal
+
+\sphinxstyleemphasis{\sphinxstylestrong{roslaunch serial\_link\_robot serial\_link\_robot\_rviz.launch model:=serial\_link\_robot.urdf}}
+
+\item {} 
+This will open the  Rviz window.  Click on ‘ADD’ button (left bottom) and add ‘RobotModel’ and ‘TF’ modules.
+Also, change the ‘Fixed Frame’ in      Global     Option from map to base\_link. This is the global reference frame.
+Save the rviz file before closing the window.
+
+\sphinxincludegraphics{{rviz1}.png}
+
+\item {} 
+Now let’s add a joint and another link. More information about URDF joint element can be found here
+\sphinxurl{http://wiki.ros.org/urdf/XML/joint}. Its a revolute joint that rotates from -pi to +pi. See how I have added the color to the link.
+Also, see how I have assigned the origin of the visual component of the link. This is equal to half of the link length.
+Open the urdf file and add the followings before the \sphinxcode{\sphinxupquote{\textless{}/robot\textgreater{} }}tag.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+    \PYGZlt{}!\PYGZhy{}\PYGZhy{} Joint 1 \PYGZhy{}\PYGZhy{}\PYGZgt{}
+  \PYGZlt{}joint name=\PYGZdq{}joint\PYGZus{}1\PYGZdq{} type=\PYGZdq{}revolute\PYGZdq{}\PYGZgt{}
+    \PYGZlt{}parent link=\PYGZdq{}base\PYGZus{}link\PYGZdq{}/\PYGZgt{}
+    \PYGZlt{}child link=\PYGZdq{}link\PYGZus{}1\PYGZdq{}/\PYGZgt{}
+    \PYGZlt{}origin xyz=\PYGZdq{}0 0 0.2\PYGZdq{} rpy=\PYGZdq{}0 0 0\PYGZdq{} /\PYGZgt{}
+    \PYGZlt{}axis xyz=\PYGZdq{}0 0 1\PYGZdq{} /\PYGZgt{}
+    \PYGZlt{}limit effort=\PYGZdq{}100.0\PYGZdq{} velocity=\PYGZdq{}0.5\PYGZdq{} lower=\PYGZdq{}\PYGZhy{}3.14\PYGZdq{}
+  upper=\PYGZdq{}3.14\PYGZdq{}/\PYGZgt{}
+  \PYGZlt{}/joint\PYGZgt{}
+
+\PYGZlt{}!\PYGZhy{}\PYGZhy{} Link 1 \PYGZhy{}\PYGZhy{}\PYGZgt{}
+  \PYGZlt{}link name=\PYGZdq{}link\PYGZus{}1\PYGZdq{}\PYGZgt{}
+    \PYGZlt{}visual\PYGZgt{}
+      \PYGZlt{}origin xyz=\PYGZdq{}0 0 0.2\PYGZdq{} rpy=\PYGZdq{}0 0 0\PYGZdq{} /\PYGZgt{}
+      \PYGZlt{}geometry\PYGZgt{}
+      \PYGZlt{}box size=\PYGZdq{}0.05 0.05 0.4\PYGZdq{}/\PYGZgt{}
+      \PYGZlt{}/geometry\PYGZgt{}
+      \PYGZlt{}material name=\PYGZdq{}yellow\PYGZdq{}\PYGZgt{}
+       \PYGZlt{}color rgba=\PYGZdq{}1.0 1.0 0 0.5\PYGZdq{}/\PYGZgt{}
+      \PYGZlt{}/material\PYGZgt{}
+    \PYGZlt{}/visual\PYGZgt{}
+  \PYGZlt{}/link\PYGZgt{}    
+\end{sphinxVerbatim}
+
+\item {} 
+Now let’s display and move the robot. Run the following command in a terminal’
+
+\sphinxstyleemphasis{\sphinxstylestrong{roslaunch serial\_link\_robot serial\_link\_robot\_rviz.launch model:=serial\_link\_robot.urdf gui:=True}}
+
+The \sphinxcode{\sphinxupquote{gui}} parameter open a joint state publisher window. You can manupulate the robot by chaning the joint slider bars.
+
+\item {} 
+Now lets expand the robot to a 3 link manupulator. Let’s add more joints links. see the last link configuration. Its in y direction initially
+
+See the recoded zoom class for the demo. The completed urdf file is shown below.
+
+\end{enumerate}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+    \PYGZlt{}?xml version=\PYGZsq{}1.0\PYGZsq{}?\PYGZgt{}
+    \PYGZlt{}robot name=\PYGZdq{}serial\PYGZus{}Link\PYGZus{}robot\PYGZdq{}\PYGZgt{}
+      \PYGZlt{}!\PYGZhy{}\PYGZhy{} Base Link \PYGZhy{}\PYGZhy{}\PYGZgt{}
+      \PYGZlt{}link name=\PYGZdq{}base\PYGZus{}link\PYGZdq{}\PYGZgt{}
+        \PYGZlt{}visual\PYGZgt{}
+          \PYGZlt{}origin xyz=\PYGZdq{}0 0 0.1\PYGZdq{} rpy=\PYGZdq{}0 0 0\PYGZdq{} /\PYGZgt{}
+          \PYGZlt{}geometry\PYGZgt{}
+          \PYGZlt{}box size=\PYGZdq{}0.4 0.4 0.2\PYGZdq{}/\PYGZgt{}
+          \PYGZlt{}/geometry\PYGZgt{}
+          \PYGZlt{}material name=\PYGZdq{}gray\PYGZdq{}\PYGZgt{}
+          \PYGZlt{}color rgba=\PYGZdq{}0.5 0.5 0.5 0.5\PYGZdq{}/\PYGZgt{}
+          \PYGZlt{}/material\PYGZgt{}
+        \PYGZlt{}/visual\PYGZgt{}
+      \PYGZlt{}/link\PYGZgt{}
+
+    \PYGZlt{}!\PYGZhy{}\PYGZhy{} Joint 1 \PYGZhy{}\PYGZhy{}\PYGZgt{}
+      \PYGZlt{}joint name=\PYGZdq{}joint\PYGZus{}1\PYGZdq{} type=\PYGZdq{}revolute\PYGZdq{}\PYGZgt{}
+        \PYGZlt{}parent link=\PYGZdq{}base\PYGZus{}link\PYGZdq{}/\PYGZgt{}
+        \PYGZlt{}child link=\PYGZdq{}link\PYGZus{}1\PYGZdq{}/\PYGZgt{}
+        \PYGZlt{}origin xyz=\PYGZdq{}0 0 0.2\PYGZdq{} rpy=\PYGZdq{}0 0 0\PYGZdq{} /\PYGZgt{}
+        \PYGZlt{}axis xyz=\PYGZdq{}0 0 1\PYGZdq{} /\PYGZgt{}
+        \PYGZlt{}limit effort=\PYGZdq{}100.0\PYGZdq{} velocity=\PYGZdq{}0.5\PYGZdq{} lower=\PYGZdq{}\PYGZhy{}3.14\PYGZdq{}
+      upper=\PYGZdq{}3.14\PYGZdq{}/\PYGZgt{}
+      \PYGZlt{}/joint\PYGZgt{}
+
+    \PYGZlt{}!\PYGZhy{}\PYGZhy{} Link 1 \PYGZhy{}\PYGZhy{}\PYGZgt{}
+      \PYGZlt{}link name=\PYGZdq{}link\PYGZus{}1\PYGZdq{}\PYGZgt{}
+        \PYGZlt{}visual\PYGZgt{}
+          \PYGZlt{}origin xyz=\PYGZdq{}0 0 0.2\PYGZdq{} rpy=\PYGZdq{}0 0 0\PYGZdq{} /\PYGZgt{}
+          \PYGZlt{}geometry\PYGZgt{}
+          \PYGZlt{}box size=\PYGZdq{}0.05 0.05 0.4\PYGZdq{}/\PYGZgt{}
+          \PYGZlt{}/geometry\PYGZgt{}
+          \PYGZlt{}material name=\PYGZdq{}yellow\PYGZdq{}\PYGZgt{}
+           \PYGZlt{}color rgba=\PYGZdq{}1.0 1.0 0 0.5\PYGZdq{}/\PYGZgt{}
+          \PYGZlt{}/material\PYGZgt{}
+        \PYGZlt{}/visual\PYGZgt{}
+      \PYGZlt{}/link\PYGZgt{}
+
+    \PYGZlt{}!\PYGZhy{}\PYGZhy{} Joint 2 \PYGZhy{}\PYGZhy{}\PYGZgt{}
+      \PYGZlt{}joint name=\PYGZdq{}joint\PYGZus{}2\PYGZdq{} type=\PYGZdq{}revolute\PYGZdq{}\PYGZgt{}
+        \PYGZlt{}parent link=\PYGZdq{}link\PYGZus{}1\PYGZdq{}/\PYGZgt{}
+        \PYGZlt{}child link=\PYGZdq{}link\PYGZus{}2\PYGZdq{}/\PYGZgt{}
+        \PYGZlt{}origin xyz=\PYGZdq{}0 0 0.4\PYGZdq{} rpy=\PYGZdq{}0 0 0\PYGZdq{} /\PYGZgt{}
+        \PYGZlt{}axis xyz=\PYGZdq{}1 0 0\PYGZdq{} /\PYGZgt{}
+        \PYGZlt{}limit effort=\PYGZdq{}100.0\PYGZdq{} velocity=\PYGZdq{}0.5\PYGZdq{} lower=\PYGZdq{}\PYGZhy{}3.14\PYGZdq{}
+      upper=\PYGZdq{}3.14\PYGZdq{}/\PYGZgt{}
+      \PYGZlt{}/joint\PYGZgt{}
+
+    \PYGZlt{}!\PYGZhy{}\PYGZhy{} Link 2 \PYGZhy{}\PYGZhy{}\PYGZgt{}
+    \PYGZlt{}link name=\PYGZdq{}link\PYGZus{}2\PYGZdq{}\PYGZgt{}
+        \PYGZlt{}visual\PYGZgt{}
+          \PYGZlt{}origin xyz=\PYGZdq{}0 0 0.25\PYGZdq{} rpy=\PYGZdq{}0 0 0\PYGZdq{} /\PYGZgt{}
+          \PYGZlt{}geometry\PYGZgt{}
+          \PYGZlt{}box size=\PYGZdq{}0.05 0.05 0.5\PYGZdq{}/\PYGZgt{}
+          \PYGZlt{}/geometry\PYGZgt{}
+          \PYGZlt{}material name=\PYGZdq{}Red\PYGZdq{}\PYGZgt{}
+           \PYGZlt{}color rgba=\PYGZdq{}1 0 0 0.5\PYGZdq{}/\PYGZgt{}
+          \PYGZlt{}/material\PYGZgt{}
+        \PYGZlt{}/visual\PYGZgt{}
+      \PYGZlt{}/link\PYGZgt{}
+
+    \PYGZlt{}!\PYGZhy{}\PYGZhy{} Joint 3 \PYGZhy{}\PYGZhy{}\PYGZgt{}
+     \PYGZlt{}joint name=\PYGZdq{}joint\PYGZus{}3\PYGZdq{} type=\PYGZdq{}revolute\PYGZdq{}\PYGZgt{}
+        \PYGZlt{}parent link=\PYGZdq{}link\PYGZus{}2\PYGZdq{}/\PYGZgt{}
+        \PYGZlt{}child link=\PYGZdq{}link\PYGZus{}3\PYGZdq{}/\PYGZgt{}
+        \PYGZlt{}origin xyz=\PYGZdq{}0 0 0.5\PYGZdq{} rpy=\PYGZdq{}0 0 0\PYGZdq{} /\PYGZgt{}
+        \PYGZlt{}axis xyz=\PYGZdq{}1 0 0\PYGZdq{} /\PYGZgt{}
+        \PYGZlt{}limit effort=\PYGZdq{}100.0\PYGZdq{} velocity=\PYGZdq{}0.5\PYGZdq{} lower=\PYGZdq{}\PYGZhy{}3.14\PYGZdq{}
+      upper=\PYGZdq{}3.14\PYGZdq{}/\PYGZgt{}
+      \PYGZlt{}/joint\PYGZgt{}
+
+    \PYGZlt{}!\PYGZhy{}\PYGZhy{} Link 3 \PYGZhy{}\PYGZhy{}\PYGZgt{}
+    \PYGZlt{}link name=\PYGZdq{}link\PYGZus{}3\PYGZdq{}\PYGZgt{}
+        \PYGZlt{}visual\PYGZgt{}
+          \PYGZlt{}origin xyz=\PYGZdq{}0 0.3 0\PYGZdq{} rpy=\PYGZdq{}0 0 0\PYGZdq{} /\PYGZgt{}
+          \PYGZlt{}geometry\PYGZgt{}
+          \PYGZlt{}box size=\PYGZdq{}0.05 0.6 0.05\PYGZdq{}/\PYGZgt{}
+          \PYGZlt{}/geometry\PYGZgt{}
+          \PYGZlt{}material name=\PYGZdq{}Blue\PYGZdq{}\PYGZgt{}
+           \PYGZlt{}color rgba=\PYGZdq{}0 0 1 0.5\PYGZdq{}/\PYGZgt{}
+          \PYGZlt{}/material\PYGZgt{}
+        \PYGZlt{}/visual\PYGZgt{}
+      \PYGZlt{}/link\PYGZgt{}
+
+    \PYGZlt{}/robot\PYGZgt{}
+   
+\end{sphinxVerbatim}
+
+\sphinxincludegraphics{{joint_states}.png}.
+\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+You can launch the launch file using the command shown above and manipulate the your Robot arm.
+
+\end{enumerate}
+
+
+\chapter{ENEX13004:Week 3- Robotic arm simulation with codes}
+\label{\detokenize{index:enex13004-week-3-robotic-arm-simulation-with-codes}}
+
+\section{Simulating the Robotic Arm Using software codes in RVIZ}
+\label{\detokenize{_source/week_3/joint_publisher:simulating-the-robotic-arm-using-software-codes-in-rviz}}\label{\detokenize{_source/week_3/joint_publisher::doc}}
+In this exercise, we are going to write a python script to simulate the Robotic arm that we built in the last tutorial. Previously, we used  ROS inbuilt joint\_state\_publisher (http://wiki.ros.org/joint\_state\_publisher) package with GUI joint controller to simulate the robot. Now let’s do the same with our own package.
+
+First Let’s create a ros package to define the URDF definitions.
+\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+Read the \sphinxcode{\sphinxupquote{robot\_state\_publisher}} documentation (http://wiki.ros.org/robot\_state\_publisher). This is the main package that read the URDF definitions from the URDF file and converts it to \sphinxcode{\sphinxupquote{tf}}        messages.  To get the joint positions (joints angles), it is subscribing to the \sphinxcode{\sphinxupquote{joint\_state}} topic. It has the message type of \sphinxcode{\sphinxupquote{JointState}} (http://docs.ros.org/en/api/sensor\_msgs/html/msg/JointState.html). Read the documentation for the \sphinxcode{\sphinxupquote{JointState}} message type. We need to publish the joint angles as an array.
+
+\item {} 
+Let’s write a python script to send joint angles to our robot. Creat  a \sphinxcode{\sphinxupquote{joint\_publisher.py}} script inside the \sphinxcode{\sphinxupquote{src}} folder of the \sphinxcode{\sphinxupquote{serial\_link\_robot}} package.See how I have assigned each component of the joit\_state\_msg. The joint name should be the same as how you defined each link in the URDF file.  The \sphinxcode{\sphinxupquote{joint\_state\_msg.position}} variable  assigns the angle values in radians.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python}
+\PYG{k+kn}{import} \PYG{n+nn}{rospy}
+
+\PYG{k+kn}{from} \PYG{n+nn}{sensor\PYGZus{}msgs}\PYG{n+nn}{.}\PYG{n+nn}{msg} \PYG{k+kn}{import} \PYG{n}{JointState}
+\PYG{k+kn}{from} \PYG{n+nn}{std\PYGZus{}msgs}\PYG{n+nn}{.}\PYG{n+nn}{msg} \PYG{k+kn}{import} \PYG{n}{Header}
+
+
+\PYG{k}{def} \PYG{n+nf}{publish\PYGZus{}joint\PYGZus{}angles}\PYG{p}{(}\PYG{p}{)}\PYG{p}{:}
+
+    \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{init\PYGZus{}node}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{robot\PYGZus{}joint\PYGZus{}publisher}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{anonymous}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+    \PYG{n}{joint\PYGZus{}publisher} \PYG{o}{=}\PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Publisher}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/joint\PYGZus{}states}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{JointState}\PYG{p}{,}\PYG{n}{queue\PYGZus{}size}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{)}
+    \PYG{n}{joint\PYGZus{}state\PYGZus{}msg} \PYG{o}{=} \PYG{n}{JointState}\PYG{p}{(}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} this is the rate of publishing. Need to have rate.sleep() command inside the while loop}
+    \PYG{n}{rate} \PYG{o}{=} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Rate}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} 10hz}
+
+    \PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{o}{.}\PYG{n}{header} \PYG{o}{=} \PYG{n}{Header}\PYG{p}{(}\PYG{p}{)}    
+    \PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{o}{.}\PYG{n}{name} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{joint\PYGZus{}1}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{joint\PYGZus{}2}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{joint\PYGZus{}3}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+    \PYG{c+c1}{\PYGZsh{} angles are in radians}
+    \PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{o}{.}\PYG{n}{position} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{0.5}\PYG{p}{,} \PYG{l+m+mf}{0.5}\PYG{p}{,} \PYG{l+m+mf}{1.2}\PYG{p}{]}
+    \PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{o}{.}\PYG{n}{velocity} \PYG{o}{=} \PYG{p}{[}\PYG{p}{]}
+    \PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{o}{.}\PYG{n}{effort} \PYG{o}{=} \PYG{p}{[}\PYG{p}{]}
+
+    \PYG{c+c1}{\PYGZsh{} this while loop will continuously publish the joint states}
+    \PYG{k}{while} \PYG{o+ow}{not} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{is\PYGZus{}shutdown}\PYG{p}{(}\PYG{p}{)}\PYG{p}{:}
+
+       \PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{o}{.}\PYG{n}{header}\PYG{o}{.}\PYG{n}{stamp} \PYG{o}{=} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Time}\PYG{o}{.}\PYG{n}{now}\PYG{p}{(}\PYG{p}{)}
+       \PYG{n}{joint\PYGZus{}publisher}\PYG{o}{.}\PYG{n}{publish}\PYG{p}{(}\PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{p}{)}
+       \PYG{c+c1}{\PYGZsh{} this sleep command will pause the program accordin to the rate defined above}
+       \PYG{n}{rate}\PYG{o}{.}\PYG{n}{sleep}\PYG{p}{(}\PYG{p}{)}
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}
+    \PYG{k}{try}\PYG{p}{:}
+        \PYG{c+c1}{\PYGZsh{}publish joint angles by calling the main function}
+        \PYG{n}{publish\PYGZus{}joint\PYGZus{}angles}\PYG{p}{(}\PYG{p}{)}
+    \PYG{k}{except} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{ROSInterruptException}\PYG{p}{:} \PYG{k}{pass}
+
+\end{sphinxVerbatim}
+
+\item {} 
+Remember to make the script an executable by using the \sphinxcode{\sphinxupquote{chmod}} command.
+
+\item {} 
+Now let’s create a new launch file to launch the RVIZ simulator, robot\_state\_publisher. We can modify the launch file that we used in the previous tutorial. Simply remove the commands to launch the \sphinxcode{\sphinxupquote{robot\_joint\_publisher}} package. Instead, we are going to run our script to publish joint angles. Create a new launch file with the name \sphinxcode{\sphinxupquote{joint\_publisher.launch}}.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZlt{}launch\PYGZgt{}
+    \PYGZlt{}!\PYGZhy{}\PYGZhy{} values passed by command line input \PYGZhy{}\PYGZhy{}\PYGZgt{}
+    \PYGZlt{}arg name=\PYGZdq{}model\PYGZdq{} /\PYGZgt{}
+
+
+  \PYGZlt{}!\PYGZhy{}\PYGZhy{} set these parameters on Parameter Server \PYGZhy{}\PYGZhy{}\PYGZgt{}
+  \PYGZlt{}param name=\PYGZdq{}robot\PYGZus{}description\PYGZdq{}
+  textfile=\PYGZdq{}\PYGZdl{}(find serial\PYGZus{}link\PYGZus{}robot)/urdf/\PYGZdl{}(arg model)\PYGZdq{}
+  /\PYGZgt{}
+
+
+  \PYGZlt{}!\PYGZhy{}\PYGZhy{} Start 2 nodes: 
+    robot\PYGZus{}state\PYGZus{}publisher and rviz \PYGZhy{}\PYGZhy{}\PYGZgt{}
+
+
+
+  \PYGZlt{}node name=\PYGZdq{}robot\PYGZus{}state\PYGZus{}publisher\PYGZdq{}
+    pkg=\PYGZdq{}robot\PYGZus{}state\PYGZus{}publisher\PYGZdq{}
+    type=\PYGZdq{}state\PYGZus{}publisher\PYGZdq{} /\PYGZgt{}
+
+
+  \PYGZlt{}node name=\PYGZdq{}rviz\PYGZdq{} pkg=\PYGZdq{}rviz\PYGZdq{} type=\PYGZdq{}rviz\PYGZdq{}
+    args=\PYGZdq{}\PYGZhy{}d \PYGZdl{}(find serial\PYGZus{}link\PYGZus{}robot)/urdf.rviz\PYGZdq{}
+    required=\PYGZdq{}true\PYGZdq{} /\PYGZgt{}
+  \PYGZlt{}/launch\PYGZgt{}
+\end{sphinxVerbatim}
+
+\item {} 
+Now you can run the launch file by running the roslaunch command in the terminal.
+
+\sphinxstyleemphasis{\sphinxstylestrong{roslaunch serial\_link\_robot joint\_publisher.launch model:=serial\_link\_robot.urdf}}
+
+\item {} 
+Rviz will show some error messages as joint angles are not yet publishing.
+
+\item {} 
+Now let’s run the script that we created in a new terminal. This will publish the joint angles that we coded in our script. In RVIZ you will see now that the robot has moved to the positions that we commanded using our script.
+
+\end{enumerate}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{rosrun} \PYG{n}{serial\PYGZus{}link\PYGZus{}robot} \PYG{n}{joint\PYGZus{}publisher}\PYG{o}{.}\PYG{n}{py}
+\end{sphinxVerbatim}
+
+\sphinxincludegraphics{{rviz2}.png}
+\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+Now try to understand the following script that publishes random joint angles. It will make our robot to do some dance moves.
+
+\end{enumerate}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python}
+\PYG{k+kn}{import} \PYG{n+nn}{rospy}
+
+\PYG{k+kn}{import} \PYG{n+nn}{math}
+
+\PYG{k+kn}{from} \PYG{n+nn}{sensor\PYGZus{}msgs}\PYG{n+nn}{.}\PYG{n+nn}{msg} \PYG{k+kn}{import} \PYG{n}{JointState}
+\PYG{k+kn}{from} \PYG{n+nn}{std\PYGZus{}msgs}\PYG{n+nn}{.}\PYG{n+nn}{msg} \PYG{k+kn}{import} \PYG{n}{Header}
+
+\PYG{c+c1}{\PYGZsh{} generate random floating point values}
+\PYG{k+kn}{from} \PYG{n+nn}{random} \PYG{k+kn}{import} \PYG{n}{seed}
+\PYG{k+kn}{from} \PYG{n+nn}{random} \PYG{k+kn}{import} \PYG{n}{random}
+\PYG{c+c1}{\PYGZsh{} seed random number generator}
+\PYG{n}{seed}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}
+
+
+\PYG{k}{def} \PYG{n+nf}{publish\PYGZus{}joint\PYGZus{}angles}\PYG{p}{(}\PYG{p}{)}\PYG{p}{:}
+
+    \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{init\PYGZus{}node}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{robot\PYGZus{}joint\PYGZus{}publisher}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{anonymous}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+    \PYG{n}{joint\PYGZus{}publisher} \PYG{o}{=}\PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Publisher}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/joint\PYGZus{}states}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{JointState}\PYG{p}{,}\PYG{n}{queue\PYGZus{}size}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{)}
+    \PYG{n}{joint\PYGZus{}state\PYGZus{}msg} \PYG{o}{=} \PYG{n}{JointState}\PYG{p}{(}\PYG{p}{)}
+
+    \PYG{n}{rate} \PYG{o}{=} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Rate}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} 10hz}
+
+    \PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{o}{.}\PYG{n}{header} \PYG{o}{=} \PYG{n}{Header}\PYG{p}{(}\PYG{p}{)}    
+    \PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{o}{.}\PYG{n}{name} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{joint\PYGZus{}1}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{joint\PYGZus{}2}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{joint\PYGZus{}3}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}
+    \PYG{c+c1}{\PYGZsh{} angles are in radians}
+    \PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{o}{.}\PYG{n}{position} \PYG{o}{=} \PYG{p}{[}\PYG{n}{random}\PYG{p}{(}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{math}\PYG{o}{.}\PYG{n}{pi}\PYG{p}{,} \PYG{n}{random}\PYG{p}{(}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{math}\PYG{o}{.}\PYG{n}{pi}\PYG{p}{,} \PYG{n}{random}\PYG{p}{(}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{math}\PYG{o}{.}\PYG{n}{pi}\PYG{p}{]}
+    \PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{o}{.}\PYG{n}{velocity} \PYG{o}{=} \PYG{p}{[}\PYG{p}{]}
+    \PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{o}{.}\PYG{n}{effort} \PYG{o}{=} \PYG{p}{[}\PYG{p}{]}
+
+    \PYG{k}{while} \PYG{o+ow}{not} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{is\PYGZus{}shutdown}\PYG{p}{(}\PYG{p}{)}\PYG{p}{:}
+
+       \PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{o}{.}\PYG{n}{header}\PYG{o}{.}\PYG{n}{stamp} \PYG{o}{=} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Time}\PYG{o}{.}\PYG{n}{now}\PYG{p}{(}\PYG{p}{)}
+       \PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{o}{.}\PYG{n}{position} \PYG{o}{=} \PYG{p}{[}\PYG{n}{random}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,} \PYG{n}{random}\PYG{p}{(}\PYG{p}{)}\PYG{p}{,} \PYG{n}{random}\PYG{p}{(}\PYG{p}{)}\PYG{p}{]}
+       \PYG{n}{joint\PYGZus{}publisher}\PYG{o}{.}\PYG{n}{publish}\PYG{p}{(}\PYG{n}{joint\PYGZus{}state\PYGZus{}msg}\PYG{p}{)}
+       \PYG{n}{rate}\PYG{o}{.}\PYG{n}{sleep}\PYG{p}{(}\PYG{p}{)}
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}
+    \PYG{k}{try}\PYG{p}{:}
+        \PYG{c+c1}{\PYGZsh{}publish joint angles}
+        \PYG{n}{publish\PYGZus{}joint\PYGZus{}angles}\PYG{p}{(}\PYG{p}{)}
+    \PYG{k}{except} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{ROSInterruptException}\PYG{p}{:} \PYG{k}{pass}
+
+
+
+
+
+\end{sphinxVerbatim}
+
+
+\chapter{ENEX13004:Week 3- Robotic arm coordinate transformation}
+\label{\detokenize{index:enex13004-week-3-robotic-arm-coordinate-transformation}}
+
+\section{Transforming End effector position to the base\_link}
+\label{\detokenize{_source/week_3/joint_transformation:transforming-end-effector-position-to-the-base-link}}\label{\detokenize{_source/week_3/joint_transformation::doc}}
+In this exercise, we are going to write a python code to find the position of the End effector w.r.t to the base\_link. This is a part of the assignmnet 1 , Q2 requirement. I am not going to provide the complete code but I will provide you with the code skeleton. You need to add a few extra lines to complete the Q2 requirements.
+\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+First we need to add extra joint (joint\_ee) and a link (link\_ee) to assign a coordinate frame to the end-effector position. Rememberto change the \sphinxcode{\sphinxupquote{Joint\_ee}} orgin according to the assignment requirements. Add  the following xml code to the urdf file before the  \sphinxcode{\sphinxupquote{\textless{}/robot\textgreater{}}} tag.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZlt{}!\PYGZhy{}\PYGZhy{} Joint ee \PYGZhy{}\PYGZhy{}\PYGZgt{}
+ \PYGZlt{}joint name=\PYGZdq{}joint\PYGZus{}ee\PYGZdq{} type=\PYGZdq{}fixed\PYGZdq{}\PYGZgt{}
+    \PYGZlt{}parent link=\PYGZdq{}link\PYGZus{}3\PYGZdq{}/\PYGZgt{}
+    \PYGZlt{}child link=\PYGZdq{}link\PYGZus{}ee\PYGZdq{}/\PYGZgt{}
+    \PYGZlt{}origin xyz=\PYGZdq{}0 0.6 0\PYGZdq{} rpy=\PYGZdq{}0 0 0\PYGZdq{} /\PYGZgt{}
+
+  \PYGZlt{}/joint\PYGZgt{}
+
+\PYGZlt{}!\PYGZhy{}\PYGZhy{} Link ee \PYGZhy{}\PYGZhy{}\PYGZgt{}
+\PYGZlt{}link name=\PYGZdq{}link\PYGZus{}ee\PYGZdq{}\PYGZgt{}
+
+  \PYGZlt{}/link\PYGZgt{}
+
+\end{sphinxVerbatim}
+
+\item {} 
+You can use the following code skeleton to do the transformation from the \sphinxcode{\sphinxupquote{link\_ee}} to \sphinxcode{\sphinxupquote{base\_link}}. Look at the transformation listner tutorial that we did in week 2. Complete the missing commands.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python}
+\PYG{k+kn}{import} \PYG{n+nn}{rospy}
+
+\PYG{k+kn}{import} \PYG{n+nn}{math}
+\PYG{k+kn}{import} \PYG{n+nn}{tf}
+\PYG{k+kn}{import} \PYG{n+nn}{geometry\PYGZus{}msgs}\PYG{n+nn}{.}\PYG{n+nn}{msg}
+
+
+
+\PYG{k}{def} \PYG{n+nf}{tf\PYGZus{}listner}\PYG{p}{(}\PYG{p}{)}\PYG{p}{:}
+
+    \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{init\PYGZus{}node}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{robot\PYGZus{}tf\PYGZus{}listner}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{listener} \PYG{o}{=} \PYG{n}{tf}\PYG{o}{.}\PYG{n}{TransformListener}\PYG{p}{(}\PYG{p}{)}
+
+    \PYG{n}{rate} \PYG{o}{=} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Rate}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} 10hz}
+
+
+    \PYG{k}{while} \PYG{o+ow}{not} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{is\PYGZus{}shutdown}\PYG{p}{(}\PYG{p}{)}\PYG{p}{:}
+
+       \PYG{c+c1}{\PYGZsh{} complet the missing command to create the Transform listner from link\PYGZus{}ee to base\PYGZus{}link. }
+       \PYG{c+c1}{\PYGZsh{} You need to then print the translation component to the terminal.}
+
+        \PYG{n}{rate}\PYG{o}{.}\PYG{n}{sleep}\PYG{p}{(}\PYG{p}{)}
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}
+    \PYG{k}{try}\PYG{p}{:}
+        \PYG{c+c1}{\PYGZsh{}publish joint angles}
+        \PYG{n}{tf\PYGZus{}listner}\PYG{p}{(}\PYG{p}{)}
+    \PYG{k}{except} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{ROSInterruptException}\PYG{p}{:} \PYG{k}{pass}
+
+\end{sphinxVerbatim}
+
+\item {} 
+Name the script as \sphinxcode{\sphinxupquote{robot\_transform.py}} and run it (make it execeutable first). Remember to launch the launch file to run the RVIZ and the robot\_state\_publisher.
+
+\item {} 
+Watch the live or the recoded class for more information
+
+\end{enumerate}
+
+
+\chapter{ENEX13004:Week 4- Move It - Robotic arm simulation}
+\label{\detokenize{index:enex13004-week-4-move-it-robotic-arm-simulation}}
+
+\section{Using MoveIt Package for Robotic Arm Path Planning}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:using-moveit-package-for-robotic-arm-path-planning}}\label{\detokenize{_source/week_4/Move_it_with_custom_arm::doc}}
+In this tutorial we will creat and configure a robotic arm to use the Move\_it ros package. Then we can use RVIZ to move the rootic arm to the desired location
+
+Let’s make sure that we  have the most up to date packages: ::
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+ \PYG{n}{rosdep} \PYG{n}{update}
+ \PYG{n}{sudo} \PYG{n}{apt}\PYG{o}{\PYGZhy{}}\PYG{n}{get} \PYG{n}{update}
+ \PYG{n}{sudo} \PYG{n}{apt}\PYG{o}{\PYGZhy{}}\PYG{n}{get} \PYG{n}{dist}\PYG{o}{\PYGZhy{}}\PYG{n}{upgrade}
+\end{sphinxVerbatim}
+
+Install MoveIt
+
+The simplest way to install MoveIt is from pre-built binaries (Debian): ::
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+ \PYG{n}{sudo} \PYG{n}{apt} \PYG{n}{install} \PYG{n}{ros}\PYG{o}{\PYGZhy{}}\PYG{n}{melodic}\PYG{o}{\PYGZhy{}}\PYG{n}{moveit}
+\end{sphinxVerbatim}
+
+
+\section{Creating a Moveit package for a robotic arm}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:creating-a-moveit-package-for-a-robotic-arm}}
+Now let’s configure and a ROS move\_it package for our robotic arm. Then we can use RVIZ to set goal locations and the move-it package will do inverse kinematics and path planning.
+\begin{itemize}
+\item {} 
+First download and save the URDF file that we created in last week to the home folder. You can download the urdf file from the moodle site.
+
+\end{itemize}
+
+
+\subsection{MoveIt Setup Assistant}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:moveit-setup-assistant}}
+The MoveIt Setup Assistant is a graphical user interface for configuring any robot for use with MoveIt. Its primary function is generating a Semantic Robot Description Format (SRDF) file for your robot.  Additionally, it generates other necessary configuration files for use with the MoveIt pipeline. To learn more about the SRDF, you can go through the URDF/SRDF Overview page.
+
+
+\subsubsection{Step 1: Start}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-1-start}}
+To start the MoveIt Setup Assistant:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{moveit\PYGZus{}setup\PYGZus{}assistant} \PYG{n}{setup\PYGZus{}assistant}\PYG{o}{.}\PYG{n}{launch}
+\end{sphinxVerbatim}
+
+This will bring up the start screen with two choices: Create New MoveIt Configuration Package or Edit Existing MoveIt Configuration Package.
+
+Click on the Create New MoveIt Configuration Package button to bring up the following screen:
+
+Click on the browse button and navigate to the home folder and  choose the URDF file of your robotic arm  and then click Load Files. The Setup Assistant will load the files (this might take a few  minutes)
+
+
+\subsubsection{Step 2: Generate Self-Collision Matrix}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-2-generate-self-collision-matrix}}
+The Default Self-Collision Matrix Generator searches for pairs of links on the robot that can safely be disabled from collision checking, decreasing motion planning processing time. These pairs of links  are disabled when they are always in collision, never in collision, in collision in the robot’s default position or when the links are adjacent to each other on the kinematic chain. The sampling density specifies how many random robot positions to check for self collision.
+
+Click on the Self-Collisions pane selector on the left-hand side and click on the Generate Collision Matrix button. The Setup Assistant will work for a few second before presenting you the results of its computation in the main table.
+
+
+\subsubsection{Srep 3 : Virtual Joints}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:srep-3-virtual-joints}}
+Virtual joints are used primarily to attach the robot to the world. For our robot modela we will define only one virtual joint attaching the base\_link of the Panda to the world world frame. This virtual joint represents the motion of the base of the robot in a plane.
+\begin{itemize}
+\item {} 
+Click on the Virtual Joints pane selector. Click on Add Virtual Joint
+
+\item {} 
+Set the joint name as “virtual\_joint”
+
+\item {} 
+Set the child link as “base\_link” and the parent frame name as “world”.
+
+\item {} 
+Set the Joint Type as “fixed”.
+
+\end{itemize}
+
+Click Save and you should see this screen:
+
+
+\subsubsection{Step 4: Add Planning Groups}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-4-add-planning-groups}}
+Planning groups are used for semantically describing different parts of your robot, such as defining what an arm is, or an end effector.
+\begin{itemize}
+\item {} 
+Click on the Planning Groups pane selector.
+*Click on Add Group and you should see the following screen:
+
+\end{itemize}
+
+Add the arm
+
+We will first add  as a planning group
+\begin{itemize}
+\item {} 
+Enter Group Name as \sphinxcode{\sphinxupquote{arm}}
+
+\item {} 
+Choose kdl\_kinematics\_plugin/KDLKinematicsPlugin as the kinematics solver.
+
+\item {} 
+et Kin. Search Resolution and Kin. Search Timeout stay at their default values.
+
+\end{itemize}
+
+Now, click on the Add Joints button. You will see a list of joints on the left hand side. You need to choose all the joints that belong to the arm and add them to the right hand side. The joints are arranged in the order that they are stored in an internal tree structure. This makes it easy to select a serial chain of joints.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Click} \PYG{n}{on} \PYG{n}{virtual\PYGZus{}joint}\PYG{p}{,} \PYG{n}{hold} \PYG{n}{down} \PYG{n}{the} \PYG{n}{Shift} \PYG{n}{button} \PYG{n}{on} \PYG{n}{your} \PYG{n}{keyboard} \PYG{o+ow}{and} \PYG{n}{then} \PYG{n}{click} \PYG{n}{on} \PYG{n}{the} \PYG{n}{joint\PYGZus{}ee}\PYG{o}{.} \PYG{n}{Now} \PYG{n}{click} \PYG{n}{on} \PYG{n}{the} \PYG{o}{\PYGZgt{}} \PYG{n}{button} \PYG{n}{to} \PYG{n}{add} \PYG{n}{these} \PYG{n}{joints} \PYG{n}{into} \PYG{n}{the} \PYG{n+nb}{list} \PYG{n}{of} \PYG{n}{selected} \PYG{n}{joints} \PYG{n}{on} \PYG{n}{the} \PYG{n}{right}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+**picture
+
+Click Save to save the selected group.
+
+**picture
+
+
+\paragraph{Adding the gripper}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:adding-the-gripper}}
+We will also add a group for the end effector. NOTE that you will do this using a different procedure than adding the arm.
+\begin{itemize}
+\item {} 
+Click on the Add Group button.
+
+\item {} 
+Enter Group Name as hand
+
+\item {} 
+Let Kin. Search Resolution and Kin. Search Timeout stay at their default values.
+
+\item {} 
+Click on the Add Links button.
+
+\item {} 
+Choose link\_ee and add them to the list of Selected Links on the right hand side.
+
+\item {} 
+Click Save
+
+\end{itemize}
+
+
+\subsubsection{Step 5: Add Robot Poses}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-5-add-robot-poses}}
+The Setup Assistant allows you to add certain fixed poses into the configuration. This helps if, for example, you want to define a certain position of the robot as a Home position.
+\begin{itemize}
+\item {} 
+Click on the Robot Poses pane.
+
+\item {} 
+Click Add Pose. Choose a name for the pose. The robot will be in its Default position where the joint values are set to the mid-range of the allowed joint value range. Move the individual joints around until you are happy and then Save the pose. Note how poses are associated with particular groups. You can save individual poses for each group.
+
+\item {} 
+IMPORTANT TIP: Try to move all the joints around. If there is something wrong with the joint limits in your URDF, you should be able to see it immediately here
+
+\end{itemize}
+
+**picture
+
+
+\subsubsection{Step 6: Label End Effectors}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-6-label-end-effectors}}
+We have already added the gripper of the Panda. Now, we will designate this group as a special group: end effectors. Designating this group as end effectors allows some special operations to happen on them internally.
+\begin{itemize}
+\item {} 
+Click on the End Effectors pane.
+
+\item {} 
+Click Add End Effector.
+
+\item {} 
+Choose hand as the End Effector Name for the gripper.
+
+\item {} 
+Select hand as the End Effector Group.
+
+\item {} 
+Select link\_3 as the Parent Link for this end-effector.
+
+\item {} 
+Leave Parent Group blank.
+
+\end{itemize}
+
+
+\subsubsection{Step 7: Add Passive Joints}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-7-add-passive-joints}}
+The passive joints tab is meant to allow specification of any passive joints that might exist in a robot. These are joints that are unactuated on a robot (e.g. passive casters.) This tells the planners that they cannot (kinematically) plan for these joints because they can’t be directly controlled. Our robotic arm does not have any passive joints so we will skip this step.
+
+
+\subsubsection{Step 8: ROS Control}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-8-ros-control}}
+ROS Control is a set of packages that include controller interfaces, controller managers, transmissions and hardware\_interfaces, for more details please look at ros\_control documentation
+
+ROS Control tab can be used to auto generate simulated controllers to actuate the joints of the robot. This will allow us to provide the correct ROS interfaces MoveIt.
+
+Click on the ROS Control pane selector.
+
+***picture
+
+Click on Add Controller and you should see the following screen:
+\begin{itemize}
+\item {} 
+We will first add the arm position controller
+
+\item {} 
+Enter Controller Name as arm\_position\_controller
+
+\item {} 
+Choose position\_controllers/JointPositionController as the controller type
+
+\item {} 
+Next you have to choose this controller joints, you can add joints individually or add all the joints in a planning group all together.
+
+\item {} 
+Now, click on Add Planning Group Joints.
+
+\end{itemize}
+
+*** picture
+
+Choose panda\_arm planning group to add all the joints in that group to the arm controller.
+
+*** picture
+
+
+\subsubsection{Step 9 - Simulation}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-9-simulation}}
+We will skip simulation tab. We will do gazebo simulation in a later stage
+
+
+\subsubsection{Step 10 - 3D perception}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-10-3d-perception}}
+We will skip 3D perception as we don’t have a attached 3D sensor.
+
+
+\subsubsection{Step 11: Generate Configuration Files}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-11-generate-configuration-files}}
+You are almost there. One last step - generating all the configuration files that you will need to start using MoveIt
+
+We need to create a seperate folder inside our catkin\_ws folder to save the move\_it configuration. Using the UBUNTu GUI click  Files icon then go to
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+{}`catkin\PYGZus{}ws{}` folder and go to the src folder and create a folder called {}`moveit\PYGZus{}arm{}`.
+\end{sphinxVerbatim}
+
+Now come back to move\_it configuration (click on the blue arrow on the left hand side panel) and Click on the Configuration Files pane. Choose folder that we created by clicking on browse.
+
+Click on the Generate Package button. The Setup Assistant will now generate and write a set of launch and config files into the directory of your choosing. All the generated files will appear in the Generated Files/Folders tab and you can click on each of them for a description of what they contain.
+
+Congratulations!! - You are now done generating the configuration files you need for MoveIt. Now you can exit set up assistance.
 
 
 \chapter{Indices and tables}

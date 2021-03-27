@@ -1,0 +1,369 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Creating a 3 Link Robotic Arm Using URDF &#8212; Tutorials  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Create Catkin Workspace" href="../week_2/work_space.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="creating-a-3-link-robotic-arm-using-urdf">
+<h1>Creating a 3 Link Robotic Arm Using URDF<a class="headerlink" href="#creating-a-3-link-robotic-arm-using-urdf" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div>In this exercise, we will build a 3 Link Robotic Manipulator using he Unified Robotic Description Format (URDF). It is an XML file format used in ROS to describe all elements of a robot and can be used to define a robot to its component level. We will then use RVIZ to simulate that robot.</div></blockquote>
+<p>First Let’s create a ros package for URDF definition</p>
+<ol>
+<li><p class="first">Goto your <code class="docutils literal notranslate"><span class="pre">catkin_ws</span></code> and to the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder and create a package</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">catkin_create_pkg</span> <span class="n">serial_link_robot</span> <span class="n">tf2</span> <span class="n">tf2_ros</span> <span class="n">roscpp</span> <span class="n">rospy</span> <span class="n">turtlesim</span>
+</pre></div>
+</div>
+<p>then do  <code class="docutils literal notranslate"><span class="pre">catkin_make</span></code> to build the project. Now you have project folder to create URDF</p>
+</li>
+<li><p class="first">Goto the project folder and build a urdf folder to include the urdf files</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">catkin_ws</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">serial_link_robot</span>
+<span class="n">mkdir</span> <span class="n">urdf</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Now lets create our first URDF file. Inside the urdf folder create a file  call<br />’serial_link_robot.urdf’</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gedit</span> <span class="n">serial_link_robot</span><span class="o">.</span><span class="n">urdf</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Now lets create our first link of the robot. Copy the following xml commands to the ‘serial_link_robot.urdf’ file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</li>
+</ol>
+   <?xml version='1.0'?>  <robot name="serial_Link_robot">
+    <!-- Base Link -->
+    <link name="base_link">
+      <visual>
+        <origin xyz="0 0 0.1" rpy="0 0 0" />
+        <geometry>
+        <box size="0.4 0.4 0.2"/>
+        </geometry>
+        <material name="gray">
+        <color rgba="0.5 0.5 0.5 0.5"/>
+        </material>
+      </visual>
+    </link><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```
+
+This will create the base link with the dimension 40 cm x 40 cm x 20 cm.
+
+More information about URDF link elemenr can be found here
+&lt;http://wiki.ros.org/urdf/XML/link&gt;. Try to understand what each of these xml components mean.
+</pre></div>
+</div>
+<ol>
+<li><p class="first">Now let’s create a launch file to display the link in RVIZ. It is a 3D visulaisation software. Fist create a  launch   folder inside the package folder</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">catkin_ws</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">serial_link_robot</span>
+<span class="n">mkdir</span> <span class="n">launch</span>
+<span class="n">cd</span> <span class="n">launch</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Now let’s create our first URDF file. Inside the urdf folder create a file call ‘serial_link_robot.urdf’</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gedit</span> <span class="n">serial_link_robot_rviz</span><span class="o">.</span><span class="n">launch</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Now add the following launch commands to the <code class="docutils literal notranslate"><span class="pre">serial_link_robot_rviz.launch</span></code> file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;launch&gt;
+  &lt;!-- values passed by command line input --&gt;
+  &lt;arg name=&quot;model&quot; /&gt;
+  &lt;arg name=&quot;gui&quot; default=&quot;False&quot; /&gt;
+
+&lt;!-- set these parameters on Parameter Server --&gt;
+&lt;param name=&quot;robot_description&quot;
+textfile=&quot;$(find serial_link_robot)/urdf/$(arg model)&quot;
+/&gt;
+
+&lt;param name=&quot;use_gui&quot; value=&quot;$(arg gui)&quot;/&gt;
+&lt;!-- Start 3 nodes: joint_state_publisher,
+  robot_state_publisher and rviz --&gt;
+
+&lt;node name=&quot;joint_state_publisher&quot;
+  pkg=&quot;joint_state_publisher&quot;
+  type=&quot;joint_state_publisher&quot; /&gt;
+
+&lt;node name=&quot;robot_state_publisher&quot;
+  pkg=&quot;robot_state_publisher&quot;
+  type=&quot;state_publisher&quot; /&gt;
+
+
+&lt;node name=&quot;rviz&quot; pkg=&quot;rviz&quot; type=&quot;rviz&quot;
+  args=&quot;-d $(find serial_link_robot)/urdf.rviz&quot;
+  required=&quot;true&quot; /&gt;
+&lt;/launch&gt;
+
+</pre></div>
+</div>
+</li>
+<li><p class="first">This roslaunch file performs the following:</p>
+<ul class="simple">
+<li>Loads the model specified in the command line into the Parameter Server.</li>
+<li>Starts nodes that publish the JointState and transforms (discussed later in
+this chapter).</li>
+<li>Starts rviz with a configuration file (urdf.rviz).</li>
+</ul>
+</li>
+<li><p class="first">Now you can run the launch file
+by runing the roslaunch command in the terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">serial_link_robot</span> <span class="n">serial_link_robot_rviz</span><span class="o">.</span><span class="n">launch</span> <span class="n">model</span><span class="p">:</span><span class="o">=</span><span class="n">serial_link_robot</span><span class="o">.</span><span class="n">urdf</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">This will open the  Rviz window.  Click on ‘ADD’ button (left bottom) and add ‘RobotModel’ and ‘TF’.
+Also chnaged the ‘Fixed Frame’ in      Global     Option from map to base_link. This is the global reference frame.
+Save the rviz file before closing   the window.</p>
+<p><img alt="../../_images/rviz1.png" src="../../_images/rviz1.png" /></p>
+</li>
+<li><p class="first">Now let’s add a joint and another link.ore information about URDF joint elemenr can be found here
+<a class="reference external" href="http://wiki.ros.org/urdf/XML/joint">http://wiki.ros.org/urdf/XML/joint</a>. Its a revolute joint that rotate from -pi to +pi. See how I have addded the color to the link.
+Also see how I have assigned the origin of the visual component of the link. This is equal to half of the link length.
+Open the urdf file and add following before the </robot> tag.</p>
+ <!-- Joint 1 --></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">joint</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;joint_1&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;revolute&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">parent</span> <span class="n">link</span><span class="o">=</span><span class="s2">&quot;base_link&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">child</span> <span class="n">link</span><span class="o">=</span><span class="s2">&quot;link_1&quot;</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">origin</span> <span class="n">xyz</span><span class="o">=</span><span class="s2">&quot;0 0 0.2&quot;</span> <span class="n">rpy</span><span class="o">=</span><span class="s2">&quot;0 0 0&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">axis</span> <span class="n">xyz</span><span class="o">=</span><span class="s2">&quot;0 0 1&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="n">limit</span> <span class="n">effort</span><span class="o">=</span><span class="s2">&quot;100.0&quot;</span> <span class="n">velocity</span><span class="o">=</span><span class="s2">&quot;0.5&quot;</span> <span class="n">lower</span><span class="o">=</span><span class="s2">&quot;-3.14&quot;</span>
+<span class="n">upper</span><span class="o">=</span><span class="s2">&quot;3.14&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">joint</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+  <!-- Link 1 --><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">link</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;link_1&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">visual</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">origin</span> <span class="n">xyz</span><span class="o">=</span><span class="s2">&quot;0 0 0.2&quot;</span> <span class="n">rpy</span><span class="o">=</span><span class="s2">&quot;0 0 0&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">geometry</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">box</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;0.05 0.05 0.4&quot;</span><span class="o">/&gt;</span>
+    <span class="o">&lt;/</span><span class="n">geometry</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">material</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;yellow&quot;</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="n">color</span> <span class="n">rgba</span><span class="o">=</span><span class="s2">&quot;1.0 1.0 0 0.5&quot;</span><span class="o">/&gt;</span>
+    <span class="o">&lt;/</span><span class="n">material</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">visual</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">link</span><span class="o">&gt;</span>    
+</pre></div>
+</div>
+<ol>
+<li><p class="first">Now lets display and move the robot. Run the following command in aterminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">serial_link_robot</span> <span class="n">serial_link_robot_rviz</span><span class="o">.</span><span class="n">launch</span> <span class="n">model</span><span class="p">:</span><span class="o">=</span><span class="n">serial_link_robot</span><span class="o">.</span><span class="n">urdf</span> <span class="n">gui</span><span class="p">:</span><span class="o">=</span><span class="kc">True</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">gui</span></code> parameter open a joint state publisher window. You can manupulate the robot by chaning the joint slider bars.</p>
+<p><img alt="../../_images/joint_states.png" src="../../_images/joint_states.png" /></p>
+</li>
+<li><p class="first">Now lets expand the robot to a 3 link manupulator. Let’s add more joints links. see the last link configuration. Its in y direction initially</p>
+<p>See the recoded zoom class for the demo. The completed urdf file is shown below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&#39;1.0&#39;?&gt;
+&lt;robot name=&quot;serial_Link_robot&quot;&gt;
+  &lt;!-- Base Link --&gt;
+  &lt;link name=&quot;base_link&quot;&gt;
+    &lt;visual&gt;
+      &lt;origin xyz=&quot;0 0 0.1&quot; rpy=&quot;0 0 0&quot; /&gt;
+      &lt;geometry&gt;
+      &lt;box size=&quot;0.4 0.4 0.2&quot;/&gt;
+      &lt;/geometry&gt;
+      &lt;material name=&quot;gray&quot;&gt;
+      &lt;color rgba=&quot;0.5 0.5 0.5 0.5&quot;/&gt;
+      &lt;/material&gt;
+    &lt;/visual&gt;
+  &lt;/link&gt;
+
+&lt;!-- Joint 1 --&gt;
+  &lt;joint name=&quot;joint_1&quot; type=&quot;revolute&quot;&gt;
+    &lt;parent link=&quot;base_link&quot;/&gt;
+    &lt;child link=&quot;link_1&quot;/&gt;
+    &lt;origin xyz=&quot;0 0 0.2&quot; rpy=&quot;0 0 0&quot; /&gt;
+    &lt;axis xyz=&quot;0 0 1&quot; /&gt;
+    &lt;limit effort=&quot;100.0&quot; velocity=&quot;0.5&quot; lower=&quot;-3.14&quot;
+  upper=&quot;3.14&quot;/&gt;
+  &lt;/joint&gt;
+
+&lt;!-- Link 1 --&gt;
+  &lt;link name=&quot;link_1&quot;&gt;
+    &lt;visual&gt;
+      &lt;origin xyz=&quot;0 0 0.2&quot; rpy=&quot;0 0 0&quot; /&gt;
+      &lt;geometry&gt;
+      &lt;box size=&quot;0.05 0.05 0.4&quot;/&gt;
+      &lt;/geometry&gt;
+      &lt;material name=&quot;yellow&quot;&gt;
+       &lt;color rgba=&quot;1.0 1.0 0 0.5&quot;/&gt;
+      &lt;/material&gt;
+    &lt;/visual&gt;
+  &lt;/link&gt;
+
+&lt;!-- Joint 2 --&gt;
+  &lt;joint name=&quot;joint_2&quot; type=&quot;revolute&quot;&gt;
+    &lt;parent link=&quot;link_1&quot;/&gt;
+    &lt;child link=&quot;link_2&quot;/&gt;
+    &lt;origin xyz=&quot;0 0 0.4&quot; rpy=&quot;0 0 0&quot; /&gt;
+    &lt;axis xyz=&quot;1 0 0&quot; /&gt;
+    &lt;limit effort=&quot;100.0&quot; velocity=&quot;0.5&quot; lower=&quot;-3.14&quot;
+  upper=&quot;3.14&quot;/&gt;
+  &lt;/joint&gt;
+
+&lt;!-- Link 2 --&gt;
+&lt;link name=&quot;link_2&quot;&gt;
+    &lt;visual&gt;
+      &lt;origin xyz=&quot;0 0 0.25&quot; rpy=&quot;0 0 0&quot; /&gt;
+      &lt;geometry&gt;
+      &lt;box size=&quot;0.05 0.05 0.5&quot;/&gt;
+      &lt;/geometry&gt;
+      &lt;material name=&quot;Red&quot;&gt;
+       &lt;color rgba=&quot;1 0 0 0.5&quot;/&gt;
+      &lt;/material&gt;
+    &lt;/visual&gt;
+  &lt;/link&gt;
+
+&lt;!-- Joint 3 --&gt;
+ &lt;joint name=&quot;joint_3&quot; type=&quot;revolute&quot;&gt;
+    &lt;parent link=&quot;link_2&quot;/&gt;
+    &lt;child link=&quot;link_3&quot;/&gt;
+    &lt;origin xyz=&quot;0 0 0.5&quot; rpy=&quot;0 0 0&quot; /&gt;
+    &lt;axis xyz=&quot;1 0 0&quot; /&gt;
+    &lt;limit effort=&quot;100.0&quot; velocity=&quot;0.5&quot; lower=&quot;-3.14&quot;
+  upper=&quot;3.14&quot;/&gt;
+  &lt;/joint&gt;
+
+&lt;!-- Link 3 --&gt;
+&lt;link name=&quot;link_3&quot;&gt;
+    &lt;visual&gt;
+      &lt;origin xyz=&quot;0 0.3 0&quot; rpy=&quot;0 0 0&quot; /&gt;
+      &lt;geometry&gt;
+      &lt;box size=&quot;0.05 0.6 0.05&quot;/&gt;
+      &lt;/geometry&gt;
+      &lt;material name=&quot;Blue&quot;&gt;
+       &lt;color rgba=&quot;0 0 1 0.5&quot;/&gt;
+      &lt;/material&gt;
+    &lt;/visual&gt;
+  &lt;/link&gt;
+
+&lt;/robot&gt;
+
+    &lt;/robot&gt;
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Tutorials</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../week_1/PC_setup.html">PC Setup</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../week_1/Ubuntu_gui.html">Ubuntu GUI</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../week_1/linux_basics.html">Linux Basic</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../week_1/ROS_node.html">ROS Node</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../week_2/work_space.html">Python  Turtlesim</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Robotic Arm Simulation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../week_2/work_space.html" title="previous chapter">Create Catkin Workspace</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Lasi Piyathilaka.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/_source/week_3/serial_manipulator.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

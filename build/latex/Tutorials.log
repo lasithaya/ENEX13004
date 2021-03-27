@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2021.2.15)  4 MAR 2021 23:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2021.2.15)  27 MAR 2021 07:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1163,19 +1163,19 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 
 ]
 Chapter 2.
-<ubuntu_desktop.png, id=74, 803.0pt x 642.4pt>
+<ubuntu_desktop.png, id=104, 803.0pt x 642.4pt>
 File: ubuntu_desktop.png Graphic file (type png)
 <use ubuntu_desktop.png>
 Package pdftex.def Info: ubuntu_desktop.png  used on input line 135.
 (pdftex.def)             Requested size: 469.75502pt x 375.8172pt.
 [3]
-<ubuntu_desktop_details.png, id=82, 602.25pt x 481.8pt>
+<ubuntu_desktop_details.png, id=112, 602.25pt x 481.8pt>
 File: ubuntu_desktop_details.png Graphic file (type png)
 <use ubuntu_desktop_details.png>
 Package pdftex.def Info: ubuntu_desktop_details.png  used on input line 139.
 (pdftex.def)             Requested size: 469.75502pt x 375.81718pt.
  [4 <./ubuntu_desktop.png>]
-<ubuntu_folder_browser.png, id=87, 602.25pt x 481.8pt>
+<ubuntu_folder_browser.png, id=117, 602.25pt x 481.8pt>
 File: ubuntu_folder_browser.png Graphic file (type png)
 <use ubuntu_folder_browser.png>
 Package pdftex.def Info: ubuntu_folder_browser.png  used on input line 172.
@@ -1187,19 +1187,19 @@ LaTeX Font Info:    Try loading font information for TS1+ptm on input line 190.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-<ubuntu_inspect.png, id=100, 803.0pt x 642.4pt>
+<ubuntu_inspect.png, id=130, 803.0pt x 642.4pt>
 File: ubuntu_inspect.png Graphic file (type png)
 <use ubuntu_inspect.png>
 Package pdftex.def Info: ubuntu_inspect.png  used on input line 198.
 (pdftex.def)             Requested size: 469.75502pt x 375.8172pt.
  [6 <./ubuntu_folder_browser.png>]
-<ubuntu_start_application.png, id=108, 803.0pt x 642.4pt>
+<ubuntu_start_application.png, id=138, 803.0pt x 642.4pt>
 File: ubuntu_start_application.png Graphic file (type png)
 <use ubuntu_start_application.png>
 Package pdftex.def Info: ubuntu_start_application.png  used on input line 205.
 (pdftex.def)             Requested size: 469.75502pt x 375.8172pt.
  [7 <./ubuntu_inspect.png>]
-<ubuntu_application_pin.png, id=114, 803.0pt x 642.4pt>
+<ubuntu_application_pin.png, id=144, 803.0pt x 642.4pt>
 File: ubuntu_application_pin.png Graphic file (type png)
 <use ubuntu_application_pin.png>
 Package pdftex.def Info: ubuntu_application_pin.png  used on input line 209.
@@ -1209,7 +1209,7 @@ Package pdftex.def Info: ubuntu_application_pin.png  used on input line 209.
 
 ]
 Chapter 3.
-<ubuntu_terminal_icon.png, id=131, 80.3pt x 80.3pt>
+<ubuntu_terminal_icon.png, id=162, 80.3pt x 80.3pt>
 File: ubuntu_terminal_icon.png Graphic file (type png)
 <use ubuntu_terminal_icon.png>
 Package pdftex.def Info: ubuntu_terminal_icon.png  used on input line 244.
@@ -1277,26 +1277,88 @@ w ROS top-ics work
 
 ]
 Chapter 5.
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <9> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 1066.
+[23]
+Underfull \vbox (badness 10000) detected at line 1176
+ []
+
+
+Overfull \vbox (2.68169pt too high) detected at line 1176
+ []
+
+[24] [25] [26
+
+]
+Chapter 6.
+[27] [28]
+Chapter 7.
+[29
+
+]
+<rviz1.png, id=338, 963.6pt x 486.81876pt>
+ [30]
+File: rviz1.png Graphic file (type png)
+<use rviz1.png>
+Package pdftex.def Info: rviz1.png  used on input line 1410.
+(pdftex.def)             Requested size: 444.75499pt x 224.68959pt.
+ [31 <./rviz1.png>]
+Underfull \vbox (badness 2495) detected at line 1544
+ []
+
+[32]
+<joint_states.png, id=363, 1927.2pt x 973.6375pt>
+File: joint_states.png Graphic file (type png)
+<use joint_states.png>
+Package pdftex.def Info: joint_states.png  used on input line 1546.
+(pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
+
+Overfull \hbox (2.5pt too wide) in paragraph at lines 1546--1547
+[][]\T1/ptm/m/n/10 . 
+ []
+
+[33 <./joint_states.png>] [34
+
+]
+Chapter 8.
+[35] [36]
+<rviz2.png, id=391, 1927.2pt x 973.6375pt>
+File: rviz2.png Graphic file (type png)
+<use rviz2.png>
+Package pdftex.def Info: rviz2.png  used on input line 1666.
+(pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
+ [37 <./rviz2.png>] [38]
+Chapter 9.
+[39
+
+] [40]
+Chapter 10.
+[41
+
+] [42] [43] [44] [45] [46
+
+]
+Chapter 11.
 (./Tutorials.ind)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1077.
- [23]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1077.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2074.
+ [47]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2074.
  (./Tutorials.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1077.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1077.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2074.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2074.
 
 Package rerunfilecheck Info: File `Tutorials.out' has not changed.
-(rerunfilecheck)             Checksum: 92F67AAE744BE95621D78A3293D375EF;970.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1077.
+(rerunfilecheck)             Checksum: C73631E942612A4F67D7AD3ADF17C735;2804.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2074.
  ) 
 Here is how much of TeX's memory you used:
- 13823 strings out of 494923
- 192456 string characters out of 6180742
- 295136 words of memory out of 5000000
- 16691 multiletter control sequences out of 15000+600000
- 52664 words of font info for 72 fonts, out of 8000000 for 9000
+ 13979 strings out of 494923
+ 195674 string characters out of 6180742
+ 428225 words of memory out of 5000000
+ 16751 multiletter control sequences out of 15000+600000
+ 55125 words of font info for 78 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
- 37i,12n,60p,1329b,571s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,12n,60p,1329b,578s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/f
@@ -1307,10 +1369,10 @@ sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on Tutorials.pdf (27 pages, 3937573 bytes).
+Output written on Tutorials.pdf (51 pages, 4596487 bytes).
 PDF statistics:
- 330 PDF objects out of 1000 (max. 8388607)
- 275 compressed objects within 3 object streams
- 129 named destinations out of 1000 (max. 500000)
- 96 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 543 PDF objects out of 1000 (max. 8388607)
+ 456 compressed objects within 5 object streams
+ 213 named destinations out of 1000 (max. 500000)
+ 159 words of extra memory for PDF output out of 10000 (max. 10000000)
 

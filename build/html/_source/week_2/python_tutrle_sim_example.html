@@ -1,0 +1,237 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>&lt;no title&gt; &#8212; Tutorials  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Create Catkin Workspace" href="work_space.html" />
+    <link rel="prev" title="Understanding ROS Nodes" href="../week_1/ROS_node.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <p>See the following python script.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="c1">#!/usr/bin/env python</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">import</span> <span class="nn">turtlesim.srv</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span>
+
+<span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;robot_letter&#39;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">velocity_publisher</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/turtle1/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">vel_msg</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
+<span class="n">speed</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">angular_velocity</span><span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="c1"># Initial velocity values for the publisher</span>
+<span class="n">vel_msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vel_msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vel_msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vel_msg</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vel_msg</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vel_msg</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">move</span><span class="p">():</span>
+      
+    
+        
+    <span class="c1">#Setting the current time for distance calculus</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_sec</span><span class="p">()</span>
+    <span class="n">move_straight</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
+
+
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_sec</span><span class="p">()</span>
+    <span class="n">rotate_angle</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">t0</span><span class="p">)</span>
+
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_sec</span><span class="p">()</span>
+    <span class="n">move_straight</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
+
+   
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_sec</span><span class="p">()</span>
+    <span class="n">move_circle</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">t0</span><span class="p">)</span>
+    
+    
+    <span class="c1">#create a new robot</span>
+    <span class="n">create_second_robot</span><span class="p">()</span>
+
+
+<span class="c1"># a function to move the robot forward</span>
+<span class="k">def</span> <span class="nf">move_straight</span><span class="p">(</span><span class="n">move_distance</span><span class="p">,</span><span class="n">start_time</span><span class="p">):</span>
+    <span class="n">vel_msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">speed</span>
+    <span class="n">vel_msg</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="n">current_distance</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">#Loop to move the turtle in an specified distance</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">current_distance</span> <span class="o">&lt;</span> <span class="n">move_distance</span><span class="p">):</span>
+            <span class="c1">#Publish the velocity</span>
+            <span class="n">velocity_publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">vel_msg</span><span class="p">)</span>
+            <span class="c1">#Takes actual time to velocity calculus</span>
+            <span class="n">current_time</span><span class="o">=</span><span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_sec</span><span class="p">()</span>
+            <span class="c1">#Calculates distancePoseStamped</span>
+            <span class="n">current_distance</span><span class="o">=</span> <span class="n">speed</span><span class="o">*</span><span class="p">(</span><span class="n">current_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">)</span> 
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;curent distance </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">current_distance</span><span class="p">)</span>
+    <span class="n">stop_robot</span><span class="p">()</span>
+
+<span class="c1">#a function to roate the robot  angle</span>
+<span class="k">def</span> <span class="nf">rotate_angle</span><span class="p">(</span><span class="n">rotate_angle</span><span class="p">,</span><span class="n">start_time</span><span class="p">):</span>
+    <span class="n">vel_msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">vel_msg</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">angular_velocity</span>    
+    <span class="n">current_angle</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">#Loop to move the turtle in an specified angle</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">current_angle</span> <span class="o">&lt;</span> <span class="n">rotate_angle</span><span class="p">):</span>
+            <span class="c1">#Publish the velocity</span>
+            <span class="n">velocity_publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">vel_msg</span><span class="p">)</span>
+            <span class="c1">#Takes actual time to velocity calculus</span>
+            <span class="n">current_time</span><span class="o">=</span><span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_sec</span><span class="p">()</span>
+            <span class="c1">#Calculates angle PoseStamped</span>
+            <span class="n">current_angle</span><span class="o">=</span> <span class="n">angular_velocity</span><span class="o">*</span><span class="p">(</span><span class="n">current_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">)</span> 
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;curent distance </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">current_angle</span><span class="p">)</span>
+    <span class="n">stop_robot</span><span class="p">()</span>
+
+<span class="c1"># force the robot to stop</span>
+<span class="k">def</span> <span class="nf">stop_robot</span><span class="p">():</span>
+    <span class="n">vel_msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">vel_msg</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">velocity_publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">vel_msg</span><span class="p">)</span>
+
+<span class="c1">#move the robot in a curvey path</span>
+<span class="k">def</span> <span class="nf">move_circle</span><span class="p">(</span><span class="n">rotate_angle</span><span class="p">,</span><span class="n">start_time</span><span class="p">):</span>
+    <span class="n">vel_msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">vel_msg</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">angular_velocity</span>    
+    <span class="n">current_angle</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">#Loop to move the turtle in an specified angle</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">current_angle</span> <span class="o">&lt;</span> <span class="n">rotate_angle</span><span class="p">):</span>
+            <span class="c1">#Publish the velocity</span>
+            <span class="n">velocity_publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">vel_msg</span><span class="p">)</span>
+            <span class="c1">#Takes actual time to velocity calculus</span>
+            <span class="n">current_time</span><span class="o">=</span><span class="n">rospy</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_sec</span><span class="p">()</span>
+            <span class="c1">#Calculates angle PoseStamped</span>
+            <span class="n">current_angle</span><span class="o">=</span> <span class="n">angular_velocity</span><span class="o">*</span><span class="p">(</span><span class="n">current_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">)</span> 
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;curent distance </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">current_angle</span><span class="p">)</span>
+    <span class="n">stop_robot</span><span class="p">()</span>
+
+<span class="c1">#create the second turtlebot</span>
+<span class="k">def</span> <span class="nf">create_second_robot</span><span class="p">():</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s1">&#39;spawn&#39;</span><span class="p">)</span>
+    <span class="n">spawner</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;spawn&#39;</span><span class="p">,</span> <span class="n">turtlesim</span><span class="o">.</span><span class="n">srv</span><span class="o">.</span><span class="n">Spawn</span><span class="p">)</span>
+    <span class="n">spawner</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;turtle2&#39;</span><span class="p">)</span> 
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1">#Testing our function</span>
+        <span class="n">move</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSInterruptException</span><span class="p">:</span> <span class="k">pass</span>
+</pre></div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Tutorials</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../week_1/PC_setup.html">PC Setup</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../week_1/Ubuntu_gui.html">Ubuntu GUI</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../week_1/linux_basics.html">Linux Basic</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../week_1/ROS_node.html">ROS Node</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="work_space.html">Python  Turtlesim</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../week_3/serial_manipulator.html">Robotic Arm Simulation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../week_1/ROS_node.html" title="previous chapter">Understanding ROS Nodes</a></li>
+      <li>Next: <a href="work_space.html" title="next chapter">Create Catkin Workspace</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Lasi Piyathilaka.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/_source/week_2/python_tutrle_sim_example.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

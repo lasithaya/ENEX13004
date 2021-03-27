@@ -58,7 +58,7 @@ Following are some examples of absolute filenames.
   ``/etc/passwd
   /dev/rdsk/Os3``
 
-A pathname can also be relative to your current working directory. Relative pathnames never begin with /. Relative to user amrood's home directory, some pathnames might look like this −
+A pathname can also be relative to your current working directory. Relative pathnames never begin with /. Relative to user's home directory, some pathnames might look like this −
 
   ``chem/notes
   personal/res``
@@ -79,9 +79,9 @@ A pathname can also be relative to your current working directory. Relative path
     * The second-to-last field is the time the file was last modified.
     * If the file is a symbolic link, the link's target file is listed after the link's file name.
  1. Enter `ls -a` in the terminal.
-    * You will now see one additional file, which is hidden.
+    * You will now see  additional files, that starts with ".". These are hidden files
  1. Enter `ls -a -l` (or `ls -al`) in the command.
-    * You'll now see that the file `hidden_link.txt` points to `.hidden_text_file.txt`.
+    * You'll now see all  details of each file such as the creation date and etc.
 
 ### `pwd` and `cd` Commands ###
  1. Enter `pwd` into the terminal.
