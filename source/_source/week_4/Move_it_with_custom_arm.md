@@ -44,21 +44,24 @@ Now let's configure and a ROS move_it package for our robotic arm. Then we can u
 
   Click on the Create New MoveIt Configuration Package button to bring up the following screen:
 
+  ![](../../_static/move_it/move_it_1.png)
 
  Click on the browse button and navigate to the home folder and  choose the URDF file of your robotic arm  and then click Load Files. The Setup Assistant will load the files (this might take a few  minutes)
 
+  ![](../../_static/move_it/move_it_2.png)
 
 ### Step 2: Generate Self-Collision Matrix
 
 
   The Default Self-Collision Matrix Generator searches for pairs of links on the robot that can safely be disabled from collision checking, decreasing motion planning processing time. These pairs of links  are disabled when they are always in collision, never in collision, in collision in the robot's default position or when the links are adjacent to each other on the kinematic chain. The sampling density specifies how many random robot positions to check for self collision.
 
-
   Click on the Self-Collisions pane selector on the left-hand side and click on the Generate Collision Matrix button. The Setup Assistant will work for a few second before presenting you the results of its computation in the main table.
+
+![](../../_static/move_it/move_it_3.png)
 
 ### Srep 3 : Virtual Joints
 
-Virtual joints are used primarily to attach the robot to the world. For our robot modela we will define only one virtual joint attaching the base_link of the Panda to the world world frame. This virtual joint represents the motion of the base of the robot in a plane.
+Virtual joints are used primarily to attach the robot to the world. For our robot modela we will define only one virtual joint attaching the base_link of the our robotic arm to the world world frame. This virtual joint represents the motion of the base of the robot in a plane.
 
   * Click on the Virtual Joints pane selector. Click on Add Virtual Joint
   * Set the joint name as "virtual_joint"
@@ -67,17 +70,19 @@ Virtual joints are used primarily to attach the robot to the world. For our robo
 
 Click Save and you should see this screen:
 
-
+![](../../_static/move_it/move_it_4.png)
 
 ### Step 4: Add Planning Groups
   Planning groups are used for semantically describing different parts of your robot, such as defining what an arm is, or an end effector.
 
   * Click on the Planning Groups pane selector.
-  *Click on Add Group and you should see the following screen:
+  * Click on Add Group and you should see the following screen:
 
 
+![](../../_static/move_it/move_it_5.png)
 
-   Add the arm
+
+  ##### Add the arm
 
   We will first add  as a planning group
 
@@ -85,17 +90,19 @@ Click Save and you should see this screen:
   * Choose kdl_kinematics_plugin/KDLKinematicsPlugin as the kinematics solver.
   * et Kin. Search Resolution and Kin. Search Timeout stay at their default values.
 
+![](../../_static/move_it/move_it_6.png)
+
 Now, click on the Add Joints button. You will see a list of joints on the left hand side. You need to choose all the joints that belong to the arm and add them to the right hand side. The joints are arranged in the order that they are stored in an internal tree structure. This makes it easy to select a serial chain of joints.
 
 
     Click on virtual_joint, hold down the Shift button on your keyboard and then click on the joint_ee. Now click on the > button to add these joints into the list of selected joints on the right.
 
-  **picture
+![](../../_static/move_it/move_it_7.png)
 
 
   Click Save to save the selected group.
 
-  **picture
+![](../../_static/move_it/move_it_8.png)
 
   #### Adding the gripper
 
@@ -108,6 +115,9 @@ Now, click on the Add Joints button. You will see a list of joints on the left h
   * Choose link_ee and add them to the list of Selected Links on the right hand side.
   * Click Save
 
+
+![](../../_static/move_it/move_it_9.png)
+
 ### Step 5: Add Robot Poses
 
   The Setup Assistant allows you to add certain fixed poses into the configuration. This helps if, for example, you want to define a certain position of the robot as a Home position.
@@ -116,11 +126,11 @@ Now, click on the Add Joints button. You will see a list of joints on the left h
   * Click Add Pose. Choose a name for the pose. The robot will be in its Default position where the joint values are set to the mid-range of the allowed joint value range. Move the individual joints around until you are happy and then Save the pose. Note how poses are associated with particular groups. You can save individual poses for each group.
   * IMPORTANT TIP: Try to move all the joints around. If there is something wrong with the joint limits in your URDF, you should be able to see it immediately here
 
-**picture
+![](../../_static/move_it/move_it_10.png)
 
 
 ### Step 6: Label End Effectors
-  We have already added the gripper of the Panda. Now, we will designate this group as a special group: end effectors. Designating this group as end effectors allows some special operations to happen on them internally.
+  We have already added the gripper of the robotic arm. Now, we will designate this group as a special group: end effectors. Designating this group as end effectors allows some special operations to happen on them internally.
 
   * Click on the End Effectors pane.
   * Click Add End Effector.
@@ -129,6 +139,7 @@ Now, click on the Add Joints button. You will see a list of joints on the left h
   * Select link_3 as the Parent Link for this end-effector.
   * Leave Parent Group blank.
 
+![](../../_static/move_it/move_it_11.png)
 
 ### Step 7: Add Passive Joints
   The passive joints tab is meant to allow specification of any passive joints that might exist in a robot. These are joints that are unactuated on a robot (e.g. passive casters.) This tells the planners that they cannot (kinematically) plan for these joints because they can't be directly controlled. Our robotic arm does not have any passive joints so we will skip this step.
@@ -144,7 +155,7 @@ Now, click on the Add Joints button. You will see a list of joints on the left h
   Click on the ROS Control pane selector.
 
 
-***picture
+![](../../_static/move_it/move_it_13.png)
 
   Click on Add Controller and you should see the following screen:
 
@@ -158,13 +169,13 @@ Now, click on the Add Joints button. You will see a list of joints on the left h
 
 
 
-*** picture
+![](../../_static/move_it/move_it_15.png)
 
 
-Choose panda_arm planning group to add all the joints in that group to the arm controller.
+Choose arm planning group to add all the joints in that group to the arm controller and click save
 
 
-*** picture
+![](../../_static/move_it/move_it_16.png)
 
 ### Step 9 - Simulation 
 
@@ -185,12 +196,18 @@ We will skip 3D perception as we don't have a attached 3D sensor.
 
   Click on the Generate Package button. The Setup Assistant will now generate and write a set of launch and config files into the directory of your choosing. All the generated files will appear in the Generated Files/Folders tab and you can click on each of them for a description of what they contain.
 
-
+![](../../_static/move_it/move_it_17.png)
 
   Congratulations!! - You are now done generating the configuration files you need for MoveIt. Now you can exit set up assistance.
 
 
+### Step 12 : Enabling Position onlly Inverse Kinematics
 
+Since our robotic arm has only 3DOF inverse kinematics can't be always solved for 6 DOF pose of the end effector. Therefore we have to enable the position only inverse kinematics manually.
+
+Through the file browser go to `catkin_ws/src/moveit_arm/config` folder and open `kinematics.yaml` file and add  `position_only_ik: True` line to the end as shown in the following figure. This will enable the position only kinematics.
+ 
+![](../../_static/move_it/move_it_19.png)
 
 
 

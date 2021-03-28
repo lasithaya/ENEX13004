@@ -100,6 +100,17 @@ ENEX13004:Week 4- Move It - Robotic arm simulation
 
    MoveIt Configuration <_source/week_4/Move_it_with_custom_arm.md>
 
+
+
+
+ENEX13004:Week 4- Move It - Robotic arm simulation using RVIZ
+--------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   MoveIt RVIZ Control  <_source/week_4/moveit_RVIZ.md>
+
 Indices and tables
 ==================
 

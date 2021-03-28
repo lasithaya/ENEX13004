@@ -1849,7 +1849,11 @@ This will bring up the start screen with two choices: Create New MoveIt Configur
 
 Click on the Create New MoveIt Configuration Package button to bring up the following screen:
 
+\sphinxincludegraphics{{move_it_1}.png}
+
 Click on the browse button and navigate to the home folder and  choose the URDF file of your robotic arm  and then click Load Files. The Setup Assistant will load the files (this might take a few  minutes)
+
+\sphinxincludegraphics{{move_it_2}.png}
 
 
 \subsubsection{Step 2: Generate Self-Collision Matrix}
@@ -1858,10 +1862,12 @@ The Default Self-Collision Matrix Generator searches for pairs of links on the r
 
 Click on the Self-Collisions pane selector on the left-hand side and click on the Generate Collision Matrix button. The Setup Assistant will work for a few second before presenting you the results of its computation in the main table.
 
+\sphinxincludegraphics{{move_it_3}.png}
+
 
 \subsubsection{Srep 3 : Virtual Joints}
 \label{\detokenize{_source/week_4/Move_it_with_custom_arm:srep-3-virtual-joints}}
-Virtual joints are used primarily to attach the robot to the world. For our robot modela we will define only one virtual joint attaching the base\_link of the Panda to the world world frame. This virtual joint represents the motion of the base of the robot in a plane.
+Virtual joints are used primarily to attach the robot to the world. For our robot modela we will define only one virtual joint attaching the base\_link of the our robotic arm to the world world frame. This virtual joint represents the motion of the base of the robot in a plane.
 \begin{itemize}
 \item {} 
 Click on the Virtual Joints pane selector. Click on Add Virtual Joint
@@ -1879,6 +1885,8 @@ Set the Joint Type as “fixed”.
 
 Click Save and you should see this screen:
 
+\sphinxincludegraphics{{move_it_4}.png}
+
 
 \subsubsection{Step 4: Add Planning Groups}
 \label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-4-add-planning-groups}}
@@ -1886,12 +1894,17 @@ Planning groups are used for semantically describing different parts of your rob
 \begin{itemize}
 \item {} 
 Click on the Planning Groups pane selector.
-*Click on Add Group and you should see the following screen:
+
+\item {} 
+Click on Add Group and you should see the following screen:
 
 \end{itemize}
 
-Add the arm
+\sphinxincludegraphics{{move_it_5}.png}
 
+
+\paragraph{Add the arm}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:add-the-arm}}
 We will first add  as a planning group
 \begin{itemize}
 \item {} 
@@ -1905,17 +1918,19 @@ et Kin. Search Resolution and Kin. Search Timeout stay at their default values.
 
 \end{itemize}
 
+\sphinxincludegraphics{{move_it_6}.png}
+
 Now, click on the Add Joints button. You will see a list of joints on the left hand side. You need to choose all the joints that belong to the arm and add them to the right hand side. The joints are arranged in the order that they are stored in an internal tree structure. This makes it easy to select a serial chain of joints.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{Click} \PYG{n}{on} \PYG{n}{virtual\PYGZus{}joint}\PYG{p}{,} \PYG{n}{hold} \PYG{n}{down} \PYG{n}{the} \PYG{n}{Shift} \PYG{n}{button} \PYG{n}{on} \PYG{n}{your} \PYG{n}{keyboard} \PYG{o+ow}{and} \PYG{n}{then} \PYG{n}{click} \PYG{n}{on} \PYG{n}{the} \PYG{n}{joint\PYGZus{}ee}\PYG{o}{.} \PYG{n}{Now} \PYG{n}{click} \PYG{n}{on} \PYG{n}{the} \PYG{o}{\PYGZgt{}} \PYG{n}{button} \PYG{n}{to} \PYG{n}{add} \PYG{n}{these} \PYG{n}{joints} \PYG{n}{into} \PYG{n}{the} \PYG{n+nb}{list} \PYG{n}{of} \PYG{n}{selected} \PYG{n}{joints} \PYG{n}{on} \PYG{n}{the} \PYG{n}{right}\PYG{o}{.}
 \end{sphinxVerbatim}
 
-**picture
+\sphinxincludegraphics{{move_it_7}.png}
 
 Click Save to save the selected group.
 
-**picture
+\sphinxincludegraphics{{move_it_8}.png}
 
 
 \paragraph{Adding the gripper}
@@ -1942,6 +1957,8 @@ Click Save
 
 \end{itemize}
 
+\sphinxincludegraphics{{move_it_9}.png}
+
 
 \subsubsection{Step 5: Add Robot Poses}
 \label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-5-add-robot-poses}}
@@ -1958,12 +1975,12 @@ IMPORTANT TIP: Try to move all the joints around. If there is something wrong wi
 
 \end{itemize}
 
-**picture
+\sphinxincludegraphics{{move_it_10}.png}
 
 
 \subsubsection{Step 6: Label End Effectors}
 \label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-6-label-end-effectors}}
-We have already added the gripper of the Panda. Now, we will designate this group as a special group: end effectors. Designating this group as end effectors allows some special operations to happen on them internally.
+We have already added the gripper of the robotic arm. Now, we will designate this group as a special group: end effectors. Designating this group as end effectors allows some special operations to happen on them internally.
 \begin{itemize}
 \item {} 
 Click on the End Effectors pane.
@@ -1985,6 +2002,8 @@ Leave Parent Group blank.
 
 \end{itemize}
 
+\sphinxincludegraphics{{move_it_11}.png}
+
 
 \subsubsection{Step 7: Add Passive Joints}
 \label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-7-add-passive-joints}}
@@ -1999,7 +2018,7 @@ ROS Control tab can be used to auto generate simulated controllers to actuate th
 
 Click on the ROS Control pane selector.
 
-***picture
+\sphinxincludegraphics{{move_it_13}.png}
 
 Click on Add Controller and you should see the following screen:
 \begin{itemize}
@@ -2020,11 +2039,11 @@ Now, click on Add Planning Group Joints.
 
 \end{itemize}
 
-*** picture
+\sphinxincludegraphics{{move_it_15}.png}
 
-Choose panda\_arm planning group to add all the joints in that group to the arm controller.
+Choose arm planning group to add all the joints in that group to the arm controller and click save
 
-*** picture
+\sphinxincludegraphics{{move_it_16}.png}
 
 
 \subsubsection{Step 9 - Simulation}
@@ -2051,7 +2070,229 @@ Now come back to move\_it configuration (click on the blue arrow on the left han
 
 Click on the Generate Package button. The Setup Assistant will now generate and write a set of launch and config files into the directory of your choosing. All the generated files will appear in the Generated Files/Folders tab and you can click on each of them for a description of what they contain.
 
+\sphinxincludegraphics{{move_it_17}.png}
+
 Congratulations!! - You are now done generating the configuration files you need for MoveIt. Now you can exit set up assistance.
+
+
+\subsubsection{Step 12 : Enabling Position onlly Inverse Kinematics}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-12-enabling-position-onlly-inverse-kinematics}}
+Since our robotic arm has only 3DOF inverse kinematics can’t be always solved for 6 DOF pose of the end effector. Therefore we have to enable the position only inverse kinematics manually.
+
+Through the file browser go to \sphinxcode{\sphinxupquote{catkin\_ws/src/moveit\_arm/config}} folder and open \sphinxcode{\sphinxupquote{kinematics.yaml}} file and add  \sphinxcode{\sphinxupquote{position\_only\_ik: True}} line to the end as shown in the following figure. This will enable the position only kinematics.
+
+\sphinxincludegraphics{{move_it_19}.png}
+
+
+\chapter{ENEX13004:Week 4- Move It - Robotic arm simulation using RVIZ}
+\label{\detokenize{index:enex13004-week-4-move-it-robotic-arm-simulation-using-rviz}}
+
+\section{MoveIt Quickstart in RViz}
+\label{\detokenize{_source/week_4/moveit_RVIZ:moveit-quickstart-in-rviz}}\label{\detokenize{_source/week_4/moveit_RVIZ::doc}}
+The quickest way to get started using MoveIt is through its RViz plugin. Rviz is the primary visualizer in ROS and an incredibly useful tool for debugging robotics. The MoveIt Rviz plugin allows you to setup virtual environments (scenes), create start and goal states for the robot interactively, test various motion planners, and visualize the output.
+
+
+\subsection{Step 1: Launch the Demo and Configure the Plugin}
+\label{\detokenize{_source/week_4/moveit_RVIZ:step-1-launch-the-demo-and-configure-the-plugin}}
+
+\bigskip\hrule\bigskip
+
+\begin{itemize}
+\item {} 
+First go to your \sphinxcode{\sphinxupquote{catKin\_ws}} and run \sphinxcode{\sphinxupquote{catki\_make }}.
+
+\item {} 
+Also run \sphinxcode{\sphinxupquote{catkin\_profile}} command
+
+\item {} 
+Launch the demo: ::
+
+\sphinxcode{\sphinxupquote{ roslaunch moveit\_arm demo.launch rviz\_tutorial:=true}}
+
+\item {} 
+If you are doing this for the first time, you might see an empty world in RViz and will have to add the Motion Planning Plugin. If you can see the robot then you can skip the following steps
+\begin{itemize}
+\item {} 
+You should see an empty world in RViz:
+
+\item {} 
+In the RViz Displays Tab, press \sphinxstyleemphasis{Add}:
+
+\item {} 
+From the moveit\_ros\_visualization folder, choose “MotionPlanning” as the DisplayType. Press “Ok”.
+
+\item {} 
+You should now see the robotic arm  in RViz:
+
+\end{itemize}
+
+\textbar{}D\textbar{}
+
+\end{itemize}
+
+\sphinxincludegraphics{{move_It_1}.png}
+\begin{itemize}
+\item {} 
+Once you have the Motion Planning Plugin loaded, we can configure it. In the “Global Options” tab of the “Displays” subwindow, set the \sphinxstylestrong{Fixed Frame} field to \sphinxcode{\sphinxupquote{/base\_link}}
+
+\item {} 
+Now, you can start configuring the Plugin for your robot . Click on “MotionPlanning” within “Displays”.
+\begin{itemize}
+\item {} 
+Make sure the \sphinxstylestrong{Robot Description} field is set to \sphinxcode{\sphinxupquote{robot\_description}}.
+
+\item {} 
+Make sure the \sphinxstylestrong{Planning Scene Topic} field is set to \sphinxcode{\sphinxupquote{/planning\_scene}}.
+Click on topic name to expose topic-name drop-down.
+
+\item {} 
+In \sphinxstylestrong{Planning Request}, change the \sphinxstylestrong{Planning Group} to \sphinxcode{\sphinxupquote{arm}}.
+
+\item {} 
+In \sphinxstylestrong{Planned Path}, change the \sphinxstylestrong{Trajectory Topic} to \sphinxcode{\sphinxupquote{/move\_group/display\_planned\_path}}.
+
+\end{itemize}
+
+\end{itemize}
+
+\sphinxincludegraphics{{move_It_2}.png}
+
+\sphinxincludegraphics{{move_It_3}.png}
+
+
+\subsection{Step 2: Play with the Visualized Robots}
+\label{\detokenize{_source/week_4/moveit_RVIZ:step-2-play-with-the-visualized-robots}}
+There are four different overlapping visualizations:
+\begin{itemize}
+\item {} 
+The robot’s configuration in the \sphinxcode{\sphinxupquote{/planning scene}} planning environment (active by default).
+
+\item {} 
+The planned path for the robot (active by default).
+
+\item {} 
+Green: The start state for motion planning (disabled by default).
+
+\item {} 
+Orange: The goal state for motion planning (active by default).
+
+\end{itemize}
+
+The display states for each of these visualizations can be toggled on and off using checkboxes:
+\begin{itemize}
+\item {} 
+The planning scene robot using the \sphinxstylestrong{Show Robot Visual} checkbox in the \sphinxstylestrong{Scene Robot} tab.
+
+\item {} 
+The planned path using the \sphinxstylestrong{Show Robot Visual} checkbox in the \sphinxstylestrong{Planned Path} tab.
+
+\item {} 
+The start state using the \sphinxstylestrong{Query Start State} checkbox in the \sphinxstylestrong{Planning Request} tab.
+
+\item {} 
+The goal state using the \sphinxstylestrong{Query Goal State} checkbox in the \sphinxstylestrong{Planning Request} tab.
+
+\item {} 
+Play with all these checkboxes to switch on and off different visualizations.
+
+\end{itemize}
+
+\sphinxincludegraphics{{move_It_4}.png}
+
+
+\subsection{Step 3: Interact with the Robot}
+\label{\detokenize{_source/week_4/moveit_RVIZ:step-3-interact-with-the-robot}}
+For the next steps we will want only the scene robot, start state and goal state:
+\begin{itemize}
+\item {} 
+Check the \sphinxstylestrong{Show Robot Visual} checkbox in the \sphinxstylestrong{Planned Path} tab
+
+\item {} 
+Un-check the \sphinxstylestrong{Show Robot Visual} checkbox in the \sphinxstylestrong{Scene Robot} tab
+
+\item {} 
+Check the \sphinxstylestrong{Query Goal State} checkbox in the \sphinxstylestrong{Planning Request} tab.
+
+\item {} 
+Check the \sphinxstylestrong{Query Start State} checkbox in the \sphinxstylestrong{Planning Request} tab.
+
+\end{itemize}
+
+There should now be two interactive markers. One marker corresponding to the orange colored arm will be used to set the “Goal State” for motion planning and the other marker corresponding to a green colored arm are used to set the “Start State” for motion planning. If you don’t see the interactive markers press \sphinxstylestrong{Interact} in the top menu of RViz (Note: some tools may be hidden, press \sphinxstylestrong{“+”} in the top menu to add the \sphinxstylestrong{Interact} tool as shown below).
+
+You should now be able to use these markers to drag the arm around and change its orientation. Try it!
+
+\sphinxincludegraphics{{move_It_4}.png}
+
+
+\subsection{Moving into collision}
+\label{\detokenize{_source/week_4/moveit_RVIZ:moving-into-collision}}
+Note what happens when you try to move one of the arms into collision with the other. The two links that are in collision will turn red.
+
+\sphinxincludegraphics{{move_It_5}.png}
+
+The “Use Collision-Aware IK” checkbox found within the MotionPlanning plugin under the Planning tab allows you to toggle the behavior of the IK solver. When the checkbox is ticked, the solver will keep attempting to find a collision-free solution for the desired end-effector pose. When it is not checked, the solver will allow collisions to happen in the solution. The links in collision will always still be visualized in red, regardless of the state of the checkbox.
+
+
+\subsection{Moving out of Reachable Workspace}
+\label{\detokenize{_source/week_4/moveit_RVIZ:moving-out-of-reachable-workspace}}
+Note what happens when you try to move an end-effector out of its reachable workspace.
+
+\sphinxincludegraphics{{move_It_6}.png}
+
+
+\subsection{Step 4: Use Motion Planning with the Robot}
+\label{\detokenize{_source/week_4/moveit_RVIZ:step-4-use-motion-planning-with-the-robot}}\begin{itemize}
+\item {} 
+Now, you can start motion planning with the Robtic arm  in the MoveIt RViz Plugin.
+\begin{itemize}
+\item {} 
+Move the Start State to a desired location.
+
+\item {} 
+Move the Goal State to another desired location.
+
+\item {} 
+Make sure both states are not in collision with the robot itself.
+
+\item {} 
+Make sure the Planned Path is being visualized. Also check the
+\sphinxstylestrong{Show Trail} checkbox in the \sphinxstylestrong{Planned Path} tab.
+
+\item {} 
+In the \sphinxstylestrong{MotionPlanning} window under the \sphinxstylestrong{Planning} tab, press the \sphinxstylestrong{Plan} button. You
+should be able to see a visualization of the arm moving and a trail.
+
+\end{itemize}
+
+\end{itemize}
+
+\sphinxincludegraphics{{move_It_7}.png}
+
+
+\subsection{Step 5: Introspecting Trajectory Waypoints}
+\label{\detokenize{_source/week_4/moveit_RVIZ:step-5-introspecting-trajectory-waypoints}}
+You can visually introspect trajectory point by point on RViz.
+\begin{itemize}
+\item {} 
+From “\sphinxcode{\sphinxupquote{Panels}}” menu, select “\sphinxcode{\sphinxupquote{MotionPlanning - Slider}}”. You’ll see a new Slider panel on RViz.
+
+\item {} 
+Set your goal pose, then run \sphinxcode{\sphinxupquote{Plan}}.
+
+\item {} 
+Play with the “\sphinxcode{\sphinxupquote{Slider}}” panel, e.g. move the slider, push “\sphinxcode{\sphinxupquote{Play}}” button.
+
+\end{itemize}
+
+NOTE: Once you placed your EEF to a new goal, be sure to run \sphinxcode{\sphinxupquote{Plan}} before running \sphinxcode{\sphinxupquote{Play}} \textendash{} otherwise you’ll see the waypoints for the previous goal if available.
+
+\sphinxincludegraphics{{move_It_8}.png}
+
+
+\subsection{Step 6: Saving Your Configuration}
+\label{\detokenize{_source/week_4/moveit_RVIZ:step-6-saving-your-configuration}}
+RViz enables you to save your configuration under \sphinxcode{\sphinxupquote{File-\textgreater{}Save Config}}. You should do this before continuing on to the next tutorials.
 
 
 \chapter{Indices and tables}

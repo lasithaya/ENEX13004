@@ -50,14 +50,26 @@
 \contentsline {subsection}{\numberline {10.2.1}MoveIt Setup Assistant}{41}{subsection.10.2.1}
 \contentsline {subsubsection}{Step 1: Start}{41}{subsubsection*.14}
 \contentsline {subsubsection}{Step 2: Generate Self-Collision Matrix}{42}{subsubsection*.15}
-\contentsline {subsubsection}{Srep 3 : Virtual Joints}{42}{subsubsection*.16}
-\contentsline {subsubsection}{Step 4: Add Planning Groups}{42}{subsubsection*.17}
-\contentsline {paragraph}{Adding the gripper}{43}{paragraph*.18}
-\contentsline {subsubsection}{Step 5: Add Robot Poses}{43}{subsubsection*.19}
-\contentsline {subsubsection}{Step 6: Label End Effectors}{43}{subsubsection*.20}
-\contentsline {subsubsection}{Step 7: Add Passive Joints}{44}{subsubsection*.21}
-\contentsline {subsubsection}{Step 8: ROS Control}{44}{subsubsection*.22}
-\contentsline {subsubsection}{Step 9 - Simulation}{44}{subsubsection*.23}
-\contentsline {subsubsection}{Step 10 - 3D perception}{44}{subsubsection*.24}
-\contentsline {subsubsection}{Step 11: Generate Configuration Files}{44}{subsubsection*.25}
-\contentsline {chapter}{\numberline {11}Indices and tables}{47}{chapter.11}
+\contentsline {subsubsection}{Srep 3 : Virtual Joints}{43}{subsubsection*.16}
+\contentsline {subsubsection}{Step 4: Add Planning Groups}{44}{subsubsection*.17}
+\contentsline {paragraph}{Add the arm}{44}{paragraph*.18}
+\contentsline {paragraph}{Adding the gripper}{46}{paragraph*.19}
+\contentsline {subsubsection}{Step 5: Add Robot Poses}{47}{subsubsection*.20}
+\contentsline {subsubsection}{Step 6: Label End Effectors}{48}{subsubsection*.21}
+\contentsline {subsubsection}{Step 7: Add Passive Joints}{49}{subsubsection*.22}
+\contentsline {subsubsection}{Step 8: ROS Control}{49}{subsubsection*.23}
+\contentsline {subsubsection}{Step 9 - Simulation}{51}{subsubsection*.24}
+\contentsline {subsubsection}{Step 10 - 3D perception}{51}{subsubsection*.25}
+\contentsline {subsubsection}{Step 11: Generate Configuration Files}{51}{subsubsection*.26}
+\contentsline {subsubsection}{Step 12 : Enabling Position onlly Inverse Kinematics}{52}{subsubsection*.27}
+\contentsline {chapter}{\numberline {11}ENEX13004:Week 4- Move It - Robotic arm simulation using RVIZ}{53}{chapter.11}
+\contentsline {section}{\numberline {11.1}MoveIt Quickstart in RViz}{53}{section.11.1}
+\contentsline {subsection}{\numberline {11.1.1}Step 1: Launch the Demo and Configure the Plugin}{53}{subsection.11.1.1}
+\contentsline {subsection}{\numberline {11.1.2}Step 2: Play with the Visualized Robots}{55}{subsection.11.1.2}
+\contentsline {subsection}{\numberline {11.1.3}Step 3: Interact with the Robot}{56}{subsection.11.1.3}
+\contentsline {subsection}{\numberline {11.1.4}Moving into collision}{57}{subsection.11.1.4}
+\contentsline {subsection}{\numberline {11.1.5}Moving out of Reachable Workspace}{58}{subsection.11.1.5}
+\contentsline {subsection}{\numberline {11.1.6}Step 4: Use Motion Planning with the Robot}{58}{subsection.11.1.6}
+\contentsline {subsection}{\numberline {11.1.7}Step 5: Introspecting Trajectory Waypoints}{59}{subsection.11.1.7}
+\contentsline {subsection}{\numberline {11.1.8}Step 6: Saving Your Configuration}{60}{subsection.11.1.8}
+\contentsline {chapter}{\numberline {12}Indices and tables}{61}{chapter.12}
