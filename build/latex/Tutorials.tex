@@ -2482,6 +2482,56 @@ Then we are also going to run Turtlebot 3 platform in the Gazebo simulation envi
 The required packages to simulate Turtlebot 3 (A.K.A Burger) are already installed on your virtual machine.
 
 
+\subsection{Installing the required packages}
+\label{\detokenize{_source/week_5/Turtle_bot3_simulation:installing-the-required-packages}}
+To install turtlebot3 packages run following commands in a terminal. These steps are essential and need to be run in the following order
+\begin{itemize}
+\item {} 
+set up keys
+
+\end{itemize}
+
+Goto the  melodic installation website from the following link and  run the command in section 1.3 setup key
+
+\sphinxurl{http://wiki.ros.org/melodic/Installation/Ubuntu}
+
+Wait until this finishes.
+\begin{itemize}
+\item {} 
+Then do an update
+
+\end{itemize}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{sudo} \PYG{n}{apt}\PYG{o}{\PYGZhy{}}\PYG{n}{get} \PYG{n}{update}
+\end{sphinxVerbatim}
+\begin{itemize}
+\item {} 
+Install turtlebot 3 packages
+
+\end{itemize}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+
+\PYG{n}{sudo} \PYG{n}{apt} \PYG{n}{install} \PYG{n}{ros}\PYG{o}{\PYGZhy{}}\PYG{n}{melodic}\PYG{o}{\PYGZhy{}}\PYG{n}{turtlebot3}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\end{sphinxVerbatim}
+
+If you get an error you might have to wait until background software update is finished. Also try to restart the virtual machine and try again later.
+\begin{itemize}
+\item {} 
+Turtlebot model configuration
+
+\end{itemize}
+
+There are two kinds of model for Turtlebot3. If you don’t choose one of them, the program will not run. For general purpose, we choose to use “burger” model. This need to be setup in the \sphinxcode{\sphinxupquote{.bashrc}} file. Run the following command to do that.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{export TURTLEBOT3\PYGZus{}MODEL=burger}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{o}{.}\PYG{n}{bashrc}
+\PYG{n}{source} \PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{o}{.}\PYG{n}{bashrc}
+
+\end{sphinxVerbatim}
+
+
 \subsection{Launching TurtleBot 3 simulation in RVIZ}
 \label{\detokenize{_source/week_5/Turtle_bot3_simulation:launching-turtlebot-3-simulation-in-rviz}}
 The TurtleBot 3 RVIZ simulation is created and controlled by the \sphinxcode{\sphinxupquote{turtlebot3\_fake\_node}} node. This node generates the model of the TurtleBot in RVIZ and allows for it to be controlled using the Teleop node.

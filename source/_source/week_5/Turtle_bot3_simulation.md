@@ -7,6 +7,54 @@ Then we are also going to run Turtlebot 3 platform in the Gazebo simulation envi
 
 The required packages to simulate Turtlebot 3 (A.K.A Burger) are already installed on your virtual machine.
 
+## Installing the required packages
+
+
+To install turtlebot3 packages run following commands in a terminal. These steps are essential and need to be run in the following order
+
+
+* set up keys
+
+
+ Goto the  melodic installation website from the following link and  run the command in section 1.3 setup key
+
+
+<http://wiki.ros.org/melodic/Installation/Ubuntu>
+
+
+Wait until this finishes.
+
+* Then do an update
+
+```
+sudo apt-get update
+
+```
+
+* Install turtlebot 3 packages
+
+```
+
+sudo apt install ros-melodic-turtlebot3-*
+
+```
+If you get an error you might have to wait until background software update is finished. Also try to restart the virtual machine and try again later.
+* Turtlebot model configuration
+
+There are two kinds of model for Turtlebot3. If you don’t choose one of them, the program will not run. For general purpose, we choose to use “burger” model. This need to be setup in the ``.bashrc`` file. Run the following command to do that.
+
+```
+echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
+source ~/.bashrc
+
+
+```
+
+
+
+
+
+
 
 ## Launching TurtleBot 3 simulation in RVIZ
 
