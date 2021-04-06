@@ -11,7 +11,7 @@ The quickest way to get started using MoveIt is through its RViz plugin. Rviz is
 ------------------------------------------------
 * First go to your `` catKin_ws `` and run ``catki_make ``.
 
-* Also run `` catkin_profile `` command 
+* Also run `` rospack profile `` command 
 
 
 * Launch the demo: ::
@@ -158,3 +158,22 @@ NOTE: Once you placed your EEF to a new goal, be sure to run `Plan` before runni
 ### Step 6: Saving Your Configuration
 
 RViz enables you to save your configuration under ``File->Save Config``. You should do this before continuing on to the next tutorials.
+
+
+
+### License
+
+This tutorial is modified from the original content from
+
+ http://docs.ros.org/en/melodic/api/moveit_tutorials/html/doc/quickstart_in_rviz/quickstart_in_rviz_tutorial.html 
+
+with BSD 3 License.
+
+BSD 3-Clause License
+
+  Copyright (c) 2008-2013, Willow Garage, Inc.
+  Copyright (c) 2015-2019, PickNik, LLC.
+  All rights reserved.
+
+
+

@@ -58,7 +58,7 @@
 
 
 \title{Tutorials Documentation}
-\date{Mar 27, 2021}
+\date{Apr 06, 2021}
 \release{}
 \author{Lasi Piyathilaka}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -1803,7 +1803,7 @@ Watch the live or the recoded class for more information
 
 \section{Using MoveIt Package for Robotic Arm Path Planning}
 \label{\detokenize{_source/week_4/Move_it_with_custom_arm:using-moveit-package-for-robotic-arm-path-planning}}\label{\detokenize{_source/week_4/Move_it_with_custom_arm::doc}}
-In this tutorial we will creat and configure a robotic arm to use the Move\_it ros package. Then we can use RVIZ to move the rootic arm to the desired location
+In this tutorial we will creat and configure a robotic arm to use the MoveIt ros package. Then we can use RVIZ to move the rootic arm to the desired location
 
 Let’s make sure that we  have the most up to date packages: ::
 
@@ -1815,7 +1815,7 @@ Let’s make sure that we  have the most up to date packages: ::
 
 Install MoveIt
 
-The simplest way to install MoveIt is from pre-built binaries (Debian): ::
+The simplest way to install MoveIt is from pre-built binaries (Debian):
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
  \PYG{n}{sudo} \PYG{n}{apt} \PYG{n}{install} \PYG{n}{ros}\PYG{o}{\PYGZhy{}}\PYG{n}{melodic}\PYG{o}{\PYGZhy{}}\PYG{n}{moveit}
@@ -1824,7 +1824,7 @@ The simplest way to install MoveIt is from pre-built binaries (Debian): ::
 
 \section{Creating a Moveit package for a robotic arm}
 \label{\detokenize{_source/week_4/Move_it_with_custom_arm:creating-a-moveit-package-for-a-robotic-arm}}
-Now let’s configure and a ROS move\_it package for our robotic arm. Then we can use RVIZ to set goal locations and the move-it package will do inverse kinematics and path planning.
+Now let’s configure the ROS moveit package for our robotic arm. Then we can use RVIZ to set goal locations and the moveit package will do the inverse kinematics and  the path planning.
 \begin{itemize}
 \item {} 
 First download and save the URDF file that we created in last week to the home folder. You can download the urdf file from the moodle site.
@@ -1847,7 +1847,7 @@ To start the MoveIt Setup Assistant:
 
 This will bring up the start screen with two choices: Create New MoveIt Configuration Package or Edit Existing MoveIt Configuration Package.
 
-Click on the Create New MoveIt Configuration Package button to bring up the following screen:
+Click on the Create New MoveIt Configuration Package button to bring up the following screens.:
 
 \sphinxincludegraphics{{move_it_1}.png}
 
@@ -1867,7 +1867,7 @@ Click on the Self-Collisions pane selector on the left-hand side and click on th
 
 \subsubsection{Srep 3 : Virtual Joints}
 \label{\detokenize{_source/week_4/Move_it_with_custom_arm:srep-3-virtual-joints}}
-Virtual joints are used primarily to attach the robot to the world. For our robot modela we will define only one virtual joint attaching the base\_link of the our robotic arm to the world world frame. This virtual joint represents the motion of the base of the robot in a plane.
+Virtual joints are used primarily to attach the robot to the world. For our robot modela we will define only one virtual joint attaching the base\_link of the our robotic arm to the world  frame. This virtual joint represents the motion of the base of the robot in a plane.
 \begin{itemize}
 \item {} 
 Click on the Virtual Joints pane selector. Click on Add Virtual Joint
@@ -1922,9 +1922,7 @@ et Kin. Search Resolution and Kin. Search Timeout stay at their default values.
 
 Now, click on the Add Joints button. You will see a list of joints on the left hand side. You need to choose all the joints that belong to the arm and add them to the right hand side. The joints are arranged in the order that they are stored in an internal tree structure. This makes it easy to select a serial chain of joints.
 
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Click} \PYG{n}{on} \PYG{n}{virtual\PYGZus{}joint}\PYG{p}{,} \PYG{n}{hold} \PYG{n}{down} \PYG{n}{the} \PYG{n}{Shift} \PYG{n}{button} \PYG{n}{on} \PYG{n}{your} \PYG{n}{keyboard} \PYG{o+ow}{and} \PYG{n}{then} \PYG{n}{click} \PYG{n}{on} \PYG{n}{the} \PYG{n}{joint\PYGZus{}ee}\PYG{o}{.} \PYG{n}{Now} \PYG{n}{click} \PYG{n}{on} \PYG{n}{the} \PYG{o}{\PYGZgt{}} \PYG{n}{button} \PYG{n}{to} \PYG{n}{add} \PYG{n}{these} \PYG{n}{joints} \PYG{n}{into} \PYG{n}{the} \PYG{n+nb}{list} \PYG{n}{of} \PYG{n}{selected} \PYG{n}{joints} \PYG{n}{on} \PYG{n}{the} \PYG{n}{right}\PYG{o}{.}
-\end{sphinxVerbatim}
+Click on \sphinxcode{\sphinxupquote{virtual\_joint}}, hold down the Shift button on your keyboard and then click on the \sphinxcode{\sphinxupquote{joint\_ee}}. Now click on the \sphinxcode{\sphinxupquote{\textgreater{}}} button to add these joints into the list of selected joints on the right.
 
 \sphinxincludegraphics{{move_it_7}.png}
 
@@ -2060,13 +2058,9 @@ We will skip 3D perception as we don’t have a attached 3D sensor.
 \label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-11-generate-configuration-files}}
 You are almost there. One last step - generating all the configuration files that you will need to start using MoveIt
 
-We need to create a seperate folder inside our catkin\_ws folder to save the move\_it configuration. Using the UBUNTu GUI click  Files icon then go to
+We need to create a seperate folder inside our catkin\_ws folder to save the move\_it configuration. Using the UBUNTu GUI click  Files icon then go to  \sphinxcode{\sphinxupquote{ catkin\_ws}} folder and go to the src folder and create a folder called \sphinxcode{\sphinxupquote{moveit\_arm }}.
 
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-{}`catkin\PYGZus{}ws{}` folder and go to the src folder and create a folder called {}`moveit\PYGZus{}arm{}`.
-\end{sphinxVerbatim}
-
-Now come back to move\_it configuration (click on the blue arrow on the left hand side panel) and Click on the Configuration Files pane. Choose folder that we created by clicking on browse.
+Now come back to moveit configuration (click on the blue arrow on the left hand side panel) and Click on the Configuration Files pane. Choose folder that we created by clicking on browse.
 
 Click on the Generate Package button. The Setup Assistant will now generate and write a set of launch and config files into the directory of your choosing. All the generated files will appear in the Generated Files/Folders tab and you can click on each of them for a description of what they contain.
 
@@ -2079,9 +2073,24 @@ Congratulations!! - You are now done generating the configuration files you need
 \label{\detokenize{_source/week_4/Move_it_with_custom_arm:step-12-enabling-position-onlly-inverse-kinematics}}
 Since our robotic arm has only 3DOF inverse kinematics can’t be always solved for 6 DOF pose of the end effector. Therefore we have to enable the position only inverse kinematics manually.
 
-Through the file browser go to \sphinxcode{\sphinxupquote{catkin\_ws/src/moveit\_arm/config}} folder and open \sphinxcode{\sphinxupquote{kinematics.yaml}} file and add  \sphinxcode{\sphinxupquote{position\_only\_ik: True}} line to the end as shown in the following figure. This will enable the position only kinematics.
+Through the file browser go to \sphinxcode{\sphinxupquote{catkin\_ws/src/moveit\_arm/config}} folder and open \sphinxcode{\sphinxupquote{kinematics.yaml}} file and add  \sphinxcode{\sphinxupquote{position\_only\_ik: True}}  line to the end as shown in the following figure. This will enable the position only kinematics.
 
 \sphinxincludegraphics{{move_it_19}.png}
+
+
+\subsubsection{License}
+\label{\detokenize{_source/week_4/Move_it_with_custom_arm:license}}
+This tutorial is modified from the original content from
+
+http://docs.ros.org/en/melodic/api/moveit\_tutorials
+
+with BSD 3 License.
+
+BSD 3-Clause License
+
+Copyright (c) 2008-2013, Willow Garage, Inc.
+Copyright (c) 2015-2019, PickNik, LLC.
+All rights reserved.
 
 
 \chapter{ENEX13004:Week 4- Move It - Robotic arm simulation using RVIZ}
@@ -2102,7 +2111,7 @@ The quickest way to get started using MoveIt is through its RViz plugin. Rviz is
 First go to your \sphinxcode{\sphinxupquote{catKin\_ws}} and run \sphinxcode{\sphinxupquote{catki\_make }}.
 
 \item {} 
-Also run \sphinxcode{\sphinxupquote{catkin\_profile}} command
+Also run \sphinxcode{\sphinxupquote{rospack profile}} command
 
 \item {} 
 Launch the demo: ::
@@ -2293,6 +2302,398 @@ NOTE: Once you placed your EEF to a new goal, be sure to run \sphinxcode{\sphinx
 \subsection{Step 6: Saving Your Configuration}
 \label{\detokenize{_source/week_4/moveit_RVIZ:step-6-saving-your-configuration}}
 RViz enables you to save your configuration under \sphinxcode{\sphinxupquote{File-\textgreater{}Save Config}}. You should do this before continuing on to the next tutorials.
+
+
+\subsection{License}
+\label{\detokenize{_source/week_4/moveit_RVIZ:license}}
+This tutorial is modified from the original content from
+
+http://docs.ros.org/en/melodic/api/moveit\_tutorials/html/doc/quickstart\_in\_rviz/quickstart\_in\_rviz\_tutorial.html
+
+with BSD 3 License.
+
+BSD 3-Clause License
+
+Copyright (c) 2008-2013, Willow Garage, Inc.
+Copyright (c) 2015-2019, PickNik, LLC.
+All rights reserved.
+
+
+\chapter{ENEX13004:Week 4- Move It - Robotic Path Planning with python codes}
+\label{\detokenize{index:enex13004-week-4-move-it-robotic-path-planning-with-python-codes}}
+
+\section{MoveIt Path planning with python code}
+\label{\detokenize{_source/week_4/path_planning:moveit-path-planning-with-python-code}}\label{\detokenize{_source/week_4/path_planning::doc}}
+In this tutorial, we will learn how to write a python code to move our robot arm to a goal location.
+
+One of the simplest MoveIt user interfaces is through the Python-based Move Group Interface. These wrappers provide functionality for most operations that the average user will likely need, specifically setting joint or pose goals, creating motion plans, moving the robot, adding objects into the environment and attaching/detaching objects from the robot.
+
+
+\subsection{Creating a python script}
+\label{\detokenize{_source/week_4/path_planning:creating-a-python-script}}
+Make sure that you have completed the previous MoveIt configuration tutorial. Now go to your \sphinxcode{\sphinxupquote{catkin\_ws/src/moveit\_arm}} folder and create an src folder inside it. Then create the \sphinxcode{\sphinxupquote{move\_robot\_arm.py}} script inside it.
+
+
+\subsection{Python script}
+\label{\detokenize{_source/week_4/path_planning:python-script}}\begin{itemize}
+\item {} 
+Download  \sphinxcode{\sphinxupquote{move\_robot\_arm.py}} file  from the moodle site and copy it to the python file that you created. See below for more explanation of the code.
+
+\item {} 
+Make the python script executable by using the \sphinxcode{\sphinxupquote{chmod}} command.
+
+\item {} 
+Build your project by running the  catkin\_make command inside catkin\_ws folder.
+
+\end{itemize}
+
+
+\subsection{Run and configure RVIZ}
+\label{\detokenize{_source/week_4/path_planning:run-and-configure-rviz}}
+In a new terminal run the follwing command to load RVIZ with moveit motion planning GUI.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{moveit\PYGZus{}arm}  \PYG{n}{demo}\PYG{o}{.}\PYG{n}{launch}
+\end{sphinxVerbatim}
+
+Set following setting in RVIZ
+\begin{itemize}
+\item {} 
+In motion planning panel set \sphinxcode{\sphinxupquote{Planning Scene Topic}} to /move\_group/monitored\_planning\_scene.
+
+\item {} 
+In Scene Robot tick \sphinxcode{\sphinxupquote{Show Robot Visual}}
+
+\item {} 
+In Planning request untick Query \sphinxcode{\sphinxupquote{Start State}} and \sphinxcode{\sphinxupquote{Query Goal State}}
+
+\item {} 
+In Planned path tick  \sphinxcode{\sphinxupquote{Show Trail}}
+
+\item {} 
+In Planned path untick  \sphinxcode{\sphinxupquote{ Loop animation}}
+
+\item {} 
+save the config by File -\textgreater{} save
+
+\end{itemize}
+
+\sphinxincludegraphics{{path_planning_1}.png}
+
+\sphinxincludegraphics{{path_planning_2}.png}
+
+\sphinxincludegraphics{{path_planning_3}.png}
+
+\sphinxincludegraphics{{path_planning_4}.png}
+
+
+\subsection{Run path planning script}
+\label{\detokenize{_source/week_4/path_planning:run-path-planning-script}}
+In a new terminal run
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{rosrun} \PYG{n}{moveit\PYGZus{}arm} \PYG{n}{move\PYGZus{}robot\PYGZus{}arm}\PYG{o}{.}\PYG{n}{py} 
+\end{sphinxVerbatim}
+
+This will ask you to press enter. When you press enter you would see that the arm is moving to the new location. And the path moved is also shown in Rviz.
+
+\sphinxincludegraphics{{path_planning_5}.png}
+
+
+\subsection{Setting new goals}
+\label{\detokenize{_source/week_4/path_planning:setting-new-goals}}
+We can set a new goal location in the \sphinxcode{\sphinxupquote{go\_to\_pose\_goal()}}  function. Try to change the goal location by changing the x,y,z values in meters w.r.t. \sphinxcode{\sphinxupquote{base\_link}}. See how I have set the goal location. If the goal location cannot be reached then a message will display saying that a valid path cannot be found.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+ \PYG{c+c1}{\PYGZsh{} set the new end end effector goal location , w.r.t. base\PYGZus{}link in meters}
+    \PYG{n}{pose\PYGZus{}goal}\PYG{o}{.}\PYG{n}{position}\PYG{o}{.}\PYG{n}{x} \PYG{o}{=}  \PYG{l+m+mf}{0.3}
+    \PYG{n}{pose\PYGZus{}goal}\PYG{o}{.}\PYG{n}{position}\PYG{o}{.}\PYG{n}{y} \PYG{o}{=} \PYG{l+m+mf}{0.8}
+    \PYG{n}{pose\PYGZus{}goal}\PYG{o}{.}\PYG{n}{position}\PYG{o}{.}\PYG{n}{z} \PYG{o}{=} \PYG{l+m+mf}{0.0}
+
+\end{sphinxVerbatim}
+
+
+\subsection{Moving on a Cartisian Path}
+\label{\detokenize{_source/week_4/path_planning:moving-on-a-cartisian-path}}
+We can also move the robot end effector in a cartesian path (x,y,z). What we have to do is define a set of way points.
+
+Download the \sphinxcode{\sphinxupquote{move\_robot\_arm\_path.py}} and run in a terminal after copying it into the \sphinxcode{\sphinxupquote{moveit\_arm\textbackslash{}src folder}}. Make it executable first. Kill the RVIZ and rerun it in a new terminal.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{moveit\PYGZus{}arm}  \PYG{n}{demo}\PYG{o}{.}\PYG{n}{launch}
+
+\PYG{n}{rosrun} \PYG{n}{moveit\PYGZus{}arm} \PYG{n}{move\PYGZus{}robot\PYGZus{}arm\PYGZus{}path}\PYG{o}{.}\PYG{n}{py} 
+\end{sphinxVerbatim}
+
+This will move a robot end-effector on a path. Modify the code and see whether you can move the robot’s end effector
+in a path that can draw the first letter of your name. All you need is a set of waypoints.
+See the code section below where I have added the waypoints. First I record the current location and move the robot’s end-effector from the initial position.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{waypoints} \PYG{o}{=} \PYG{p}{[}\PYG{p}{]}
+
+    
+
+    \PYG{c+c1}{\PYGZsh{} current position}
+    \PYG{n}{wpose} \PYG{o}{=} \PYG{n}{move\PYGZus{}group}\PYG{o}{.}\PYG{n}{get\PYGZus{}current\PYGZus{}pose}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{pose}
+
+    \PYG{c+c1}{\PYGZsh{} first way point}
+
+    \PYG{n}{wpose}\PYG{o}{.}\PYG{n}{position}\PYG{o}{.}\PYG{n}{z} \PYG{o}{=} \PYG{n}{wpose}\PYG{o}{.}\PYG{n}{position}\PYG{o}{.}\PYG{n}{z}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.4}    
+    \PYG{n}{waypoints}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{copy}\PYG{o}{.}\PYG{n}{deepcopy}\PYG{p}{(}\PYG{n}{wpose}\PYG{p}{)}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} second way point}
+    \PYG{n}{wpose}\PYG{o}{.}\PYG{n}{position}\PYG{o}{.}\PYG{n}{z} \PYG{o}{=} \PYG{n}{wpose}\PYG{o}{.}\PYG{n}{position}\PYG{o}{.}\PYG{n}{z}\PYG{o}{+}\PYG{l+m+mf}{0.4}
+    \PYG{n}{wpose}\PYG{o}{.}\PYG{n}{position}\PYG{o}{.}\PYG{n}{x} \PYG{o}{=} \PYG{n}{wpose}\PYG{o}{.}\PYG{n}{position}\PYG{o}{.}\PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{l+m+mf}{0.2}     
+    \PYG{n}{waypoints}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{copy}\PYG{o}{.}\PYG{n}{deepcopy}\PYG{p}{(}\PYG{n}{wpose}\PYG{p}{)}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} Third way point   }
+    \PYG{n}{wpose}\PYG{o}{.}\PYG{n}{position}\PYG{o}{.}\PYG{n}{z} \PYG{o}{=} \PYG{n}{wpose}\PYG{o}{.}\PYG{n}{position}\PYG{o}{.}\PYG{n}{z} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.4} 
+    \PYG{n}{waypoints}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{copy}\PYG{o}{.}\PYG{n}{deepcopy}\PYG{p}{(}\PYG{n}{wpose}\PYG{p}{)}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} We want the Cartesian path to be interpolated at a resolution of 1 cm}
+    \PYG{c+c1}{\PYGZsh{} which is why we will specify 0.01 as the eef\PYGZus{}step in Cartesian}
+    \PYG{c+c1}{\PYGZsh{} translation.  We will disable the jump threshold by setting it to 0.0,}
+    \PYG{c+c1}{\PYGZsh{} ignoring the check for infeasible jumps in joint space, which is sufficient}
+    \PYG{c+c1}{\PYGZsh{} for this tutorial.}
+
+    \PYG{p}{(}\PYG{n}{plan}\PYG{p}{,} \PYG{n}{fraction}\PYG{p}{)} \PYG{o}{=} \PYG{n}{move\PYGZus{}group}\PYG{o}{.}\PYG{n}{compute\PYGZus{}cartesian\PYGZus{}path}\PYG{p}{(}\PYG{n}{waypoints}\PYG{p}{,} \PYG{l+m+mf}{0.01}\PYG{p}{,} \PYG{l+m+mf}{0.0}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} now executed the planned path }
+    \PYG{n}{move\PYGZus{}group}\PYG{o}{.}\PYG{n}{execute}\PYG{p}{(}\PYG{n}{plan}\PYG{p}{,} \PYG{n}{wait}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+
+
+    
+\end{sphinxVerbatim}
+
+\sphinxincludegraphics{{path_planning_6}.png}
+
+Turtle\_bot3\_simulation.md
+
+
+\chapter{ENEX13004:Week 5- Mobile Robots}
+\label{\detokenize{index:enex13004-week-5-mobile-robots}}
+
+\section{Turtlbot 3 simulation using RVIZ}
+\label{\detokenize{_source/week_5/Turtle_bot3_simulation:turtlbot-3-simulation-using-rviz}}\label{\detokenize{_source/week_5/Turtle_bot3_simulation::doc}}
+In this tutorial, we will learn how to move Turtlebot3 mobile robot platform in a simulation environment. See this week’s lecture for more information about the Turtlebot3 robotic platform.
+
+Then we are also going to run Turtlebot 3 platform in the Gazebo simulation environment. Gazebo is a physics-based simulation environment where we can simulate robots with environmental interactions.
+
+The required packages to simulate Turtlebot 3 (A.K.A Burger) are already installed on your virtual machine.
+
+
+\subsection{Launching TurtleBot 3 simulation in RVIZ}
+\label{\detokenize{_source/week_5/Turtle_bot3_simulation:launching-turtlebot-3-simulation-in-rviz}}
+The TurtleBot 3 RVIZ simulation is created and controlled by the \sphinxcode{\sphinxupquote{turtlebot3\_fake\_node}} node. This node generates the model of the TurtleBot in RVIZ and allows for it to be controlled using the Teleop node.
+
+To run the TurtleBot 3 simulation first run the following command.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{turtlebot3\PYGZus{}fake} \PYG{n}{turtlebot3\PYGZus{}fake}\PYG{o}{.}\PYG{n}{launch}
+\end{sphinxVerbatim}
+
+This will open Turtlebot3 model in RVIZ. This model is cretaed using URDF definitions as we did in week 3  tutorial for our robotic arm.
+
+Three nodes are started: robot\_state\_publisher, rviz, and turtlebot3\_fake\_
+node. Then you should see the following screen.
+
+\sphinxincludegraphics{{turtle_1}.png}
+
+Now let’s control the robot using the keyboard. Open a new terminal and run,
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{turtlebot3\PYGZus{}teleop} \PYG{n}{turtlebot3\PYGZus{}teleop\PYGZus{}key}\PYG{o}{.}\PYG{n}{launch}
+\end{sphinxVerbatim}
+
+You can control the robot by using  the following keys
+\begin{itemize}
+\item {} 
+w/x : increase/decrease linear velocity
+
+\item {} 
+a/d : increase/decrease angular velocity
+
+\item {} 
+space key, s : force stop
+
+\end{itemize}
+
+look at the /odem topic and observe it in RVIZ. This the odometry of the robot.
+
+\sphinxincludegraphics{{turtle_2}.png}
+
+Next, we will try TurtleBot 3 in the Gazebo 3D simulator. Close all terminal windows before proceeding to the next section
+
+
+\subsection{Launching TurtleBot 3 simulation in Gazebo}
+\label{\detokenize{_source/week_5/Turtle_bot3_simulation:launching-turtlebot-3-simulation-in-gazebo}}
+Now let’s run TurtleBot3 in Gazebo. Run the following command
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{turtlebot3\PYGZus{}gazebo} \PYG{n}{turtlebot3\PYGZus{}empty\PYGZus{}world}\PYG{o}{.}\PYG{n}{launch}
+\end{sphinxVerbatim}
+
+This will open a Gazebo simulation using Tutrlebot 3 as shown in the following figure. You can zoom in and out by pressing the right mouse button.
+
+\sphinxincludegraphics{{turtle_3}.png}
+
+Now let’s move the turtlebot around using the keybord.
+
+Open a new terminal and run’
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{turtlebot3\PYGZus{}teleop} \PYG{n}{turtlebot3\PYGZus{}teleop\PYGZus{}key}\PYG{o}{.}\PYG{n}{launch}
+\end{sphinxVerbatim}
+
+You can control the robot by using keys. You will see now the robot is moving in Gazebo.
+\begin{itemize}
+\item {} 
+w/x : increase/decrease linear velocity
+
+\item {} 
+a/d : increase/decrease angular velocity
+
+\item {} 
+space key, s : force stop
+
+\end{itemize}
+
+\sphinxincludegraphics{{turtle_4}.png}
+
+Now let us try turtlebot on a challenging environemnt. Use Quit on the Gazebo application from the menu bar and press Ctrl + C in the terminal
+window to halt the process
+
+Now, in a new terminal type the following command to spawn the TurtleBot 3 model on the TurtleBot 3 world map:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{} roslaunch turtlebot3\PYGZus{}gazebo turtlebot3\PYGZus{}world.launch
+\end{sphinxVerbatim}
+
+This command should produce a screenshot similar to the following:
+
+You can see the Turlebot as a small black circle. Zoom in to (press right mouse button and drag) get a closer look.
+
+To move the robot using the keyboard, launch the \sphinxcode{\sphinxupquote{turtlebot3\_teleop\_key.launch}} file as  explained earlier.
+
+\sphinxincludegraphics{{turtle_5}.png}
+
+
+\subsection{Turtlebot Autonomous Operation}
+\label{\detokenize{_source/week_5/Turtle_bot3_simulation:turtlebot-autonomous-operation}}
+Now let’s move the Turtlebot Autonomously.To view this application, hit Ctrl + C in the terminal window running the keyboard teleop process, and close the window. Open a new terminal window run the  the following commands
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{turtlebot3\PYGZus{}gazebo} \PYG{n}{turtlebot3\PYGZus{}simulation}\PYG{o}{.}\PYG{n}{launch}
+\end{sphinxVerbatim}
+
+This will run the turtlebot in the maze autonomously using laser scanner data.
+
+Now let’s see how  the laser scanner data looks like in Rviz.  The laser scanner sends laser beams around the sensor and measures the distance to nearby objects.  You can see the measurements from each laser beam as a small point marker in Rviz. To see laser data run the following command.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{turtlebot3\PYGZus{}gazebo} \PYG{n}{turtlebot3\PYGZus{}gazebo\PYGZus{}rviz}\PYG{o}{.}\PYG{n}{launch}
+\end{sphinxVerbatim}
+
+This will show the laser data. You need to add the laser\_scan module in Rviz display and configure the \sphinxcode{\sphinxupquote{/scan}} topic as the input. This is already done.
+
+When the robot moves around you would see that the laser data is changing.
+
+\sphinxincludegraphics{{turtle_6}.png}
+
+
+\subsection{Moving Turtlebot Autonomoulsy Using Python}
+\label{\detokenize{_source/week_5/Turtle_bot3_simulation:moving-turtlebot-autonomoulsy-using-python}}
+In this section let’s learn how we can move Turtlebot around in  the Gazebo simulation environment using laser scan data. We need to publish velocity commands to \sphinxcode{\sphinxupquote{/cmd\_vel}} to move the robot. To read the laser scan data the following python code subscribe to the  \sphinxcode{\sphinxupquote{/scan }} topic. It is outputting each laser beam’s distance to the nearby objects in an array. There are 360 laser beams around the sensor, and therefore there are 360 elements in the array. 0 th element of the array corresponds to the first laser beam located at the front.The following code read the laser scan data from the front, left and right laser beams and try to avoid the obstacle if they are within 0.5 m.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{cattkin\PYGZus{}create\PYGZus{}pkg} \PYG{n}{turtlebot3\PYGZus{}move} \PYG{n}{rospy} \PYG{n}{sensor\PYGZus{}msgs} \PYG{n}{geometry\PYGZus{}msgs}
+\end{sphinxVerbatim}
+
+Then inside the \sphinxcode{\sphinxupquote{src}} folder create a file called \sphinxcode{\sphinxupquote{autonomous\_turtlebot.py}}  and copy the following code.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/usr/bin/env python}
+\PYG{k+kn}{import} \PYG{n+nn}{rospy} \PYG{c+c1}{\PYGZsh{} Python library for ROS}
+\PYG{k+kn}{from} \PYG{n+nn}{sensor\PYGZus{}msgs}\PYG{n+nn}{.}\PYG{n+nn}{msg} \PYG{k+kn}{import} \PYG{n}{LaserScan} \PYG{c+c1}{\PYGZsh{} LaserScan type message is defined in sensor\PYGZus{}msgs}
+\PYG{k+kn}{from} \PYG{n+nn}{geometry\PYGZus{}msgs}\PYG{n+nn}{.}\PYG{n+nn}{msg} \PYG{k+kn}{import} \PYG{n}{Twist} \PYG{c+c1}{\PYGZsh{} Twist messages for velocity commands}
+
+
+
+\PYG{k}{def} \PYG{n+nf}{callback}\PYG{p}{(}\PYG{n}{dt}\PYG{p}{)}\PYG{p}{:}
+   \PYG{n+nb}{print} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}\PYG{l+s+s1}{\PYGZsq{}}
+   \PYG{n+nb}{print} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Range data at 0 deg:}\PYG{l+s+s1}{\PYGZsq{}} \PYG{p}{,}\PYG{n}{dt}\PYG{o}{.}\PYG{n}{ranges}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+   \PYG{n+nb}{print} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Range data at 15 deg:}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{dt}\PYG{o}{.}\PYG{n}{ranges}\PYG{p}{[}\PYG{l+m+mi}{15}\PYG{p}{]}
+   \PYG{n+nb}{print} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Range data at 345 deg:}\PYG{l+s+s1}{\PYGZsq{}} \PYG{p}{,}\PYG{n}{dt}\PYG{o}{.}\PYG{n}{ranges}\PYG{p}{[}\PYG{l+m+mi}{345}\PYG{p}{]}
+   \PYG{n+nb}{print} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}\PYG{l+s+s1}{\PYGZsq{}}
+
+   \PYG{n}{thr1} \PYG{o}{=} \PYG{l+m+mf}{0.5} \PYG{c+c1}{\PYGZsh{} Laser scan range threshold}
+   \PYG{n}{thr2} \PYG{o}{=} \PYG{l+m+mf}{0.5}
+   \PYG{k}{if} \PYG{n}{dt}\PYG{o}{.}\PYG{n}{ranges}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{n}{thr1} \PYG{o+ow}{and} \PYG{n}{dt}\PYG{o}{.}\PYG{n}{ranges}\PYG{p}{[}\PYG{l+m+mi}{15}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{n}{thr2} \PYG{o+ow}{and} \PYG{n}{dt}\PYG{o}{.}\PYG{n}{ranges}\PYG{p}{[}\PYG{l+m+mi}{345}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{n}{thr2}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} Checks if there are obstacles in front and}
+                                                                        \PYG{c+c1}{\PYGZsh{} 15 degrees left and right (Try changing the}
+   								                                                       \PYG{c+c1}{\PYGZsh{} the angle values as well as the thresholds)}
+       \PYG{n}{move}\PYG{o}{.}\PYG{n}{linear}\PYG{o}{.}\PYG{n}{x} \PYG{o}{=} \PYG{l+m+mf}{0.2} \PYG{c+c1}{\PYGZsh{} go forward (linear velocity)}
+       \PYG{n}{move}\PYG{o}{.}\PYG{n}{angular}\PYG{o}{.}\PYG{n}{z} \PYG{o}{=} \PYG{l+m+mf}{0.0} \PYG{c+c1}{\PYGZsh{} do not rotate (angular velocity)}
+   \PYG{k}{else}\PYG{p}{:}
+
+       \PYG{n}{move}\PYG{o}{.}\PYG{n}{linear}\PYG{o}{.}\PYG{n}{x} \PYG{o}{=} \PYG{l+m+mf}{0.0} \PYG{c+c1}{\PYGZsh{} stop}
+       \PYG{n}{move}\PYG{o}{.}\PYG{n}{angular}\PYG{o}{.}\PYG{n}{z} \PYG{o}{=} \PYG{l+m+mf}{0.5} \PYG{c+c1}{\PYGZsh{} rotate counter\PYGZhy{}clockwise}
+       \PYG{c+c1}{\PYGZsh{}if dt.ranges[0]\PYGZgt{}thr1 and dt.ranges[15]\PYGZgt{}thr2 and dt.ranges[345]\PYGZgt{}thr2:}
+           \PYG{c+c1}{\PYGZsh{}move.linear.x = 0.5}
+           \PYG{c+c1}{\PYGZsh{}move.angular.z = 0.0}
+   \PYG{n}{pub}\PYG{o}{.}\PYG{n}{publish}\PYG{p}{(}\PYG{n}{move}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} publish the move object}
+
+
+\PYG{c+c1}{\PYGZsh{} Let\PYGZsq{}s create the node publishers and subscribers}
+
+\PYG{n}{rospy}\PYG{o}{.}\PYG{n}{init\PYGZus{}node}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{obstacle\PYGZus{}avoidance\PYGZus{}node}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Initializes a node}
+
+\PYG{n}{pub} \PYG{o}{=} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Publisher}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/cmd\PYGZus{}vel}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{Twist}\PYG{p}{,} \PYG{n}{queue\PYGZus{}size}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{)}  
+\PYG{c+c1}{\PYGZsh{} Publisher object which will publish \PYGZdq{}Twist\PYGZdq{} type messages}
+\PYG{c+c1}{\PYGZsh{} on the \PYGZdq{}/cmd\PYGZus{}vel\PYGZdq{} Topic, \PYGZdq{}queue\PYGZus{}size\PYGZdq{} is the size of the}
+\PYG{c+c1}{\PYGZsh{} outgoing message queue used for asynchronous publishing}
+
+
+
+
+\PYG{n}{sub} \PYG{o}{=} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{Subscriber}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/scan}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{LaserScan}\PYG{p}{,} \PYG{n}{callback}\PYG{p}{)}  
+\PYG{c+c1}{\PYGZsh{} Subscriber object which will listen \PYGZdq{}LaserScan\PYGZdq{} type messages}
+\PYG{c+c1}{\PYGZsh{} from the \PYGZdq{}/scan\PYGZdq{} Topic and call the \PYGZdq{}callback\PYGZdq{} function}
+\PYG{c+c1}{\PYGZsh{} each time it reads something from the Topic}
+
+
+\PYG{n}{move} \PYG{o}{=} \PYG{n}{Twist}\PYG{p}{(}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Creates a Twist message type object to publish velocity commands to the robot}
+
+
+
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}
+   
+     
+   \PYG{k}{try}\PYG{p}{:}
+       \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{spin}\PYG{p}{(}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Loops infinitely until someone stops the program execution    }
+   \PYG{k}{except} \PYG{n}{rospy}\PYG{o}{.}\PYG{n}{ROSInterruptException}\PYG{p}{:} \PYG{k}{pass}
+
+
+
+
+
+\end{sphinxVerbatim}
+
+Try to understand what is happening in the code. Then make it an executable.
+
+Then run the Gazebo simulator by
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{} roslaunch turtlebot3\PYGZus{}gazebo turtlebot3\PYGZus{}world.launch
+\end{sphinxVerbatim}
+
+Now run the program that you wrote in a new terminal
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{rosrun} \PYG{n}{turtlebot3\PYGZus{}move} \PYG{n}{autonomous\PYGZus{}turtlebot3}\PYG{o}{.}\PYG{n}{py} 
+\end{sphinxVerbatim}
+
+You would see that the robot is moving autonomously in the maze.
 
 
 \chapter{Indices and tables}

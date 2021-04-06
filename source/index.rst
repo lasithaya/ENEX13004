@@ -111,6 +111,27 @@ ENEX13004:Week 4- Move It - Robotic arm simulation using RVIZ
 
    MoveIt RVIZ Control  <_source/week_4/moveit_RVIZ.md>
 
+
+ENEX13004:Week 4- Move It - Robotic Path Planning with python codes
+--------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   MoveIt Path Planning  <_source/week_4/path_planning.md>
+
+Turtle_bot3_simulation.md
+
+ENEX13004:Week 5- Mobile Robots
+--------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   Turtlebot Simulation in Rviz and Gazebo  <_source/week_5/Turtle_bot3_simulation.md>
+
+
+
 Indices and tables
 ==================
 

@@ -62,14 +62,30 @@
 \contentsline {subsubsection}{Step 10 - 3D perception}{51}{subsubsection*.25}
 \contentsline {subsubsection}{Step 11: Generate Configuration Files}{51}{subsubsection*.26}
 \contentsline {subsubsection}{Step 12 : Enabling Position onlly Inverse Kinematics}{52}{subsubsection*.27}
-\contentsline {chapter}{\numberline {11}ENEX13004:Week 4- Move It - Robotic arm simulation using RVIZ}{53}{chapter.11}
-\contentsline {section}{\numberline {11.1}MoveIt Quickstart in RViz}{53}{section.11.1}
-\contentsline {subsection}{\numberline {11.1.1}Step 1: Launch the Demo and Configure the Plugin}{53}{subsection.11.1.1}
-\contentsline {subsection}{\numberline {11.1.2}Step 2: Play with the Visualized Robots}{55}{subsection.11.1.2}
-\contentsline {subsection}{\numberline {11.1.3}Step 3: Interact with the Robot}{56}{subsection.11.1.3}
-\contentsline {subsection}{\numberline {11.1.4}Moving into collision}{57}{subsection.11.1.4}
-\contentsline {subsection}{\numberline {11.1.5}Moving out of Reachable Workspace}{58}{subsection.11.1.5}
-\contentsline {subsection}{\numberline {11.1.6}Step 4: Use Motion Planning with the Robot}{58}{subsection.11.1.6}
-\contentsline {subsection}{\numberline {11.1.7}Step 5: Introspecting Trajectory Waypoints}{59}{subsection.11.1.7}
-\contentsline {subsection}{\numberline {11.1.8}Step 6: Saving Your Configuration}{60}{subsection.11.1.8}
-\contentsline {chapter}{\numberline {12}Indices and tables}{61}{chapter.12}
+\contentsline {subsubsection}{License}{53}{subsubsection*.28}
+\contentsline {chapter}{\numberline {11}ENEX13004:Week 4- Move It - Robotic arm simulation using RVIZ}{55}{chapter.11}
+\contentsline {section}{\numberline {11.1}MoveIt Quickstart in RViz}{55}{section.11.1}
+\contentsline {subsection}{\numberline {11.1.1}Step 1: Launch the Demo and Configure the Plugin}{55}{subsection.11.1.1}
+\contentsline {subsection}{\numberline {11.1.2}Step 2: Play with the Visualized Robots}{57}{subsection.11.1.2}
+\contentsline {subsection}{\numberline {11.1.3}Step 3: Interact with the Robot}{58}{subsection.11.1.3}
+\contentsline {subsection}{\numberline {11.1.4}Moving into collision}{59}{subsection.11.1.4}
+\contentsline {subsection}{\numberline {11.1.5}Moving out of Reachable Workspace}{60}{subsection.11.1.5}
+\contentsline {subsection}{\numberline {11.1.6}Step 4: Use Motion Planning with the Robot}{60}{subsection.11.1.6}
+\contentsline {subsection}{\numberline {11.1.7}Step 5: Introspecting Trajectory Waypoints}{61}{subsection.11.1.7}
+\contentsline {subsection}{\numberline {11.1.8}Step 6: Saving Your Configuration}{62}{subsection.11.1.8}
+\contentsline {subsection}{\numberline {11.1.9}License}{62}{subsection.11.1.9}
+\contentsline {chapter}{\numberline {12}ENEX13004:Week 4- Move It - Robotic Path Planning with python codes}{63}{chapter.12}
+\contentsline {section}{\numberline {12.1}MoveIt Path planning with python code}{63}{section.12.1}
+\contentsline {subsection}{\numberline {12.1.1}Creating a python script}{63}{subsection.12.1.1}
+\contentsline {subsection}{\numberline {12.1.2}Python script}{63}{subsection.12.1.2}
+\contentsline {subsection}{\numberline {12.1.3}Run and configure RVIZ}{63}{subsection.12.1.3}
+\contentsline {subsection}{\numberline {12.1.4}Run path planning script}{65}{subsection.12.1.4}
+\contentsline {subsection}{\numberline {12.1.5}Setting new goals}{66}{subsection.12.1.5}
+\contentsline {subsection}{\numberline {12.1.6}Moving on a Cartisian Path}{66}{subsection.12.1.6}
+\contentsline {chapter}{\numberline {13}ENEX13004:Week 5- Mobile Robots}{69}{chapter.13}
+\contentsline {section}{\numberline {13.1}Turtlbot 3 simulation using RVIZ}{69}{section.13.1}
+\contentsline {subsection}{\numberline {13.1.1}Launching TurtleBot 3 simulation in RVIZ}{69}{subsection.13.1.1}
+\contentsline {subsection}{\numberline {13.1.2}Launching TurtleBot 3 simulation in Gazebo}{71}{subsection.13.1.2}
+\contentsline {subsection}{\numberline {13.1.3}Turtlebot Autonomous Operation}{73}{subsection.13.1.3}
+\contentsline {subsection}{\numberline {13.1.4}Moving Turtlebot Autonomoulsy Using Python}{73}{subsection.13.1.4}
+\contentsline {chapter}{\numberline {14}Indices and tables}{77}{chapter.14}

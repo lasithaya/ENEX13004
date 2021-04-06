@@ -2,7 +2,7 @@
 # Using MoveIt Package for Robotic Arm Path Planning
 
 
-In this tutorial we will creat and configure a robotic arm to use the Move_it ros package. Then we can use RVIZ to move the rootic arm to the desired location
+In this tutorial we will creat and configure a robotic arm to use the MoveIt ros package. Then we can use RVIZ to move the rootic arm to the desired location
  
 Let's make sure that we  have the most up to date packages: ::
  ```
@@ -14,7 +14,7 @@ Let's make sure that we  have the most up to date packages: ::
 
 Install MoveIt
 
-The simplest way to install MoveIt is from pre-built binaries (Debian): ::
+The simplest way to install MoveIt is from pre-built binaries (Debian): 
   
  ```
   sudo apt install ros-melodic-moveit
@@ -23,7 +23,7 @@ The simplest way to install MoveIt is from pre-built binaries (Debian): ::
 
 # Creating a Moveit package for a robotic arm
 
-Now let's configure and a ROS move_it package for our robotic arm. Then we can use RVIZ to set goal locations and the move-it package will do inverse kinematics and path planning. 
+Now let's configure the ROS moveit package for our robotic arm. Then we can use RVIZ to set goal locations and the moveit package will do the inverse kinematics and  the path planning. 
 
 
 * First download and save the URDF file that we created in last week to the home folder. You can download the urdf file from the moodle site.
@@ -38,11 +38,11 @@ Now let's configure and a ROS move_it package for our robotic arm. Then we can u
   ```
   roslaunch moveit_setup_assistant setup_assistant.launch
 
-  ````
+  ```
 
   This will bring up the start screen with two choices: Create New MoveIt Configuration Package or Edit Existing MoveIt Configuration Package.
 
-  Click on the Create New MoveIt Configuration Package button to bring up the following screen:
+  Click on the Create New MoveIt Configuration Package button to bring up the following screens.:
 
   ![](../../_static/move_it/move_it_1.png)
 
@@ -61,7 +61,7 @@ Now let's configure and a ROS move_it package for our robotic arm. Then we can u
 
 ### Srep 3 : Virtual Joints
 
-Virtual joints are used primarily to attach the robot to the world. For our robot modela we will define only one virtual joint attaching the base_link of the our robotic arm to the world world frame. This virtual joint represents the motion of the base of the robot in a plane.
+Virtual joints are used primarily to attach the robot to the world. For our robot modela we will define only one virtual joint attaching the base_link of the our robotic arm to the world  frame. This virtual joint represents the motion of the base of the robot in a plane.
 
   * Click on the Virtual Joints pane selector. Click on Add Virtual Joint
   * Set the joint name as "virtual_joint"
@@ -94,8 +94,7 @@ Click Save and you should see this screen:
 
 Now, click on the Add Joints button. You will see a list of joints on the left hand side. You need to choose all the joints that belong to the arm and add them to the right hand side. The joints are arranged in the order that they are stored in an internal tree structure. This makes it easy to select a serial chain of joints.
 
-
-    Click on virtual_joint, hold down the Shift button on your keyboard and then click on the joint_ee. Now click on the > button to add these joints into the list of selected joints on the right.
+Click on `virtual_joint`, hold down the Shift button on your keyboard and then click on the `joint_ee`. Now click on the `>` button to add these joints into the list of selected joints on the right.
 
 ![](../../_static/move_it/move_it_7.png)
 
@@ -188,11 +187,9 @@ We will skip 3D perception as we don't have a attached 3D sensor.
 ### Step 11: Generate Configuration Files
   You are almost there. One last step - generating all the configuration files that you will need to start using MoveIt
 
-   We need to create a seperate folder inside our catkin_ws folder to save the move_it configuration. Using the UBUNTu GUI click  Files icon then go to 
+   We need to create a seperate folder inside our catkin_ws folder to save the move_it configuration. Using the UBUNTu GUI click  Files icon then go to  ` catkin_ws` folder and go to the src folder and create a folder called `moveit_arm `.
 
-    `catkin_ws` folder and go to the src folder and create a folder called `moveit_arm`.
-
-  Now come back to move_it configuration (click on the blue arrow on the left hand side panel) and Click on the Configuration Files pane. Choose folder that we created by clicking on browse.
+  Now come back to moveit configuration (click on the blue arrow on the left hand side panel) and Click on the Configuration Files pane. Choose folder that we created by clicking on browse.
 
   Click on the Generate Package button. The Setup Assistant will now generate and write a set of launch and config files into the directory of your choosing. All the generated files will appear in the Generated Files/Folders tab and you can click on each of them for a description of what they contain.
 
@@ -205,12 +202,25 @@ We will skip 3D perception as we don't have a attached 3D sensor.
 
 Since our robotic arm has only 3DOF inverse kinematics can't be always solved for 6 DOF pose of the end effector. Therefore we have to enable the position only inverse kinematics manually.
 
-Through the file browser go to `catkin_ws/src/moveit_arm/config` folder and open `kinematics.yaml` file and add  `position_only_ik: True` line to the end as shown in the following figure. This will enable the position only kinematics.
+Through the file browser go to `catkin_ws/src/moveit_arm/config` folder and open `kinematics.yaml` file and add  `position_only_ik: True`  line to the end as shown in the following figure. This will enable the position only kinematics.
  
 ![](../../_static/move_it/move_it_19.png)
 
 
 
+### License
+
+This tutorial is modified from the original content from
+
+ http://docs.ros.org/en/melodic/api/moveit_tutorials 
+
+with BSD 3 License.
+
+BSD 3-Clause License
+
+  Copyright (c) 2008-2013, Willow Garage, Inc.
+  Copyright (c) 2015-2019, PickNik, LLC.
+  All rights reserved.
 
 
 
