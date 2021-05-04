@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2021.2.15)  6 APR 2021 08:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2021.2.15)  3 MAY 2021 23:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1163,19 +1163,19 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 
 ]
 Chapter 2.
-<ubuntu_desktop.png, id=119, 803.0pt x 642.4pt>
+<ubuntu_desktop.png, id=124, 803.0pt x 642.4pt>
 File: ubuntu_desktop.png Graphic file (type png)
 <use ubuntu_desktop.png>
 Package pdftex.def Info: ubuntu_desktop.png  used on input line 135.
 (pdftex.def)             Requested size: 469.75502pt x 375.8172pt.
 [3]
-<ubuntu_desktop_details.png, id=127, 602.25pt x 481.8pt>
+<ubuntu_desktop_details.png, id=132, 602.25pt x 481.8pt>
 File: ubuntu_desktop_details.png Graphic file (type png)
 <use ubuntu_desktop_details.png>
 Package pdftex.def Info: ubuntu_desktop_details.png  used on input line 139.
 (pdftex.def)             Requested size: 469.75502pt x 375.81718pt.
  [4 <./ubuntu_desktop.png>]
-<ubuntu_folder_browser.png, id=132, 602.25pt x 481.8pt>
+<ubuntu_folder_browser.png, id=137, 602.25pt x 481.8pt>
 File: ubuntu_folder_browser.png Graphic file (type png)
 <use ubuntu_folder_browser.png>
 Package pdftex.def Info: ubuntu_folder_browser.png  used on input line 172.
@@ -1187,19 +1187,19 @@ LaTeX Font Info:    Try loading font information for TS1+ptm on input line 190.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-<ubuntu_inspect.png, id=145, 803.0pt x 642.4pt>
+<ubuntu_inspect.png, id=150, 803.0pt x 642.4pt>
 File: ubuntu_inspect.png Graphic file (type png)
 <use ubuntu_inspect.png>
 Package pdftex.def Info: ubuntu_inspect.png  used on input line 198.
 (pdftex.def)             Requested size: 469.75502pt x 375.8172pt.
  [6 <./ubuntu_folder_browser.png>]
-<ubuntu_start_application.png, id=153, 803.0pt x 642.4pt>
+<ubuntu_start_application.png, id=159, 803.0pt x 642.4pt>
 File: ubuntu_start_application.png Graphic file (type png)
 <use ubuntu_start_application.png>
 Package pdftex.def Info: ubuntu_start_application.png  used on input line 205.
 (pdftex.def)             Requested size: 469.75502pt x 375.8172pt.
  [7 <./ubuntu_inspect.png>]
-<ubuntu_application_pin.png, id=160, 803.0pt x 642.4pt>
+<ubuntu_application_pin.png, id=165, 803.0pt x 642.4pt>
 File: ubuntu_application_pin.png Graphic file (type png)
 <use ubuntu_application_pin.png>
 Package pdftex.def Info: ubuntu_application_pin.png  used on input line 209.
@@ -1209,7 +1209,7 @@ Package pdftex.def Info: ubuntu_application_pin.png  used on input line 209.
 
 ]
 Chapter 3.
-<ubuntu_terminal_icon.png, id=177, 80.3pt x 80.3pt>
+<ubuntu_terminal_icon.png, id=182, 80.3pt x 80.3pt>
 File: ubuntu_terminal_icon.png Graphic file (type png)
 <use ubuntu_terminal_icon.png>
 Package pdftex.def Info: ubuntu_terminal_icon.png  used on input line 244.
@@ -1296,7 +1296,7 @@ Chapter 7.
 [29
 
 ]
-<rviz1.png, id=353, 963.6pt x 486.81876pt>
+<rviz1.png, id=358, 963.6pt x 486.81876pt>
  [30]
 File: rviz1.png Graphic file (type png)
 <use rviz1.png>
@@ -1307,7 +1307,7 @@ Underfull \vbox (badness 2495) detected at line 1544
  []
 
 [32]
-<joint_states.png, id=378, 1927.2pt x 973.6375pt>
+<joint_states.png, id=383, 1927.2pt x 973.6375pt>
 File: joint_states.png Graphic file (type png)
 <use joint_states.png>
 Package pdftex.def Info: joint_states.png  used on input line 1546.
@@ -1322,7 +1322,7 @@ Overfull \hbox (2.5pt too wide) in paragraph at lines 1546--1547
 ]
 Chapter 8.
 [35] [36]
-<rviz2.png, id=407, 1927.2pt x 973.6375pt>
+<rviz2.png, id=412, 1927.2pt x 973.6375pt>
 File: rviz2.png Graphic file (type png)
 <use rviz2.png>
 Package pdftex.def Info: rviz2.png  used on input line 1666.
@@ -1336,93 +1336,93 @@ Chapter 10.
 [41
 
 ]
-<move_it_1.png, id=440, 1927.2pt x 973.6375pt>
+<move_it_1.png, id=445, 1927.2pt x 973.6375pt>
 File: move_it_1.png Graphic file (type png)
 <use move_it_1.png>
 Package pdftex.def Info: move_it_1.png  used on input line 1852.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
-<move_it_2.png, id=441, 1927.2pt x 973.6375pt>
+<move_it_2.png, id=446, 1927.2pt x 973.6375pt>
 File: move_it_2.png Graphic file (type png)
 <use move_it_2.png>
 Package pdftex.def Info: move_it_2.png  used on input line 1856.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
  [42 <./move_it_1.png> <./move_it_2.png>]
-<move_it_3.png, id=449, 1927.2pt x 973.6375pt>
+<move_it_3.png, id=454, 1927.2pt x 973.6375pt>
 File: move_it_3.png Graphic file (type png)
 <use move_it_3.png>
 Package pdftex.def Info: move_it_3.png  used on input line 1865.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
-<move_it_4.png, id=450, 1927.2pt x 973.6375pt>
+<move_it_4.png, id=455, 1927.2pt x 973.6375pt>
 File: move_it_4.png Graphic file (type png)
 <use move_it_4.png>
 Package pdftex.def Info: move_it_4.png  used on input line 1888.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
  [43 <./move_it_3.png>]
-<move_it_5.png, id=457, 1927.2pt x 973.6375pt>
+<move_it_5.png, id=462, 1927.2pt x 973.6375pt>
 File: move_it_5.png Graphic file (type png)
 <use move_it_5.png>
 Package pdftex.def Info: move_it_5.png  used on input line 1903.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
  [44 <./move_it_4.png> <./move_it_5.png>]
-<move_it_6.png, id=466, 1927.2pt x 973.6375pt>
+<move_it_6.png, id=471, 1927.2pt x 973.6375pt>
 File: move_it_6.png Graphic file (type png)
 <use move_it_6.png>
 Package pdftex.def Info: move_it_6.png  used on input line 1921.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
-<move_it_7.png, id=467, 1927.2pt x 973.6375pt>
+<move_it_7.png, id=472, 1927.2pt x 973.6375pt>
 File: move_it_7.png Graphic file (type png)
 <use move_it_7.png>
 Package pdftex.def Info: move_it_7.png  used on input line 1927.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
-<move_it_8.png, id=468, 1927.2pt x 973.6375pt>
+<move_it_8.png, id=473, 1927.2pt x 973.6375pt>
 File: move_it_8.png Graphic file (type png)
 <use move_it_8.png>
 Package pdftex.def Info: move_it_8.png  used on input line 1931.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
  [45 <./move_it_6.png> <./move_it_7.png>]
-<move_it_9.png, id=476, 1927.2pt x 973.6375pt>
+<move_it_9.png, id=481, 1927.2pt x 973.6375pt>
 File: move_it_9.png Graphic file (type png)
 <use move_it_9.png>
 Package pdftex.def Info: move_it_9.png  used on input line 1958.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
 
 [46 <./move_it_8.png>]
-<move_it_10.png, id=483, 1927.2pt x 973.6375pt>
+<move_it_10.png, id=488, 1927.2pt x 973.6375pt>
 File: move_it_10.png Graphic file (type png)
 <use move_it_10.png>
 Package pdftex.def Info: move_it_10.png  used on input line 1976.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
  [47 <./move_it_9.png>]
-<move_it_11.png, id=490, 1927.2pt x 973.6375pt>
+<move_it_11.png, id=495, 1927.2pt x 973.6375pt>
 File: move_it_11.png Graphic file (type png)
 <use move_it_11.png>
 Package pdftex.def Info: move_it_11.png  used on input line 2003.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
  [48 <./move_it_10.png>]
-<move_it_13.png, id=497, 1927.2pt x 973.6375pt>
+<move_it_13.png, id=502, 1927.2pt x 973.6375pt>
 File: move_it_13.png Graphic file (type png)
 <use move_it_13.png>
 Package pdftex.def Info: move_it_13.png  used on input line 2019.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
  [49 <./move_it_11.png>]
-<move_it_15.png, id=505, 1927.2pt x 973.6375pt>
+<move_it_15.png, id=510, 1927.2pt x 973.6375pt>
 File: move_it_15.png Graphic file (type png)
 <use move_it_15.png>
 Package pdftex.def Info: move_it_15.png  used on input line 2040.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
-<move_it_16.png, id=506, 1927.2pt x 973.6375pt>
+<move_it_16.png, id=511, 1927.2pt x 973.6375pt>
 File: move_it_16.png Graphic file (type png)
 <use move_it_16.png>
 Package pdftex.def Info: move_it_16.png  used on input line 2044.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
  [50 <./move_it_13.png> <./move_it_15.png>]
-<move_it_17.png, id=513, 1927.2pt x 973.6375pt>
+<move_it_17.png, id=518, 1927.2pt x 973.6375pt>
 File: move_it_17.png Graphic file (type png)
 <use move_it_17.png>
 Package pdftex.def Info: move_it_17.png  used on input line 2067.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
  [51 <./move_it_16.png>]
-<move_it_19.png, id=523, 1927.2pt x 973.6375pt>
+<move_it_19.png, id=528, 1927.2pt x 973.6375pt>
 File: move_it_19.png Graphic file (type png)
 <use move_it_19.png>
 Package pdftex.def Info: move_it_19.png  used on input line 2078.
@@ -1431,24 +1431,24 @@ Package pdftex.def Info: move_it_19.png  used on input line 2078.
 
 ]
 Chapter 11.
-<move_It_1.png, id=540, 1927.2pt x 973.6375pt>
+<move_It_1.png, id=545, 1927.2pt x 973.6375pt>
 File: move_It_1.png Graphic file (type png)
 <use move_It_1.png>
 Package pdftex.def Info: move_It_1.png  used on input line 2142.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
 [55]
-<move_It_2.png, id=547, 1927.2pt x 973.6375pt>
+<move_It_2.png, id=552, 1927.2pt x 973.6375pt>
 File: move_It_2.png Graphic file (type png)
 <use move_It_2.png>
 Package pdftex.def Info: move_It_2.png  used on input line 2167.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
-<move_It_3.png, id=548, 1927.2pt x 973.6375pt>
+<move_It_3.png, id=553, 1927.2pt x 973.6375pt>
 File: move_It_3.png Graphic file (type png)
 <use move_It_3.png>
 Package pdftex.def Info: move_It_3.png  used on input line 2169.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
  [56 <./move_It_1.png> <./move_It_2.png>]
-<move_It_4.png, id=555, 1927.2pt x 973.6375pt>
+<move_It_4.png, id=560, 1927.2pt x 973.6375pt>
 File: move_It_4.png Graphic file (type png)
 <use move_It_4.png>
 Package pdftex.def Info: move_It_4.png  used on input line 2209.
@@ -1459,36 +1459,36 @@ File: move_It_4.png Graphic file (type png)
 Package pdftex.def Info: move_It_4.png  used on input line 2234.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
  [58 <./move_It_4.png>]
-<move_It_5.png, id=570, 1927.2pt x 973.6375pt>
+<move_It_5.png, id=575, 1927.2pt x 973.6375pt>
 File: move_It_5.png Graphic file (type png)
 <use move_It_5.png>
 Package pdftex.def Info: move_It_5.png  used on input line 2241.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
-<move_It_6.png, id=571, 1927.2pt x 973.6375pt>
+<move_It_6.png, id=576, 1927.2pt x 973.6375pt>
  [59 <./move_It_5.png>]
 File: move_It_6.png Graphic file (type png)
 <use move_It_6.png>
 Package pdftex.def Info: move_It_6.png  used on input line 2250.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
-<move_It_7.png, id=578, 1927.2pt x 973.6375pt>
+<move_It_7.png, id=583, 1927.2pt x 973.6375pt>
 File: move_It_7.png Graphic file (type png)
 <use move_It_7.png>
 Package pdftex.def Info: move_It_7.png  used on input line 2279.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
  [60 <./move_It_6.png>]
-<move_It_8.png, id=586, 1927.2pt x 973.6375pt>
+<move_It_8.png, id=591, 1927.2pt x 973.6375pt>
 File: move_It_8.png Graphic file (type png)
 <use move_It_8.png>
 Package pdftex.def Info: move_It_8.png  used on input line 2299.
 (pdftex.def)             Requested size: 469.75502pt x 237.31761pt.
  [61 <./move_It_7.png> <./move_It_8.png>] [62]
 Chapter 12.
-<path_planning_1.png, id=600, 1927.2pt x 975.645pt>
+<path_planning_1.png, id=605, 1927.2pt x 975.645pt>
 File: path_planning_1.png Graphic file (type png)
 <use path_planning_1.png>
 Package pdftex.def Info: path_planning_1.png  used on input line 2381.
 (pdftex.def)             Requested size: 469.75502pt x 237.80693pt.
-<path_planning_2.png, id=601, 1927.2pt x 975.645pt>
+<path_planning_2.png, id=606, 1927.2pt x 975.645pt>
 [63
 
 ]
@@ -1496,25 +1496,25 @@ File: path_planning_2.png Graphic file (type png)
 <use path_planning_2.png>
 Package pdftex.def Info: path_planning_2.png  used on input line 2383.
 (pdftex.def)             Requested size: 469.75502pt x 237.80693pt.
-<path_planning_3.png, id=611, 1927.2pt x 975.645pt>
+<path_planning_3.png, id=616, 1927.2pt x 975.645pt>
 File: path_planning_3.png Graphic file (type png)
 <use path_planning_3.png>
 Package pdftex.def Info: path_planning_3.png  used on input line 2385.
 (pdftex.def)             Requested size: 469.75502pt x 237.80693pt.
-<path_planning_4.png, id=612, 1927.2pt x 975.645pt>
+<path_planning_4.png, id=617, 1927.2pt x 975.645pt>
  [64 <./path_planning_1.png> <./path_planning_2.png>]
 File: path_planning_4.png Graphic file (type png)
 <use path_planning_4.png>
 Package pdftex.def Info: path_planning_4.png  used on input line 2387.
 (pdftex.def)             Requested size: 469.75502pt x 237.80693pt.
-<path_planning_5.png, id=619, 1927.2pt x 975.645pt>
+<path_planning_5.png, id=624, 1927.2pt x 975.645pt>
 File: path_planning_5.png Graphic file (type png)
 <use path_planning_5.png>
 Package pdftex.def Info: path_planning_5.png  used on input line 2400.
 (pdftex.def)             Requested size: 469.75502pt x 237.80693pt.
  [65 <./path_planning_3.png> <./path_planning_4.png>] [66 <./path_planning_5.pn
 g>]
-<path_planning_6.png, id=634, 1927.2pt x 973.6375pt>
+<path_planning_6.png, id=639, 1927.2pt x 973.6375pt>
 File: path_planning_6.png Graphic file (type png)
 <use path_planning_6.png>
 Package pdftex.def Info: path_planning_6.png  used on input line 2468.
@@ -1524,35 +1524,35 @@ Package pdftex.def Info: path_planning_6.png  used on input line 2468.
 ]
 Chapter 13.
 [69]
-<turtle_1.png, id=652, 1927.2pt x 975.645pt>
+<turtle_1.png, id=657, 1927.2pt x 975.645pt>
 File: turtle_1.png Graphic file (type png)
 <use turtle_1.png>
 Package pdftex.def Info: turtle_1.png  used on input line 2550.
 (pdftex.def)             Requested size: 469.75502pt x 237.80693pt.
-<turtle_2.png, id=653, 1927.2pt x 975.645pt>
+<turtle_2.png, id=658, 1927.2pt x 975.645pt>
 File: turtle_2.png Graphic file (type png)
 <use turtle_2.png>
 Package pdftex.def Info: turtle_2.png  used on input line 2573.
 (pdftex.def)             Requested size: 469.75502pt x 237.80693pt.
  [70 <./turtle_1.png>]
-<turtle_3.png, id=660, 1927.2pt x 975.645pt>
+<turtle_3.png, id=665, 1927.2pt x 975.645pt>
 File: turtle_3.png Graphic file (type png)
 <use turtle_3.png>
 Package pdftex.def Info: turtle_3.png  used on input line 2588.
 (pdftex.def)             Requested size: 469.75502pt x 237.80693pt.
  [71 <./turtle_2.png> <./turtle_3.png>]
-<turtle_4.png, id=668, 1927.2pt x 975.645pt>
+<turtle_4.png, id=673, 1927.2pt x 975.645pt>
 File: turtle_4.png Graphic file (type png)
 <use turtle_4.png>
 Package pdftex.def Info: turtle_4.png  used on input line 2611.
 (pdftex.def)             Requested size: 469.75502pt x 237.80693pt.
-<turtle_5.png, id=669, 1927.2pt x 975.645pt>
+<turtle_5.png, id=674, 1927.2pt x 975.645pt>
 File: turtle_5.png Graphic file (type png)
 <use turtle_5.png>
 Package pdftex.def Info: turtle_5.png  used on input line 2628.
 (pdftex.def)             Requested size: 469.75502pt x 237.80693pt.
  [72 <./turtle_4.png>]
-<turtle_6.png, id=675, 1927.2pt x 975.645pt>
+<turtle_6.png, id=680, 1927.2pt x 975.645pt>
 File: turtle_6.png Graphic file (type png)
 <use turtle_6.png>
 Package pdftex.def Info: turtle_6.png  used on input line 2651.
@@ -1567,42 +1567,92 @@ Overfull \vbox (2.29044pt too high) detected at line 2730
 
 [74 <./turtle_6.png>] [75] [76]
 Chapter 14.
-(./Tutorials.ind)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2766.
- [77
+<1.png, id=702, 1927.2pt x 977.6525pt>
+File: 1.png Graphic file (type png)
+<use 1.png>
+Package pdftex.def Info: 1.png  used on input line 2782.
+(pdftex.def)             Requested size: 469.75502pt x 238.29623pt.
+[77
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2766.
+<2.png, id=711, 1927.2pt x 977.6525pt>
+File: 2.png Graphic file (type png)
+<use 2.png>
+Package pdftex.def Info: 2.png  used on input line 2794.
+(pdftex.def)             Requested size: 469.75502pt x 238.29623pt.
+ [78 <./1.png> <./2.png>]
+<3.png, id=720, 1927.2pt x 977.6525pt>
+File: 3.png Graphic file (type png)
+<use 3.png>
+Package pdftex.def Info: 3.png  used on input line 2807.
+(pdftex.def)             Requested size: 469.75502pt x 238.29623pt.
+<4.png, id=721, 1927.2pt x 977.6525pt>
+File: 4.png Graphic file (type png)
+<use 4.png>
+Package pdftex.def Info: 4.png  used on input line 2820.
+(pdftex.def)             Requested size: 469.75502pt x 238.29623pt.
+ [79 <./3.png> <./4.png>]
+<5.png, id=730, 1927.2pt x 977.6525pt>
+File: 5.png Graphic file (type png)
+<use 5.png>
+Package pdftex.def Info: 5.png  used on input line 2850.
+(pdftex.def)             Requested size: 469.75502pt x 238.29623pt.
+ [80 <./5.png>]
+<6.png, id=740, 1927.2pt x 977.6525pt>
+File: 6.png Graphic file (type png)
+<use 6.png>
+Package pdftex.def Info: 6.png  used on input line 2865.
+(pdftex.def)             Requested size: 469.75502pt x 238.29623pt.
+<9.png, id=741, 1927.2pt x 977.6525pt>
+File: 9.png Graphic file (type png)
+<use 9.png>
+Package pdftex.def Info: 9.png  used on input line 2889.
+(pdftex.def)             Requested size: 469.75502pt x 238.29623pt.
+<10.png, id=742, 1927.2pt x 977.6525pt>
+ [81 <./6.png>]
+File: 10.png Graphic file (type png)
+<use 10.png>
+Package pdftex.def Info: 10.png  used on input line 2891.
+(pdftex.def)             Requested size: 469.75502pt x 238.29623pt.
+ [82 <./9.png> <./10.png>]
+Chapter 15.
+(./Tutorials.ind)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2911.
+ [83
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2911.
  (./Tutorials.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2766.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2766.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2911.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2911.
 
 Package rerunfilecheck Info: File `Tutorials.out' has not changed.
-(rerunfilecheck)             Checksum: 13057556A41B147B19B2AA3E3A307134;3800.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2766.
+(rerunfilecheck)             Checksum: EE7CE86ED94C89BE9C309C01D47B9F43;4062.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2911.
  ) 
 Here is how much of TeX's memory you used:
- 14255 strings out of 494923
- 201522 string characters out of 6180742
- 431355 words of memory out of 5000000
- 16931 multiletter control sequences out of 15000+600000
+ 14331 strings out of 494923
+ 202950 string characters out of 6180742
+ 432156 words of memory out of 5000000
+ 16978 multiletter control sequences out of 15000+600000
  55437 words of font info for 79 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
  37i,12n,60p,1329b,578s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
-w/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucr
-ro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
-times/utmri8a.pfb>
-Output written on Tutorials.pdf (81 pages, 10225105 bytes).
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/cour
+ier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
+utmri8a.pfb>
+Output written on Tutorials.pdf (87 pages, 11952092 bytes).
 PDF statistics:
- 799 PDF objects out of 1000 (max. 8388607)
- 608 compressed objects within 7 object streams
- 272 named destinations out of 1000 (max. 500000)
- 363 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 867 PDF objects out of 1000 (max. 8388607)
+ 653 compressed objects within 7 object streams
+ 293 named destinations out of 1000 (max. 500000)
+ 411 words of extra memory for PDF output out of 10000 (max. 10000000)
 

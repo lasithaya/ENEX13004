@@ -132,6 +132,18 @@ ENEX13004:Week 5- Mobile Robots
 
 
 
+ENEX13004:Week 5- Mobile Robot Navigation
+--------------------
+
+.. toctree::
+   :maxdepth: 1
+
+
+   Turtlebot Navigation Simulation <_source/week_8/Turtle_bot3_navigation.md>
+
+
+
+
 Indices and tables
 ==================
 

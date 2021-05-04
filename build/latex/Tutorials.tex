@@ -58,7 +58,7 @@
 
 
 \title{Tutorials Documentation}
-\date{Apr 06, 2021}
+\date{May 03, 2021}
 \release{}
 \author{Lasi Piyathilaka}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -2744,6 +2744,151 @@ Now run the program that you wrote in a new terminal
 \end{sphinxVerbatim}
 
 You would see that the robot is moving autonomously in the maze.
+
+
+\chapter{ENEX13004:Week 5- Mobile Robot Navigation}
+\label{\detokenize{index:enex13004-week-5-mobile-robot-navigation}}
+
+\section{Turtlebot 3 Autonomous Navigation}
+\label{\detokenize{_source/week_8/Turtle_bot3_navigation:turtlebot-3-autonomous-navigation}}\label{\detokenize{_source/week_8/Turtle_bot3_navigation::doc}}
+In this tutorial, we are going to drive the turtlebot autonomously to a goal location by avoiding obstacles on a given map. You should complete the week 5 tutorial and have installed all the necessary software before trying this tutorial.
+
+
+\section{Software installation}
+\label{\detokenize{_source/week_8/Turtle_bot3_navigation:software-installation}}
+We need to install the following additional software packages to run this tutorial. Run the following commands in the terminal to install those ros packages
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{sudo} \PYG{n}{apt}\PYG{o}{\PYGZhy{}}\PYG{n}{get} \PYG{n}{install} \PYG{n}{ros}\PYG{o}{\PYGZhy{}}\PYG{n}{melodic}\PYG{o}{\PYGZhy{}}\PYG{n}{gmapping}
+
+\PYG{n}{sudo} \PYG{n}{apt}\PYG{o}{\PYGZhy{}}\PYG{n}{get} \PYG{n}{install} \PYG{n}{ros}\PYG{o}{\PYGZhy{}}\PYG{n}{melodic}\PYG{o}{\PYGZhy{}}\PYG{n}{dwa}\PYG{o}{\PYGZhy{}}\PYG{n}{local}\PYG{o}{\PYGZhy{}}\PYG{n}{planner}
+
+\end{sphinxVerbatim}
+
+
+\section{Map building}
+\label{\detokenize{_source/week_8/Turtle_bot3_navigation:map-building}}
+First, we need to create a map. For that, we are going to use ROS inbuilt Simultaneous Localisation and Map (SLAM) building algorithm to build a map. We are going to use Gazebo simulator with Turtlebot 3 to build the map
+
+
+\subsection{Launch Simulation World}
+\label{\detokenize{_source/week_8/Turtle_bot3_navigation:launch-simulation-world}}
+In this tutorial, we are going to use the turtlebot3 Gazebo simulation model. In a new terminal run the following command.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{turtlebot3\PYGZus{}gazebo} \PYG{n}{turtlebot3\PYGZus{}world}\PYG{o}{.}\PYG{n}{launch}
+\end{sphinxVerbatim}
+
+\sphinxincludegraphics{{1}.png}
+
+
+\subsection{Run the SLAM node to generate the Map}
+\label{\detokenize{_source/week_8/Turtle_bot3_navigation:run-the-slam-node-to-generate-the-map}}
+Run the following command in a new terminal to launch the Gmapping SLAM node to create a map of the environment.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{turtlebot3\PYGZus{}slam} \PYG{n}{turtlebot3\PYGZus{}slam}\PYG{o}{.}\PYG{n}{launch} \PYG{n}{slam\PYGZus{}methods}\PYG{p}{:}\PYG{o}{=}\PYG{n}{gmapping}
+\end{sphinxVerbatim}
+
+This will open up a new RVIZ window with robot in it. As you move the robot inside the map, a map will be created.
+\sphinxincludegraphics{{2}.png}
+
+
+\subsection{Run Teleoperation Node}
+\label{\detokenize{_source/week_8/Turtle_bot3_navigation:run-teleoperation-node}}
+Now you can run the Teleoperation node to move the robot inside the map using the keyboard keys.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{turtlebot3\PYGZus{}teleop} \PYG{n}{turtlebot3\PYGZus{}teleop\PYGZus{}key}\PYG{o}{.}\PYG{n}{launch}
+\end{sphinxVerbatim}
+
+Move the  robot using keys until the entire map is created. You can see the built map in RVIZ.
+
+\sphinxincludegraphics{{3}.png}
+
+
+\subsection{Saving the Map}
+\label{\detokenize{_source/week_8/Turtle_bot3_navigation:saving-the-map}}
+Once the entire map is created then you can save the map to a desired location. In the following command, we are saving the map to the home folder. Once saved it will create \sphinxcode{\sphinxupquote{.png}} file and a \sphinxcode{\sphinxupquote{.yaml}} file.
+
+In a new terminal run the following command to save the map
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{rosrun} \PYG{n}{map\PYGZus{}server} \PYG{n}{map\PYGZus{}saver} \PYG{o}{\PYGZhy{}}\PYG{n}{f} \PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{n+nb}{map}
+\end{sphinxVerbatim}
+
+\sphinxincludegraphics{{4}.png}
+
+
+\section{Navigation Simulation}
+\label{\detokenize{_source/week_8/Turtle_bot3_navigation:navigation-simulation}}
+Now let’s move the robot autonomously in the map that we created earlier.
+
+Fist kill all the terminal from the previous excersises.
+
+
+\subsection{Launch Simulation World}
+\label{\detokenize{_source/week_8/Turtle_bot3_navigation:id1}}
+Let’s run the sumulation world to run the navigation.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{turtlebot3\PYGZus{}gazebo} \PYG{n}{turtlebot3\PYGZus{}world}\PYG{o}{.}\PYG{n}{launch}
+\end{sphinxVerbatim}
+
+
+\subsection{Run Navigation Node}
+\label{\detokenize{_source/week_8/Turtle_bot3_navigation:run-navigation-node}}
+Now let’s run the navigation node by running the following command in a new terminal. We are reading the Map file that we cretaed earlier.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+roslaunch turtlebot3\PYGZus{}navigation turtlebot3\PYGZus{}navigation.launch map\PYGZus{}file:=\PYGZdl{}HOME/map.yaml
+
+\end{sphinxVerbatim}
+
+This will pop up a RVIZ windows with the map and the current laser scans.
+
+\sphinxincludegraphics{{5}.png}
+
+
+\subsection{Initial Pos}
+\label{\detokenize{_source/week_8/Turtle_bot3_navigation:initial-pos}}
+You would see in the RVIZ window that the initial laser readings do not match with the map. This is because the initial pose (location + orientation) is not correct. The AMCl localisation package needs an initial pose to localise properly. You would see a cloud of small green arrows. These are the possible locations of the robot. If the robot is localised properly this cloud should converge. To do that let’s move the robot using teleop node until the location estimates are accurate.
+
+Run the teleop node and move the robot back and forth a bit to collect the surrounding environment information and narrow down the estimated location of the TurtleBot3 on the map which is displayed with tiny green arrows. The map and the laser readings should match.
+
+To run the teleop node run the following command
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{roslaunch} \PYG{n}{turtlebot3\PYGZus{}teleop} \PYG{n}{turtlebot3\PYGZus{}teleop\PYGZus{}key}\PYG{o}{.}\PYG{n}{launch}
+\end{sphinxVerbatim}
+
+\sphinxincludegraphics{{6}.png}
+
+
+\subsection{Set Navigation Goal}
+\label{\detokenize{_source/week_8/Turtle_bot3_navigation:set-navigation-goal}}
+\sphinxstylestrong{First kill the teleop node} . This is important as we need to command the movement of the robot using the navigation node not by the teleop node.
+
+Now let’s set a navigation goal using RVIZ.
+
+Click the 2D Nav Goal button in the RViz menu.
+\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+Click on the map to set the destination of the robot and drag the green arrow towards the direction where the robot will be facing.
+This green arrow is a marker that can specify the destination of the robot.
+
+\item {} 
+The root of the arrow is x, y coordinate of the destination, and the angle \(\theta\) is determined by the orientation of the arrow.
+As soon as x, y, \(\theta\) are set, TurtleBot3 will start moving to the destination immediately.
+
+\end{enumerate}
+
+\sphinxincludegraphics{{9}.png}
+
+\sphinxincludegraphics{{10}.png}
 
 
 \chapter{Indices and tables}

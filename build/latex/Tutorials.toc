@@ -89,4 +89,17 @@
 \contentsline {subsection}{\numberline {13.1.3}Launching TurtleBot 3 simulation in Gazebo}{71}{subsection.13.1.3}
 \contentsline {subsection}{\numberline {13.1.4}Turtlebot Autonomous Operation}{73}{subsection.13.1.4}
 \contentsline {subsection}{\numberline {13.1.5}Moving Turtlebot Autonomoulsy Using Python}{74}{subsection.13.1.5}
-\contentsline {chapter}{\numberline {14}Indices and tables}{77}{chapter.14}
+\contentsline {chapter}{\numberline {14}ENEX13004:Week 5- Mobile Robot Navigation}{77}{chapter.14}
+\contentsline {section}{\numberline {14.1}Turtlebot 3 Autonomous Navigation}{77}{section.14.1}
+\contentsline {section}{\numberline {14.2}Software installation}{77}{section.14.2}
+\contentsline {section}{\numberline {14.3}Map building}{77}{section.14.3}
+\contentsline {subsection}{\numberline {14.3.1}Launch Simulation World}{77}{subsection.14.3.1}
+\contentsline {subsection}{\numberline {14.3.2}Run the SLAM node to generate the Map}{78}{subsection.14.3.2}
+\contentsline {subsection}{\numberline {14.3.3}Run Teleoperation Node}{78}{subsection.14.3.3}
+\contentsline {subsection}{\numberline {14.3.4}Saving the Map}{79}{subsection.14.3.4}
+\contentsline {section}{\numberline {14.4}Navigation Simulation}{80}{section.14.4}
+\contentsline {subsection}{\numberline {14.4.1}Launch Simulation World}{80}{subsection.14.4.1}
+\contentsline {subsection}{\numberline {14.4.2}Run Navigation Node}{80}{subsection.14.4.2}
+\contentsline {subsection}{\numberline {14.4.3}Initial Pos}{80}{subsection.14.4.3}
+\contentsline {subsection}{\numberline {14.4.4}Set Navigation Goal}{81}{subsection.14.4.4}
+\contentsline {chapter}{\numberline {15}Indices and tables}{83}{chapter.15}
